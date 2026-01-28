@@ -7,9 +7,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"unsafe"
 
-	smbioslib "github.com/grep-michael/SMBIOS_parser/SMBiosLib"
+	"github.com/grep-michael/SMBIOS_parser/SMBiosLib/Parsers"
 	structs_lib "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
 
@@ -22,64 +21,13 @@ func main() {
 
 	eps := buildEPS(eps_bytes)
 	log.Printf("Entry:\n\t%+v\n", eps)
-	smb_structures := parseHeaders(smbios_bytes)
-	fmt.Println(len(smb_structures))
+	chunks := parsers.FindChunks(smbios_bytes)
+	fmt.Println(len(chunks))
 
-	for _, s := range smb_structures {
-		switch s.Body.(type) {
-		case *structs_lib.ProcessorInfo:
-			fmt.Printf("%+v\n", s.Body)
-		}
-	}
-}
-
-func parseHeaders(smbios []byte) []*smbioslib.StructureChunk {
-	var structs []*smbioslib.StructureChunk
-	offset := 0
-
-	for offset < len(smbios) {
-		if offset+int(unsafe.Sizeof(structs_lib.StructureHeader{})) > len(smbios) {
-			break
-		}
-
-		header := &structs_lib.StructureHeader{}
-		buf := bytes.NewReader(smbios[offset:])
-		err := binary.Read(buf, binary.LittleEndian, header)
-
-		if err != nil {
-			log.Printf("Error reading into header: %+v\n", err)
-			os.Exit(1)
-		}
-		if header.Length == 0 || offset+int(header.Length) > len(smbios) {
-			log.Printf("Invaild Header Length")
-			os.Exit(1)
-		}
-
-		//log.Printf("Header found: %+v\n", header)
-		scanOffset := offset + int(header.Length)
-		// Find double null terminator
-		/*
-			apples SMB struct is all fucked up and retarded, i genuinely think they might John Apple himself said
-			"Lets make our own fucked up reatrded version of SMBIOs just to fuck with people"
-		*/
-		for scanOffset < len(smbios)-1 {
-			if smbios[scanOffset] == 0x00 && smbios[scanOffset+1] == 0x00 {
-				scanOffset += 2
-				break
-			}
-			scanOffset++
-		}
-
-		chunk, err := smbioslib.ParseChunk(header, smbios[offset:scanOffset])
-		if err == nil {
-			structs = append(structs, chunk)
-		}
-
-		offset = scanOffset
-
+	for _, chunk := range chunks {
+		parsers.ParseStruct(chunk, smbios_bytes)
 	}
 
-	return structs
 }
 
 func buildEPS(data []byte) *structs_lib.EntryPointStruct {
