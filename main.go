@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	smbioslib "github.com/grep-michael/SMBIOS_parser/SMBiosLib"
+	structs_lib "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
 
 func main() {
@@ -17,12 +18,8 @@ func main() {
 	smbios_bytes, eps_bytes := buildByteArrays()
 
 	fmt.Printf("SMBIOS len: %d\n", len(smbios_bytes))
-	//fmt.Printf("%v\n", smbios_bytes[:50])
-	//fmt.Printf("%v\n", smbios_bytes[:23])
-	//fmt.Printf("%v\n", smbios_bytes[23:50])
-
 	fmt.Printf("SMBIOS_EPS len: %d\n", len(eps_bytes))
-	//fmt.Printf("%v\n", eps_bytes[:10])
+
 	eps := buildEPS(eps_bytes)
 	log.Printf("Entry:\n\t%+v\n", eps)
 	smb_structures := parseHeaders(smbios_bytes)
@@ -30,7 +27,7 @@ func main() {
 
 	for _, s := range smb_structures {
 		switch s.Body.(type) {
-		case *smbioslib.ProcessorInfo:
+		case *structs_lib.ProcessorInfo:
 			fmt.Printf("%+v\n", s.Body)
 		}
 	}
@@ -41,11 +38,11 @@ func parseHeaders(smbios []byte) []*smbioslib.StructureChunk {
 	offset := 0
 
 	for offset < len(smbios) {
-		if offset+int(unsafe.Sizeof(smbioslib.StructureHeader{})) > len(smbios) {
+		if offset+int(unsafe.Sizeof(structs_lib.StructureHeader{})) > len(smbios) {
 			break
 		}
 
-		header := &smbioslib.StructureHeader{}
+		header := &structs_lib.StructureHeader{}
 		buf := bytes.NewReader(smbios[offset:])
 		err := binary.Read(buf, binary.LittleEndian, header)
 
@@ -85,8 +82,8 @@ func parseHeaders(smbios []byte) []*smbioslib.StructureChunk {
 	return structs
 }
 
-func buildEPS(data []byte) *smbioslib.EntryPointStruct {
-	var entry smbioslib.EntryPointStruct
+func buildEPS(data []byte) *structs_lib.EntryPointStruct {
+	var entry structs_lib.EntryPointStruct
 
 	data, err := base64.StdEncoding.DecodeString(SMBIOS_EPS)
 	if err != nil {

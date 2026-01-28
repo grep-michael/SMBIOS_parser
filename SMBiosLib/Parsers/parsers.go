@@ -1,29 +1,25 @@
-package smbioslib
+package parsers
 
 import (
 	"bytes"
 	"encoding/binary"
-	structs "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
-	"log"
+
+	structs_lib "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
 
-type StructureChunk struct {
-	Header  structs.StructureHeader
-	Body    interface{}
-	Strings []string
-}
+// global functions used by all separate parsers
 
-func ParseChunk(header *structs.StructureHeader, body []byte) (*StructureChunk, error) {
-	chunk := &StructureChunk{}
+func ParseChunk(header *structs_lib.StructureHeader, body []byte) (*structs_lib.StructureChunk, error) {
+	chunk := &structs_lib.StructureChunk{}
 	/*
 		We define a chunck from the start of the header (type field) to the double null termination
 	*/
 	var structPtr interface{}
 	switch header.Type {
 	case 4:
-		structPtr = &structs.ProcessorInfo{}
+		structPtr = &structs_lib.ProcessorInfo{}
 	default:
-		structPtr = &structs.TestStruct{}
+		structPtr = &structs_lib.TestStruct{}
 	}
 
 	body_buffer := bytes.NewReader(body)
@@ -42,26 +38,24 @@ func ParseChunk(header *structs.StructureHeader, body []byte) (*StructureChunk, 
 
 }
 
+// parseNullTerminatedStrings Given a byte array will split strings by null bytes
 func parseNullTerminatedStrings(data []byte) []string {
 	var strings []string
 	start := 0
 
 	for i := 0; i < len(data)-1; i++ {
 		if data[i] == 0x00 {
-			if data[i+1] == 0x00 {
-				// Double null - end of strings
+			if data[i+1] == 0x00 { //double null, end of section
 				if i > start {
 					strings = append(strings, string(data[start:i]))
 				}
 				break
 			}
-			// Single null - end of current string
 			if i > start {
 				strings = append(strings, string(data[start:i]))
 			}
 			start = i + 1
 		}
 	}
-
 	return strings
 }
