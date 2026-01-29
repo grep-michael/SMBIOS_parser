@@ -17,6 +17,8 @@ type StructureChunk struct {
 
 }
 
+var StructureMap map[int][]interface{} = make(map[int][]interface{})
+
 func FindChunks(smbios_raw_bytes []byte) []StructureChunk {
 	/*
 		we assume the data is acutal smbios starting with a header
@@ -63,7 +65,9 @@ func ParseStruct(chunk StructureChunk, smbios_raw_bytes []byte) {
 		log.Printf("Errored trying to read body buffer into structure: %+v\n", err)
 		return
 	}
+	StructureMap[chunk.StructType] = append(StructureMap[chunk.StructType], structPtr)
 	log.Printf("%+v\n", structPtr)
+	return
 }
 
 // parseNullTerminatedStrings Given a byte array will split strings by null bytes

@@ -1,6 +1,7 @@
 package typemap
 
 import (
+	"log"
 	"sync"
 )
 
@@ -20,11 +21,17 @@ var (
 func Register[T any](typeInt int, newFunc TypedFunc[T]) {
 	mu.Lock()
 	defer mu.Unlock()
+	_, exists := theRegistry.newFuncs[typeInt]
+	if exists {
+		log.Printf("attempted to add interface for already existing type %d\n", typeInt)
+		return
+	}
+	log.Printf("Registering type %d\n", typeInt)
 	theRegistry.newFuncs[typeInt] = func() interface{} { return newFunc() }
 }
 
-func GetStructForType(id int) (interface{}, bool) {
-	newFunc, exists := theRegistry.newFuncs[id]
+func GetStructForType(typeInt int) (interface{}, bool) {
+	newFunc, exists := theRegistry.newFuncs[typeInt]
 	if !exists {
 		return nil, false
 	}

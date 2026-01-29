@@ -12,7 +12,8 @@ const (
 	TypePhysicalMemoryArray       StructureType = 16
 	TypeMemoryDevice              StructureType = 17
 	TypeMemoryArrayMappedAddress  StructureType = 19
-	TypeMemoryDeviceMappedAddress StructureType = 20
+	TypeMemoryDeviceMappedAddress StructureType = 20 //v2.2
+	TypeSystemBootInfo            StructureType = 32 //v3.3
 )
 
 type StructureHeader struct {

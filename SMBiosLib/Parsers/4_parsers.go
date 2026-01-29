@@ -1,47 +1,4 @@
-package structures
-
-import typemap "github.com/grep-michael/SMBIOS_parser/SMBiosLib/TypeMap"
-
-//ProcessUpgrade is Basically just socket type
-
-var ProcessTypeDict = map[byte]string{
-	0x01: "Other",
-	0x02: "Unknow",
-	0x03: "Central ",
-	0x04: "Math ",
-	0x05: "DSP ",
-	0x06: "Video ",
-}
-
-type ProcessorInfo struct {
-	StructureHeader
-	SocketDesignation        byte
-	ProcessorType            byte //enum
-	ProcessorFamily          byte //enum
-	ProcessorManufacturer    byte
-	ProcessorID              uint64
-	ProcessorVersion         byte
-	Voltage                  byte
-	ExternalClock            uint16
-	MaxSpeed                 uint16 //in MHz
-	CurrentSpeed             uint16
-	Status                   byte
-	ProcessorUpgrade         byte //enum
-	CacheOneHandler          uint16
-	CacheTwoHandler          uint16
-	CacheThreeHandler        uint16
-	SerialNum                byte
-	AssetTag                 byte
-	PartNumber               byte
-	CoreCount                byte
-	CoreEnabled              byte
-	ThreadCount              byte
-	ProcessorCharacteristics uint16
-	ProcessorFamilyTwo       uint16
-	CoreCountTwo             byte
-	CoreEnabledTwo           byte
-	ThreadCountTwo           byte
-}
+package parsers
 
 var ProcessUpgradeMap = map[uint8]string{
 	0x01: "Other",
@@ -325,10 +282,11 @@ var ProcessorFamilyMap = map[uint16]string{
 	0x202: "RISC-V RV128",
 }
 
-func NewProssorInfo() *ProcessorInfo {
-	return &ProcessorInfo{}
-}
-
-func init() {
-	typemap.Register(4, NewProssorInfo)
+var ProcessTypeDict = map[byte]string{
+	0x01: "Other",
+	0x02: "Unknow",
+	0x03: "Central ",
+	0x04: "Math ",
+	0x05: "DSP ",
+	0x06: "Video ",
 }

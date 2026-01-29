@@ -1,0 +1,38 @@
+2026/01/29 08:53:06 main.go:30: EPS ↓
+	&{ArchorString:_SM_ Checksum:57 EntryPointLength:31 MajorVer:3 MinorVer:3 MaxStructSize:323 EntryPointRevision:0 FormattedArea:[0 0 0 0 0] IntermediateAnrchor:_DMI_ IntermediateChecksum:123 StructTableLen:2614 StructTableAddress:1945366528 NumOfStructs:36 BCDRev:M:3,m:3}
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 16
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 17
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 17
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 19
+2026/01/29 08:53:06 parsers.go:69: &{StructureHeader:{Type:0 Length:26 Handle:4} Vendor: BiosVersion: BiosStartAddressSegment:0 BiosReleaseDate: BiosRomSize:127 BiosCharacteristics:104576 CharacteristicsExtension:3713 SystemBiosMajorRelease:0 SystemBiosMinorRelease:1 EmbeddedControllerFirmwareMajorRelease:255 EmbeddedControllerFirmwareMinorRelease:255 ExtendedBiosRomSize:0}
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 1
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 2
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 3
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 8
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 8
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 8
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 8
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 8
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 8
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 11
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 41
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 41
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 41
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 13
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 22
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 32
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 131
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 133
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 221
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 221
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 221
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 221
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 7
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 7
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 7
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 7
+2026/01/29 08:53:06 parsers.go:69: &{StructureHeader:{Type:4 Length:48 Handle:32} SocketDesignation:1 ProcessorType:3 ProcessorFamily:198 ProcessorManufacturer:2 ProcessorID:13829424153406932709 ProcessorVersion:3 Voltage:136 ExternalClock:100 MaxSpeed:2300 CurrentSpeed:2300 Status:65 ProcessorUpgrade:1 CacheOneHandler:29 CacheTwoHandler:30 CacheThreeHandler:31 SerialNum:4 AssetTag:5 PartNumber:6 CoreCount:4 CoreEnabled:4 ThreadCount:8 ProcessorCharacteristics:252 ProcessorFamilyTwo:198 CoreCountTwo:4 CoreEnabledTwo:0 ThreadCountTwo:4}
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 128
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 14
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 219
+2026/01/29 08:53:06 parsers.go:58: No data Struct for type 127
