@@ -1,10 +1,8 @@
 package structures
 
-import (
-	typemap "github.com/grep-michael/SMBIOS_parser/SMBiosLib/TypeMap"
-)
+import structuretypes "github.com/grep-michael/SMBIOS_parser/SMBiosLib/StructureTypes"
 
-type BiosInfo struct {
+type BiosInfoFixed struct {
 	StructureHeader
 	Vendor                                 ByteStringIndex
 	BiosVersion                            ByteStringIndex
@@ -20,10 +18,12 @@ type BiosInfo struct {
 	ExtendedBiosRomSize                    uint16
 }
 
-func NewBioInfo() *BiosInfo {
+type BiosInfo = GenericStruct[BiosInfoFixed]
+
+func NewBioInfo() SMBiosStruct {
 	return &BiosInfo{}
 }
 
 func init() {
-	typemap.Register(0, NewBioInfo)
+	Register(structuretypes.TypeBiosInfo, NewBioInfo)
 }

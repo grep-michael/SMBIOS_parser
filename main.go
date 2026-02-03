@@ -7,8 +7,10 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/grep-michael/SMBIOS_parser/SMBiosLib/Parsers"
+	structuretypes "github.com/grep-michael/SMBIOS_parser/SMBiosLib/StructureTypes"
 	structs_lib "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
 
@@ -34,13 +36,14 @@ func main() {
 	for _, chunk := range chunks {
 		parsers.ParseStruct(chunk, smbios_bytes)
 	}
+	type_arg, _ := strconv.Atoi(os.Args[1])
+	fmt.Println()
+	fmt.Printf("All %d structs: %d\n", type_arg, len(parsers.StructureMap[0]))
+	struct_type_arg := structuretypes.StructureType(type_arg)
+	for _, structure := range parsers.StructureMap[struct_type_arg] {
+		struct_info := structure.(*structs_lib.SystemEnclosure)
+		fmt.Printf("\t%+v\n", struct_info)
 
-	fmt.Printf("All Bios Info structs: %d\n", len(parsers.StructureMap[0]))
-	for _, bioInfo := range parsers.StructureMap[0] {
-		bioinfo := bioInfo.(*structs_lib.BiosInfo)
-		fmt.Printf("\t%+v\n", bioinfo)
-		chars := parsers.ParseBIOSCharacteristics(bioinfo.BiosCharacteristics)
-		fmt.Printf("\t%+v\n", chars)
 	}
 
 }

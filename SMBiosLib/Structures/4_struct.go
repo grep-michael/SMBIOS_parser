@@ -1,29 +1,29 @@
 package structures
 
-import typemap "github.com/grep-michael/SMBIOS_parser/SMBiosLib/TypeMap"
+import structuretypes "github.com/grep-michael/SMBIOS_parser/SMBiosLib/StructureTypes"
 
 //ProcessUpgrade is Basically just socket type
 
-type ProcessorInfo struct {
+type ProcessorInfoFixed struct {
 	StructureHeader
-	SocketDesignation        byte
-	ProcessorType            byte //enum
-	ProcessorFamily          byte //enum
-	ProcessorManufacturer    byte
+	SocketDesignation        ByteString
+	ProcessorType            ByteEnum
+	ProcessorFamily          ByteEnum
+	ProcessorManufacturer    ByteString
 	ProcessorID              uint64
-	ProcessorVersion         byte
+	ProcessorVersion         ByteString
 	Voltage                  byte
 	ExternalClock            uint16
 	MaxSpeed                 uint16 //in MHz
 	CurrentSpeed             uint16
 	Status                   byte
-	ProcessorUpgrade         byte //enum
+	ProcessorUpgrade         ByteEnum
 	CacheOneHandler          uint16
 	CacheTwoHandler          uint16
 	CacheThreeHandler        uint16
-	SerialNum                byte
-	AssetTag                 byte
-	PartNumber               byte
+	SerialNum                ByteStringIndex
+	AssetTag                 ByteStringIndex
+	PartNumber               ByteStringIndex
 	CoreCount                byte
 	CoreEnabled              byte
 	ThreadCount              byte
@@ -34,10 +34,12 @@ type ProcessorInfo struct {
 	ThreadCountTwo           byte
 }
 
-func NewProssorInfo() *ProcessorInfo {
+type ProcessorInfo = GenericStruct[BaseboardInfoFixed]
+
+func NewProssorInfo() SMBiosStruct {
 	return &ProcessorInfo{}
 }
 
 func init() {
-	typemap.Register(4, NewProssorInfo)
+	Register(structuretypes.TypeProcessorInfo, NewProssorInfo)
 }

@@ -1,6 +1,8 @@
 package structures
 
-type SystemInformation struct {
+import structuretypes "github.com/grep-michael/SMBIOS_parser/SMBiosLib/StructureTypes"
+
+type SystemInformationFixed struct {
 	StructureHeader
 	Manufacturer ByteStringIndex
 	ProductName  ByteStringIndex
@@ -18,4 +20,13 @@ type UUID struct {
 	ClockSeqHiAndReserved byte
 	ClockSeqLow           byte
 	Node                  [6]byte
+}
+
+type SystemInformation = GenericStruct[SystemInformationFixed]
+
+func NewSysteminfo() SMBiosStruct {
+	return &SystemInformation{}
+}
+func init() {
+	Register(structuretypes.TypeSystemInfo, NewSysteminfo)
 }

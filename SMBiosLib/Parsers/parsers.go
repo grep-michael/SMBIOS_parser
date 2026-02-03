@@ -1,23 +1,25 @@
 package parsers
 
 import (
-	"bytes"
-	"encoding/binary"
-	"github.com/grep-michael/SMBIOS_parser/SMBiosLib/TypeMap"
 	"log"
+	"strconv"
+
+	structuretypes "github.com/grep-michael/SMBIOS_parser/SMBiosLib/StructureTypes"
+	structures "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
 
 // global functions used by all separate parsers
 
 type StructureChunk struct {
-	StructType          int
+	StructType          structuretypes.StructureType
+	FriendlyName        string
 	Start               int //position inside the smbios array
 	StructureSegmentEnd int //position of structures section end, i.e headers length value
 	End                 int //position from start to the double null terminators
 
 }
 
-var StructureMap map[int][]interface{} = make(map[int][]interface{})
+var StructureMap = make(map[structuretypes.StructureType][]structures.SMBiosStruct)
 
 func FindChunks(smbios_raw_bytes []byte) []StructureChunk {
 	/*
@@ -32,7 +34,15 @@ func FindChunks(smbios_raw_bytes []byte) []StructureChunk {
 		chunk := StructureChunk{}
 
 		chunk.Start = index
-		chunk.StructType = int(smbios_raw_bytes[index])
+		chunk.StructType = structuretypes.StructureType(smbios_raw_bytes[index])
+
+		friendly_name, ok := structuretypes.TypeNumToFriendlyNameMap[int(chunk.StructType)]
+		if ok {
+			chunk.FriendlyName = friendly_name
+		} else {
+			chunk.FriendlyName = strconv.Itoa(int(chunk.StructType))
+		}
+
 		length := smbios_raw_bytes[index+1]
 		chunk.StructureSegmentEnd = int(length) + index
 
@@ -53,41 +63,17 @@ func FindChunks(smbios_raw_bytes []byte) []StructureChunk {
 
 func ParseStruct(chunk StructureChunk, smbios_raw_bytes []byte) {
 	data := smbios_raw_bytes[chunk.Start:chunk.End]
-	structPtr, ok := typemap.GetStructForType(chunk.StructType)
+	structPtr, ok := structures.GetStructForType(chunk.StructType)
 	if !ok {
-		log.Printf("No data Struct for type %d\n", chunk.StructType)
+		log.Printf("No data Struct for type '%s'\n", chunk.FriendlyName)
 		return
 	}
-
-	data_buff := bytes.NewReader(data)
-	err := binary.Read(data_buff, binary.LittleEndian, structPtr)
+	err := structPtr.Parse(data)
 	if err != nil {
 		log.Printf("Errored trying to read body buffer into structure: %+v\n", err)
 		return
 	}
+
 	StructureMap[chunk.StructType] = append(StructureMap[chunk.StructType], structPtr)
 	log.Printf("%+v\n", structPtr)
-	return
-}
-
-// parseNullTerminatedStrings Given a byte array will split strings by null bytes
-func parseNullTerminatedStrings(data []byte) []string {
-	var strings []string
-	start := 0
-
-	for i := 0; i < len(data)-1; i++ {
-		if data[i] == 0x00 {
-			if data[i+1] == 0x00 { //double null, end of section
-				if i > start {
-					strings = append(strings, string(data[start:i]))
-				}
-				break
-			}
-			if i > start {
-				strings = append(strings, string(data[start:i]))
-			}
-			start = i + 1
-		}
-	}
-	return strings
 }
