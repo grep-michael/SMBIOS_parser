@@ -70,7 +70,7 @@ func ParseStruct(chunk StructureChunk, smbios_raw_bytes []byte) {
 	}
 	err := structPtr.Parse(data)
 	if err != nil {
-		log.Printf("Errored trying to read body buffer into structure: %+v\n", err)
+		log.Printf("Errored trying to read data into %d structure: %+v\n", chunk.StructType, err)
 		return
 	}
 

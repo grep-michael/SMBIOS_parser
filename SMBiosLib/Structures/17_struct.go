@@ -12,20 +12,38 @@ type MemoryDeviceFixed struct {
 	DataWidth                 Word
 	Size                      Word
 	FormFactor                ByteEnum
-	DeiveSet                  byte
-	DeviceLocator             ByteStringIndex
-	BankLocator               ByteStringIndex
-	MemoryType                ByteEnum
-	TypeDetail                Word
-	Speed                     Word
-	Manufacturer              ByteStringIndex
-	SerialNumber              ByteStringIndex
-	AssetTag                  ByteStringIndex
-	PartNumber                ByteStringIndex
-	Attributes                byte
-	ExtendedSize              DWord
-	ConfiguredMemorySpeed     Word
-	MinVoltage                Word
+
+	DeiveSet      byte
+	DeviceLocator ByteStringIndex
+	BankLocator   ByteStringIndex
+	MemoryType    ByteEnum
+	TypeDetail    Word
+	Speed         Word
+	Manufacturer  ByteStringIndex
+	SerialNumber  ByteStringIndex
+	AssetTag      ByteStringIndex
+	PartNumber    ByteStringIndex
+	Attributes    byte
+
+	ExtendedSize                      DWord
+	ConfiguredMemorySpeed             Word
+	MinVoltage                        Word
+	MaxVoltage                        Word
+	ConfiguredVoltage                 Word
+	MemoryTechnology                  byte
+	MemOperatingModeCapability        Word
+	FirmwareVer                       ByteStringIndex
+	ModuleManufacturerID              Word
+	ModuleProductID                   Word
+	MemorySubControllerManufacturerID Word
+	MemorySubControllerProductID      Word
+	NonVolatileSize                   QWord
+
+	VolatileSize                  QWord
+	CacheSize                     QWord
+	LogicalSize                   QWord
+	ExtendedSpeed                 DWord
+	ExtendedConfiguredMemorySPeed DWord
 }
 
 type MemoryDeviceInfo = GenericStruct[MemoryDeviceFixed]

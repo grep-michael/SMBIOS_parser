@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"log"
 	"strconv"
+	"unsafe"
 )
 
 type Word uint16
@@ -26,9 +28,12 @@ type GenericStruct[T any] struct {
 }
 
 func (g *GenericStruct[T]) Parse(data []byte) error {
+	log.Printf("Parsing %d bytes into %d struct\n", len(data[:data[1]]), unsafe.Sizeof(g.Data))
+
 	r := bytes.NewReader(data)
 	err := binary.Read(r, binary.LittleEndian, &g.Data)
 	if err != nil {
+
 		return err
 	}
 	g.Strings = parseNullTerminatedStrings(data[data[1]:])
@@ -62,7 +67,7 @@ type ByteEnum byte
 type ByteStringIndex byte
 
 func (byt ByteStringIndex) GetString(strings []string) (string, error) {
-	index := int(byt)
+	index := int(byt) - 1 //the indexs start at 1
 	if index > len(strings) {
 		return "", fmt.Errorf("String Index Out of bounds")
 	}

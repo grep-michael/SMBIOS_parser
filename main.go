@@ -15,9 +15,6 @@ import (
 	structs_lib "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
 
-//100000000000000
-//10000000000000
-
 func main() {
 	file, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
@@ -38,6 +35,7 @@ func main() {
 	fmt.Printf("SMBIOS_EPS len: %d\n", len(eps_bytes))
 
 	eps := buildEPS(eps_bytes)
+	//printObj(eps)
 	log.Printf("EPS ↓\n\t%+v\n", eps)
 	chunks := parsers.FindChunks(smbios_bytes)
 	fmt.Printf("SMBIO data ↓\n\tChunk Count: %d\n\tExpected Count: %d\n", len(chunks), eps.NumOfStructs)
@@ -54,6 +52,8 @@ func main() {
 	for _, structure := range parsers.StructureMap[struct_type_arg] {
 		struct_info := structure.(*structs_lib.MemoryDeviceInfo)
 		fmt.Println(struct_info.Data.Size)
+		//str, _ := struct_info.Data.DeviceLocator.GetString(struct_info.Strings)
+		//fmt.Println(str)
 		printObj(struct_info)
 
 	}
@@ -65,14 +65,17 @@ func printObj(obj any) {
 	fmt.Println(string(json))
 }
 
-func loadLocalSMBIOS() (dmi_table []byte, eps []byte, err error) {
-	if dmi_table, err = os.ReadFile("/sys/firmware/dmi/tables/DMI"); err == nil {
-		return
+func loadLocalSMBIOS() ([]byte, []byte, error) {
+	var eps []byte
+	var dmi_table []byte
+	var err error
+	if dmi_table, err = os.ReadFile("/sys/firmware/dmi/tables/DMI"); err != nil {
+		return nil, nil, err
 	}
-	if eps, err = os.ReadFile("/sys/firmware/dmi/tables/smbios_entry_point"); err == nil {
-		return
+	if eps, err = os.ReadFile("/sys/firmware/dmi/tables/smbios_entry_point"); err != nil {
+		return nil, nil, err
 	}
-	return
+	return dmi_table, eps, nil
 }
 
 func buildEPS(data []byte) *structs_lib.EntryPointStruct {
