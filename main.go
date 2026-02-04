@@ -52,8 +52,6 @@ func main() {
 	for _, structure := range parsers.StructureMap[struct_type_arg] {
 		struct_info := structure.(*structs_lib.MemoryDeviceInfo)
 		fmt.Println(struct_info.Data.Size)
-		//str, _ := struct_info.Data.DeviceLocator.GetString(struct_info.Strings)
-		//fmt.Println(str)
 		printObj(struct_info)
 
 	}
