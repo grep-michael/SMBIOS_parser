@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bytes"
 	"encoding/base64"
-	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -34,7 +32,7 @@ func main() {
 	fmt.Printf("SMBIOS len: %d\n", len(smbios_bytes))
 	fmt.Printf("SMBIOS_EPS len: %d\n", len(eps_bytes))
 
-	eps := buildEPS(eps_bytes)
+	eps, _ := parsers.BuildEPS(SMBIOS_EPS)
 	//printObj(eps)
 	log.Printf("EPS ↓\n\t%+v\n", eps)
 	chunks := parsers.FindChunks(smbios_bytes)
@@ -74,24 +72,6 @@ func loadLocalSMBIOS() ([]byte, []byte, error) {
 		return nil, nil, err
 	}
 	return dmi_table, eps, nil
-}
-
-func buildEPS(data []byte) *structs_lib.EntryPointStruct {
-	var entry structs_lib.EntryPointStruct
-
-	data, err := base64.StdEncoding.DecodeString(SMBIOS_EPS)
-	if err != nil {
-		log.Printf("Error Decoding EPS: %v\n", err)
-		os.Exit(1)
-	}
-
-	buf := bytes.NewReader(data)
-	err = binary.Read(buf, binary.LittleEndian, &entry)
-	if err != nil {
-		log.Printf("Error Reading into struct: %v\n", err)
-		os.Exit(1)
-	}
-	return &entry
 }
 
 func buildByteArrays() (smbios []byte, eps []byte) {

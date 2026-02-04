@@ -1,6 +1,9 @@
 package parsers
 
 import (
+	"bytes"
+	"encoding/base64"
+	"encoding/binary"
 	"log"
 	"strconv"
 
@@ -76,4 +79,38 @@ func ParseStruct(chunk StructureChunk, smbios_raw_bytes []byte) {
 
 	StructureMap[chunk.StructType] = append(StructureMap[chunk.StructType], structPtr)
 	log.Printf("%+v\n", structPtr)
+}
+
+func BuildEPS(base64_enocded string) (*structures.EntryPointStruct, error) {
+	var entry structures.EntryPointStruct
+
+	data, err := base64.StdEncoding.DecodeString(base64_enocded)
+	if err != nil {
+		log.Printf("Error Decoding EPS: %v\n", err)
+		return nil, err
+	}
+
+	buf := bytes.NewReader(data)
+	err = binary.Read(buf, binary.LittleEndian, &entry)
+	if err != nil {
+		log.Printf("Error Reading into struct: %v\n", err)
+		return nil, err
+	}
+	return &entry, nil
+}
+
+func ParseDMITable(base64_enocded string) (map[structuretypes.StructureType][]structures.SMBiosStruct, error) {
+	dmi_table, err := base64.StdEncoding.DecodeString(base64_enocded)
+	if err != nil {
+		log.Printf("Error Decoding DMI: %v\n", err)
+		return nil, err
+	}
+
+	chunks := FindChunks(dmi_table)
+	log.Printf("SMBIO data ↓\n\tChunk Count: %d\n", len(chunks))
+
+	for _, chunk := range chunks {
+		ParseStruct(chunk, dmi_table)
+	}
+	return StructureMap, nil
 }
