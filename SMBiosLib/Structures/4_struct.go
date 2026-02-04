@@ -34,7 +34,7 @@ type ProcessorInfoFixed struct {
 	ThreadCountTwo           byte
 }
 
-type ProcessorInfo = GenericStruct[BaseboardInfoFixed]
+type ProcessorInfo = GenericStruct[ProcessorInfoFixed]
 
 func NewProssorInfo() SMBiosStruct {
 	return &ProcessorInfo{}

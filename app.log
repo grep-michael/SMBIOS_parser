@@ -1,45 +1,45 @@
-2026/02/04 10:51:31 main.go:39: EPS ↓
+2026/02/04 12:09:19 main.go:39: EPS ↓
 	&{ArchorString:_SM_ Checksum:57 EntryPointLength:31 MajorVer:3 MinorVer:3 MaxStructSize:323 EntryPointRevision:0 FormattedArea:[0 0 0 0 0] IntermediateAnrchor:_DMI_ IntermediateChecksum:123 StructTableLen:2614 StructTableAddress:1945366528 NumOfStructs:36 BCDRev:M:3,m:3}
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Physical Memory Array'
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 92 bytes into 104 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:17 Length:92 Handle:1} PhysicalmemoryArrayHandle:0 MemoryErrorHandler:65534 TotalWidth:32 DataWidth:32 Size:8192 FormFactor:11 DeiveSet:0 DeviceLocator:1 BankLocator:2 MemoryType:30 TypeDetail:128 Speed:3733 Manufacturer:3 SerialNumber:4 AssetTag:5 PartNumber:6 Attributes:2 ExtendedSize:0 ConfiguredMemorySpeed:3733 MinVoltage:0 MaxVoltage:0 ConfiguredVoltage:600 MemoryTechnology:0 MemOperatingModeCapability:0 FirmwareVer:0 ModuleManufacturerID:0 ModuleProductID:0 MemorySubControllerManufacturerID:0 MemorySubControllerProductID:0 NonVolatileSize:0 VolatileSize:0 CacheSize:0 LogicalSize:0 ExtendedSpeed:0 ExtendedConfiguredMemorySPeed:0} Strings:[ChannelA-DIMM0 BANK 0 Micron 00000000 9876543210  MT53E1G32D4NQ-053  ]}
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 92 bytes into 104 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:17 Length:92 Handle:2} PhysicalmemoryArrayHandle:0 MemoryErrorHandler:65534 TotalWidth:32 DataWidth:32 Size:8192 FormFactor:11 DeiveSet:0 DeviceLocator:1 BankLocator:2 MemoryType:30 TypeDetail:128 Speed:3733 Manufacturer:3 SerialNumber:4 AssetTag:5 PartNumber:6 Attributes:2 ExtendedSize:0 ConfiguredMemorySpeed:3733 MinVoltage:0 MaxVoltage:0 ConfiguredVoltage:600 MemoryTechnology:0 MemOperatingModeCapability:0 FirmwareVer:0 ModuleManufacturerID:0 ModuleProductID:0 MemorySubControllerManufacturerID:0 MemorySubControllerProductID:0 NonVolatileSize:0 VolatileSize:0 CacheSize:0 LogicalSize:0 ExtendedSpeed:0 ExtendedConfiguredMemorySPeed:0} Strings:[ChannelB-DIMM0 BANK 2 Micron 00000000 9876543210  MT53E1G32D4NQ-053  ]}
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Memory Array Mapped Address'
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 26 bytes into 32 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:0 Length:26 Handle:4} Vendor:1 BiosVersion:2 BiosStartAddressSegment:0 BiosReleaseDate:3 BiosRomSize:127 BiosCharacteristics:104576 CharacteristicsExtension:3713 SystemBiosMajorRelease:0 SystemBiosMinorRelease:1 EmbeddedControllerFirmwareMajorRelease:255 EmbeddedControllerFirmwareMinorRelease:255 ExtendedBiosRomSize:0} Strings:[Apple Inc. 2094.40.1.0.0 (iBridge: 23.16.12048.0.0,0) 11/08/2025]}
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 27 bytes into 28 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:1 Length:27 Handle:5} Manufacturer:1 ProductName:2 Version:3 SerialNumber:4 UUID:{TimeLow:3323754776 TimeMid:17219 TimeHiAndVersion:21146 ClockSeqHiAndReserved:156 ClockSeqLow:14 Node:[172 179 228 239 198 29]} WakeUpType:6 SKUNumber:5 Family:6} Strings:[Apple Inc. MacBookPro16,2 1.0 C02FN3M7ML85   MacBook Pro]}
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 17 bytes into 16 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:2 Length:17 Handle:6} Manufacturer:1 Product:2 Version:3 SerialNumber:4 AssetTag:5 FeatureFlag:1 LocationInChassis:6 ChassisHandle:7 BoardType:10 NumberOfContainedObjectHandles:0} Strings:[Apple Inc. Mac-5F9802EFE386AA28 MacBookPro16,2 C02117600AVPCVJ1D    ]}
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 24 bytes into 24 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:3 Length:24 Handle:7} Manufatuer:1 Type:9 Version:2 SerialNumber:3 AssetTagNumber:4 BootUpState:3 PowerSupplyState:3 ThermalState:3 SecurityStatus:3 OEMDefined:0 Height:0 NumberOfPowerCords:0 ContainedElementCount:0 ContainedElementRecordLength:0} Strings:[Apple Inc. Mac-5F9802EFE386AA28 C02FN3M7ML85  ]}
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Port Connector Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Port Connector Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Port Connector Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Port Connector Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Port Connector Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Port Connector Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'OEM Strings'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Onboard Devices Extended Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Onboard Devices Extended Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Onboard Devices Extended Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'BIOS Language Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Portable Battery'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'System Boot Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '131'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '133'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '221'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '221'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '221'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '221'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Cache Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Cache Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Cache Information'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Cache Information'
-2026/02/04 10:51:31 universal_structs.go:31: Parsing 48 bytes into 16 struct
-2026/02/04 10:51:31 parsers.go:78: &{Data:{StructureHeader:{Type:4 Length:48 Handle:32} Manufacturer:1 Product:3 Version:198 SerialNumber:2 AssetTag:229 FeatureFlag:6 LocationInChassis:7 ChassisHandle:65280 BoardType:251 NumberOfContainedObjectHandles:235} Strings:[U3E1 Intel(R) Corporation Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz To Be Filled By O.E.M. To Be Filled By O.E.M. To Be Filled By O.E.M.]}
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '128'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'Group Associations'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type '219'
-2026/02/04 10:51:31 parsers.go:68: No data Struct for type 'End-of-Table'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Physical Memory Array'
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 92 bytes into 104 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:17 Length:92 Handle:1} PhysicalmemoryArrayHandle:0 MemoryErrorHandler:65534 TotalWidth:32 DataWidth:32 Size:8192 FormFactor:11 DeiveSet:0 DeviceLocator:1 BankLocator:2 MemoryType:30 TypeDetail:128 Speed:3733 Manufacturer:3 SerialNumber:4 AssetTag:5 PartNumber:6 Attributes:2 ExtendedSize:0 ConfiguredMemorySpeed:3733 MinVoltage:0 MaxVoltage:0 ConfiguredVoltage:600 MemoryTechnology:0 MemOperatingModeCapability:0 FirmwareVer:0 ModuleManufacturerID:0 ModuleProductID:0 MemorySubControllerManufacturerID:0 MemorySubControllerProductID:0 NonVolatileSize:0 VolatileSize:0 CacheSize:0 LogicalSize:0 ExtendedSpeed:0 ExtendedConfiguredMemorySPeed:0} Strings:[ChannelA-DIMM0 BANK 0 Micron 00000000 9876543210  MT53E1G32D4NQ-053  ]}
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 92 bytes into 104 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:17 Length:92 Handle:2} PhysicalmemoryArrayHandle:0 MemoryErrorHandler:65534 TotalWidth:32 DataWidth:32 Size:8192 FormFactor:11 DeiveSet:0 DeviceLocator:1 BankLocator:2 MemoryType:30 TypeDetail:128 Speed:3733 Manufacturer:3 SerialNumber:4 AssetTag:5 PartNumber:6 Attributes:2 ExtendedSize:0 ConfiguredMemorySpeed:3733 MinVoltage:0 MaxVoltage:0 ConfiguredVoltage:600 MemoryTechnology:0 MemOperatingModeCapability:0 FirmwareVer:0 ModuleManufacturerID:0 ModuleProductID:0 MemorySubControllerManufacturerID:0 MemorySubControllerProductID:0 NonVolatileSize:0 VolatileSize:0 CacheSize:0 LogicalSize:0 ExtendedSpeed:0 ExtendedConfiguredMemorySPeed:0} Strings:[ChannelB-DIMM0 BANK 2 Micron 00000000 9876543210  MT53E1G32D4NQ-053  ]}
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Memory Array Mapped Address'
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 26 bytes into 32 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:0 Length:26 Handle:4} Vendor:1 BiosVersion:2 BiosStartAddressSegment:0 BiosReleaseDate:3 BiosRomSize:127 BiosCharacteristics:104576 CharacteristicsExtension:3713 SystemBiosMajorRelease:0 SystemBiosMinorRelease:1 EmbeddedControllerFirmwareMajorRelease:255 EmbeddedControllerFirmwareMinorRelease:255 ExtendedBiosRomSize:0} Strings:[Apple Inc. 2094.40.1.0.0 (iBridge: 23.16.12048.0.0,0) 11/08/2025]}
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 27 bytes into 28 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:1 Length:27 Handle:5} Manufacturer:1 ProductName:2 Version:3 SerialNumber:4 UUID:{TimeLow:3323754776 TimeMid:17219 TimeHiAndVersion:21146 ClockSeqHiAndReserved:156 ClockSeqLow:14 Node:[172 179 228 239 198 29]} WakeUpType:6 SKUNumber:5 Family:6} Strings:[Apple Inc. MacBookPro16,2 1.0 C02FN3M7ML85   MacBook Pro]}
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 17 bytes into 16 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:2 Length:17 Handle:6} Manufacturer:1 Product:2 Version:3 SerialNumber:4 AssetTag:5 FeatureFlag:1 LocationInChassis:6 ChassisHandle:7 BoardType:10 NumberOfContainedObjectHandles:0} Strings:[Apple Inc. Mac-5F9802EFE386AA28 MacBookPro16,2 C02117600AVPCVJ1D    ]}
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 24 bytes into 24 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:3 Length:24 Handle:7} Manufatuer:1 Type:9 Version:2 SerialNumber:3 AssetTagNumber:4 BootUpState:3 PowerSupplyState:3 ThermalState:3 SecurityStatus:3 OEMDefined:0 Height:0 NumberOfPowerCords:0 ContainedElementCount:0 ContainedElementRecordLength:0} Strings:[Apple Inc. Mac-5F9802EFE386AA28 C02FN3M7ML85  ]}
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Port Connector Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Port Connector Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Port Connector Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Port Connector Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Port Connector Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Port Connector Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'OEM Strings'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Onboard Devices Extended Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Onboard Devices Extended Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Onboard Devices Extended Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'BIOS Language Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Portable Battery'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'System Boot Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '131'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '133'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '221'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '221'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '221'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '221'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Cache Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Cache Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Cache Information'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Cache Information'
+2026/02/04 12:09:19 universal_structs.go:31: Parsing 48 bytes into 48 struct
+2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:4 Length:48 Handle:32} SocketDesignation: ProcessorType:3 ProcessorFamily:198 ProcessorManufacturer: ProcessorID:13829424153406932709 ProcessorVersion: Voltage:136 ExternalClock:100 MaxSpeed:2300 CurrentSpeed:2300 Status:65 ProcessorUpgrade:1 CacheOneHandler:29 CacheTwoHandler:30 CacheThreeHandler:31 SerialNum:4 AssetTag:5 PartNumber:6 CoreCount:4 CoreEnabled:4 ThreadCount:8 ProcessorCharacteristics:252 ProcessorFamilyTwo:198 CoreCountTwo:4 CoreEnabledTwo:0 ThreadCountTwo:4} Strings:[U3E1 Intel(R) Corporation Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz To Be Filled By O.E.M. To Be Filled By O.E.M. To Be Filled By O.E.M.]}
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '128'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Group Associations'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type '219'
+2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'End-of-Table'

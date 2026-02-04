@@ -50,8 +50,8 @@ func main() {
 	fmt.Printf("All %d structs: %d\n", type_arg, len(parsers.StructureMap[struct_type_arg]))
 
 	for _, structure := range parsers.StructureMap[struct_type_arg] {
-		struct_info := structure.(*structs_lib.MemoryDeviceInfo)
-		fmt.Println(struct_info.Data.Size)
+		struct_info := structure.(*structs_lib.ProcessorInfo)
+
 		printObj(struct_info)
 
 	}
