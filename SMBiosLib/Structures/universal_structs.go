@@ -3,8 +3,13 @@ package structures
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"strconv"
 )
+
+type Word uint16
+type DWord uint32
+type QWord uint64
 
 type SMBiosStruct interface {
 	Parse([]byte) error
@@ -55,6 +60,14 @@ type ByteEnum byte
 
 // Byte that represents a string index
 type ByteStringIndex byte
+
+func (byt ByteStringIndex) GetString(strings []string) (string, error) {
+	index := int(byt)
+	if index > len(strings) {
+		return "", fmt.Errorf("String Index Out of bounds")
+	}
+	return strings[index], nil
+}
 
 func (byt ByteStringIndex) String() string {
 	i := int(byt)

@@ -13,7 +13,7 @@ type SystemEnclosureFixed struct {
 	PowerSupplyState             ByteEnum
 	ThermalState                 ByteEnum
 	SecurityStatus               ByteEnum
-	OEMDefined                   uint32
+	OEMDefined                   DWord
 	Height                       byte
 	NumberOfPowerCords           byte
 	ContainedElementCount        byte

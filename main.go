@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -13,6 +14,9 @@ import (
 	structuretypes "github.com/grep-michael/SMBIOS_parser/SMBiosLib/StructureTypes"
 	structs_lib "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures"
 )
+
+//100000000000000
+//10000000000000
 
 func main() {
 	file, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY, 0666)
@@ -24,6 +28,11 @@ func main() {
 	log.SetOutput(file)
 
 	smbios_bytes, eps_bytes := buildByteArrays()
+	//smbios_bytes, eps_bytes, err := loadLocalSMBIOS()
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
 
 	fmt.Printf("SMBIOS len: %d\n", len(smbios_bytes))
 	fmt.Printf("SMBIOS_EPS len: %d\n", len(eps_bytes))
@@ -37,15 +46,33 @@ func main() {
 		parsers.ParseStruct(chunk, smbios_bytes)
 	}
 	type_arg, _ := strconv.Atoi(os.Args[1])
-	fmt.Println()
-	fmt.Printf("All %d structs: %d\n", type_arg, len(parsers.StructureMap[0]))
 	struct_type_arg := structuretypes.StructureType(type_arg)
+
+	fmt.Println()
+	fmt.Printf("All %d structs: %d\n", type_arg, len(parsers.StructureMap[struct_type_arg]))
+
 	for _, structure := range parsers.StructureMap[struct_type_arg] {
-		struct_info := structure.(*structs_lib.SystemEnclosure)
-		fmt.Printf("\t%+v\n", struct_info)
+		struct_info := structure.(*structs_lib.MemoryDeviceInfo)
+		fmt.Println(struct_info.Data.Size)
+		printObj(struct_info)
 
 	}
 
+}
+
+func printObj(obj any) {
+	json, _ := json.MarshalIndent(obj, "", "  ")
+	fmt.Println(string(json))
+}
+
+func loadLocalSMBIOS() (dmi_table []byte, eps []byte, err error) {
+	if dmi_table, err = os.ReadFile("/sys/firmware/dmi/tables/DMI"); err == nil {
+		return
+	}
+	if eps, err = os.ReadFile("/sys/firmware/dmi/tables/smbios_entry_point"); err == nil {
+		return
+	}
+	return
 }
 
 func buildEPS(data []byte) *structs_lib.EntryPointStruct {

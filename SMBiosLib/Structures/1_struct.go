@@ -14,9 +14,9 @@ type SystemInformationFixed struct {
 	Family       ByteStringIndex
 }
 type UUID struct {
-	TimeLow               uint32
-	TimeMid               uint16
-	TimeHiAndVersion      uint16
+	TimeLow               DWord
+	TimeMid               Word
+	TimeHiAndVersion      Word
 	ClockSeqHiAndReserved byte
 	ClockSeqLow           byte
 	Node                  [6]byte

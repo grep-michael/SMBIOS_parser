@@ -10,25 +10,25 @@ type ProcessorInfoFixed struct {
 	ProcessorType            ByteEnum
 	ProcessorFamily          ByteEnum
 	ProcessorManufacturer    ByteString
-	ProcessorID              uint64
+	ProcessorID              QWord
 	ProcessorVersion         ByteString
 	Voltage                  byte
-	ExternalClock            uint16
-	MaxSpeed                 uint16 //in MHz
-	CurrentSpeed             uint16
+	ExternalClock            Word
+	MaxSpeed                 Word //in MHz
+	CurrentSpeed             Word
 	Status                   byte
 	ProcessorUpgrade         ByteEnum
-	CacheOneHandler          uint16
-	CacheTwoHandler          uint16
-	CacheThreeHandler        uint16
+	CacheOneHandler          Word
+	CacheTwoHandler          Word
+	CacheThreeHandler        Word
 	SerialNum                ByteStringIndex
 	AssetTag                 ByteStringIndex
 	PartNumber               ByteStringIndex
 	CoreCount                byte
 	CoreEnabled              byte
 	ThreadCount              byte
-	ProcessorCharacteristics uint16
-	ProcessorFamilyTwo       uint16
+	ProcessorCharacteristics Word
+	ProcessorFamilyTwo       Word
 	CoreCountTwo             byte
 	CoreEnabledTwo           byte
 	ThreadCountTwo           byte

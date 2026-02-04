@@ -6,16 +6,16 @@ type BiosInfoFixed struct {
 	StructureHeader
 	Vendor                                 ByteStringIndex
 	BiosVersion                            ByteStringIndex
-	BiosStartAddressSegment                uint16
+	BiosStartAddressSegment                Word
 	BiosReleaseDate                        ByteStringIndex
 	BiosRomSize                            byte
-	BiosCharacteristics                    uint64
-	CharacteristicsExtension               uint16 //3.3 defines this as zero or more bytes? at offset 12h, but then also says there more structured data at offset 14h?
+	BiosCharacteristics                    QWord
+	CharacteristicsExtension               Word //3.3 defines this as zero or more bytes? at offset 12h, but then also says there more structured data at offset 14h?
 	SystemBiosMajorRelease                 byte
 	SystemBiosMinorRelease                 byte
 	EmbeddedControllerFirmwareMajorRelease byte
 	EmbeddedControllerFirmwareMinorRelease byte
-	ExtendedBiosRomSize                    uint16
+	ExtendedBiosRomSize                    Word
 }
 
 type BiosInfo = GenericStruct[BiosInfoFixed]

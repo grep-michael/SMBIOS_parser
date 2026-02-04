@@ -32,14 +32,14 @@ type EntryPointStruct struct {
 	EntryPointLength     uint8                   //byte
 	MajorVer             uint8                   //byte
 	MinorVer             uint8                   //byte
-	MaxStructSize        uint16                  //word
+	MaxStructSize        Word                    //word
 	EntryPointRevision   uint8                   //bytes
 	FormattedArea        [5]byte                 //5 bytes
 	IntermediateAnrchor  IntermediateAnrchorType //5 bytes
 	IntermediateChecksum uint8                   //byte
-	StructTableLen       uint16                  //word
-	StructTableAddress   uint32                  //dword
-	NumOfStructs         uint16                  //word
+	StructTableLen       Word                    //word
+	StructTableAddress   DWord                   //dword
+	NumOfStructs         Word                    //word
 	BCDRev               BCDRevType              //byte
 }
 

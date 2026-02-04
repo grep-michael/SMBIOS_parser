@@ -11,7 +11,7 @@ type BaseboardInfoFixed struct {
 	AssetTag                       ByteStringIndex
 	FeatureFlag                    byte
 	LocationInChassis              ByteStringIndex
-	ChassisHandle                  uint16
+	ChassisHandle                  Word
 	BoardType                      ByteEnum
 	NumberOfContainedObjectHandles byte
 }
