@@ -1,5 +1,7 @@
-2026/02/04 12:09:19 main.go:39: EPS ↓
-	&{ArchorString:_SM_ Checksum:57 EntryPointLength:31 MajorVer:3 MinorVer:3 MaxStructSize:323 EntryPointRevision:0 FormattedArea:[0 0 0 0 0] IntermediateAnrchor:_DMI_ IntermediateChecksum:123 StructTableLen:2614 StructTableAddress:1945366528 NumOfStructs:36 BCDRev:M:3,m:3}
+2026/02/05 09:14:13 eps.go:25: [95 83 77 95 68]
+eps
+05 09:08:50 smbios_data.go:84: Building eps
+orVer:3 MinorVer:3 MaxStructSize:323 EntryPointRevision:0 FormattedArea:[0 0 0 0 0] IntermediateAnrchor:_DMI_ IntermediateChecksum:123 StructTableLen:2614 StructTableAddress:1945366528 NumOfStructs:36 BCDRev:M:3,m:3}
 2026/02/04 12:09:19 parsers.go:68: No data Struct for type 'Physical Memory Array'
 2026/02/04 12:09:19 universal_structs.go:31: Parsing 92 bytes into 104 struct
 2026/02/04 12:09:19 parsers.go:78: &{Data:{StructureHeader:{Type:17 Length:92 Handle:1} PhysicalmemoryArrayHandle:0 MemoryErrorHandler:65534 TotalWidth:32 DataWidth:32 Size:8192 FormFactor:11 DeiveSet:0 DeviceLocator:1 BankLocator:2 MemoryType:30 TypeDetail:128 Speed:3733 Manufacturer:3 SerialNumber:4 AssetTag:5 PartNumber:6 Attributes:2 ExtendedSize:0 ConfiguredMemorySpeed:3733 MinVoltage:0 MaxVoltage:0 ConfiguredVoltage:600 MemoryTechnology:0 MemOperatingModeCapability:0 FirmwareVer:0 ModuleManufacturerID:0 ModuleProductID:0 MemorySubControllerManufacturerID:0 MemorySubControllerProductID:0 NonVolatileSize:0 VolatileSize:0 CacheSize:0 LogicalSize:0 ExtendedSpeed:0 ExtendedConfiguredMemorySPeed:0} Strings:[ChannelA-DIMM0 BANK 0 Micron 00000000 9876543210  MT53E1G32D4NQ-053  ]}

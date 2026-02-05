@@ -18,7 +18,7 @@ type MemoryDeviceFixed struct {
 	BankLocator   ByteStringIndex
 	MemoryType    ByteEnum
 	TypeDetail    Word
-	Speed         Word
+	Speed         Word // In (MT/s)
 	Manufacturer  ByteStringIndex
 	SerialNumber  ByteStringIndex
 	AssetTag      ByteStringIndex
