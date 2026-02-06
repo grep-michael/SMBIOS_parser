@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"log"
 
+	dmitabel "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Strucutres/DMITabel"
 	eps "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Strucutres/EPS"
 )
 
@@ -13,16 +14,7 @@ type SMBiosData struct {
 	DMI_TABLE_Bytes []byte
 	EPS_Bytes       []byte
 	EPS             *eps.EntryPointStruct
-	Chunks          []StructureChunk
-}
-
-type StructureChunk struct {
-	StructType          int
-	FriendlyName        string
-	Start               int //position inside the smbios array
-	StructureSegmentEnd int //position of structures section end, i.e headers length value
-	End                 int //position from start to the double null terminators
-
+	DMITable        *dmitabel.DMITable
 }
 
 func (data *SMBiosData) DecodeBase64Fields() (err error) {
@@ -38,39 +30,15 @@ func (data *SMBiosData) DecodeBase64Fields() (err error) {
 	}
 	return nil
 }
-func (data *SMBiosData) LoadDMITableChunks() error {
-	data.Chunks = make([]StructureChunk, 0)
+func (data *SMBiosData) LoadDMITable() error {
 	if len(data.DMI_TABLE_Bytes) <= 1 {
 		err := data.DecodeBase64Fields()
 		if err != nil {
-			log.Println("Error decoding base64 fields")
 			return err
 		}
 	}
-
-	index := 0
-	for index < len(data.DMI_TABLE_Bytes) {
-		chunk := StructureChunk{}
-
-		chunk.Start = index
-		chunk.StructType = int(data.DMI_TABLE_Bytes[index])
-
-		length := data.DMI_TABLE_Bytes[index+1]
-		chunk.StructureSegmentEnd = int(length) + index
-
-		segment_end := chunk.StructureSegmentEnd
-		for segment_end < len(data.DMI_TABLE_Bytes)-1 {
-			if data.DMI_TABLE_Bytes[segment_end] == 0x00 && data.DMI_TABLE_Bytes[segment_end+1] == 0x00 {
-				segment_end += 2
-				break
-			}
-			segment_end++
-		}
-		chunk.End = segment_end
-		data.Chunks = append(data.Chunks, chunk)
-		index = segment_end
-	}
-	return nil
+	data.DMITable = dmitabel.NewDMITable()
+	return data.DMITable.BuildStructs(data.DMI_TABLE_Bytes)
 }
 func (data *SMBiosData) LoadEPSStruct() error {
 	if len(data.EPS_Bytes) <= 1 {
@@ -81,5 +49,15 @@ func (data *SMBiosData) LoadEPSStruct() error {
 		}
 	}
 	data.EPS = eps.NewEPS(data.EPS_Bytes)
+	log.Printf("Built New EPS: Version %d\n", data.EPS.Version)
 	return nil
+}
+
+func (data *SMBiosData) VerifyDMITable() error {
+	if data.EPS == nil {
+		if err := data.LoadEPSStruct(); err != nil {
+			return err
+		}
+	}
+	return data.EPS.VerifyDMITable(data.DMI_TABLE_Bytes)
 }

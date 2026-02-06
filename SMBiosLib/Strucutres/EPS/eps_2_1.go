@@ -1,12 +1,7 @@
 package eps
 
-// the eps table in accordance with the 3.3 smbios standard
+import "fmt"
 
-import (
-	"fmt"
-)
-
-// 32 bit Entry Point struct
 type EntryPointStruct_2_1 struct {
 	ArchorString         AnchorString32bit       //4 bytes
 	Checksum             uint8                   //byte
@@ -41,24 +36,4 @@ func (bs BCDRevType) String() string {
 	major := int(bs >> 4)
 	minor := int(bs & 0x0F)
 	return fmt.Sprintf("M:%d,m:%d", major, minor)
-}
-
-// 64 bit Entry Point struct
-
-type EntryPointStruct_3_0 struct {
-	AnchorString          AnchorString64bit
-	Checksum              byte
-	Length                byte
-	MajorVersion          byte
-	MinorVersion          byte
-	Docrev                byte
-	Revision              byte
-	Reserved              byte
-	MaxStructureSize      uint32
-	StructureTableAddress uint64
-}
-type AnchorString64bit [5]byte
-
-func (bs AnchorString64bit) String() string {
-	return string(bs[:])
 }

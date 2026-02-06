@@ -23,11 +23,12 @@ func main() {
 	desired_struct := flag.Int("struct", 4, "Structureto print")
 	test_index := flag.Int("test", 0, "Test data to use")
 	flag.Parse()
+
 	fmt.Printf("Loading %d test, looking for %d structs\n", *test_index, *desired_struct)
 	test_data := smbiosdata.GetTestData(*test_index)
-	err = test_data.DecodeBase64Fields()
-	err = test_data.LoadEPSStruct()
-	printObj(test_data.EPS)
+	err = test_data.LoadDMITable()
+	printObj(err)
+	printObj(test_data.DMITable.Processors[0].Processor.GetProcessorUpgrade())
 }
 
 func printObj(obj any) {

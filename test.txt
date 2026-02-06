@@ -1,0 +1,307 @@
+Loading 1 test, looking for 4 structs
+[
+  {
+    "StructType": 16,
+    "Length": 23,
+    "FriendlyName": "",
+    "Start": 0,
+    "StructureSegmentEnd": 23,
+    "End": 25
+  },
+  {
+    "StructType": 17,
+    "Length": 40,
+    "FriendlyName": "",
+    "Start": 25,
+    "StructureSegmentEnd": 65,
+    "End": 142
+  },
+  {
+    "StructType": 130,
+    "Length": 186,
+    "FriendlyName": "",
+    "Start": 142,
+    "StructureSegmentEnd": 328,
+    "End": 330
+  },
+  {
+    "StructType": 17,
+    "Length": 40,
+    "FriendlyName": "",
+    "Start": 330,
+    "StructureSegmentEnd": 370,
+    "End": 386
+  },
+  {
+    "StructType": 130,
+    "Length": 186,
+    "FriendlyName": "",
+    "Start": 386,
+    "StructureSegmentEnd": 572,
+    "End": 574
+  },
+  {
+    "StructType": 17,
+    "Length": 40,
+    "FriendlyName": "",
+    "Start": 574,
+    "StructureSegmentEnd": 614,
+    "End": 691
+  },
+  {
+    "StructType": 130,
+    "Length": 186,
+    "FriendlyName": "",
+    "Start": 691,
+    "StructureSegmentEnd": 877,
+    "End": 879
+  },
+  {
+    "StructType": 17,
+    "Length": 40,
+    "FriendlyName": "",
+    "Start": 879,
+    "StructureSegmentEnd": 919,
+    "End": 935
+  },
+  {
+    "StructType": 130,
+    "Length": 186,
+    "FriendlyName": "",
+    "Start": 935,
+    "StructureSegmentEnd": 1121,
+    "End": 1123
+  },
+  {
+    "StructType": 19,
+    "Length": 31,
+    "FriendlyName": "",
+    "Start": 1123,
+    "StructureSegmentEnd": 1154,
+    "End": 1156
+  },
+  {
+    "StructType": 0,
+    "Length": 24,
+    "FriendlyName": "",
+    "Start": 1156,
+    "StructureSegmentEnd": 1180,
+    "End": 1215
+  },
+  {
+    "StructType": 1,
+    "Length": 27,
+    "FriendlyName": "",
+    "Start": 1215,
+    "StructureSegmentEnd": 1242,
+    "End": 1287
+  },
+  {
+    "StructType": 2,
+    "Length": 17,
+    "FriendlyName": "",
+    "Start": 1287,
+    "StructureSegmentEnd": 1304,
+    "End": 1368
+  },
+  {
+    "StructType": 3,
+    "Length": 24,
+    "FriendlyName": "",
+    "Start": 1368,
+    "StructureSegmentEnd": 1392,
+    "End": 1440
+  },
+  {
+    "StructType": 8,
+    "Length": 9,
+    "FriendlyName": "",
+    "Start": 1440,
+    "StructureSegmentEnd": 1449,
+    "End": 1455
+  },
+  {
+    "StructType": 8,
+    "Length": 9,
+    "FriendlyName": "",
+    "Start": 1455,
+    "StructureSegmentEnd": 1464,
+    "End": 1470
+  },
+  {
+    "StructType": 8,
+    "Length": 9,
+    "FriendlyName": "",
+    "Start": 1470,
+    "StructureSegmentEnd": 1479,
+    "End": 1494
+  },
+  {
+    "StructType": 8,
+    "Length": 9,
+    "FriendlyName": "",
+    "Start": 1494,
+    "StructureSegmentEnd": 1503,
+    "End": 1516
+  },
+  {
+    "StructType": 8,
+    "Length": 9,
+    "FriendlyName": "",
+    "Start": 1516,
+    "StructureSegmentEnd": 1525,
+    "End": 1537
+  },
+  {
+    "StructType": 8,
+    "Length": 9,
+    "FriendlyName": "",
+    "Start": 1537,
+    "StructureSegmentEnd": 1546,
+    "End": 1555
+  },
+  {
+    "StructType": 11,
+    "Length": 5,
+    "FriendlyName": "",
+    "Start": 1555,
+    "StructureSegmentEnd": 1560,
+    "End": 1870
+  },
+  {
+    "StructType": 41,
+    "Length": 11,
+    "FriendlyName": "",
+    "Start": 1870,
+    "StructureSegmentEnd": 1881,
+    "End": 1910
+  },
+  {
+    "StructType": 41,
+    "Length": 11,
+    "FriendlyName": "",
+    "Start": 1910,
+    "StructureSegmentEnd": 1921,
+    "End": 1941
+  },
+  {
+    "StructType": 41,
+    "Length": 11,
+    "FriendlyName": "",
+    "Start": 1941,
+    "StructureSegmentEnd": 1952,
+    "End": 1958
+  },
+  {
+    "StructType": 13,
+    "Length": 22,
+    "FriendlyName": "",
+    "Start": 1958,
+    "StructureSegmentEnd": 1980,
+    "End": 1984
+  },
+  {
+    "StructType": 22,
+    "Length": 26,
+    "FriendlyName": "",
+    "Start": 1984,
+    "StructureSegmentEnd": 2010,
+    "End": 2012
+  },
+  {
+    "StructType": 32,
+    "Length": 11,
+    "FriendlyName": "",
+    "Start": 2012,
+    "StructureSegmentEnd": 2023,
+    "End": 2025
+  },
+  {
+    "StructType": 131,
+    "Length": 6,
+    "FriendlyName": "",
+    "Start": 2025,
+    "StructureSegmentEnd": 2031,
+    "End": 2033
+  },
+  {
+    "StructType": 133,
+    "Length": 12,
+    "FriendlyName": "",
+    "Start": 2033,
+    "StructureSegmentEnd": 2045,
+    "End": 2047
+  },
+  {
+    "StructType": 134,
+    "Length": 20,
+    "FriendlyName": "",
+    "Start": 2047,
+    "StructureSegmentEnd": 2067,
+    "End": 2069
+  },
+  {
+    "StructType": 7,
+    "Length": 19,
+    "FriendlyName": "",
+    "Start": 2069,
+    "StructureSegmentEnd": 2088,
+    "End": 2098
+  },
+  {
+    "StructType": 7,
+    "Length": 19,
+    "FriendlyName": "",
+    "Start": 2098,
+    "StructureSegmentEnd": 2117,
+    "End": 2127
+  },
+  {
+    "StructType": 7,
+    "Length": 19,
+    "FriendlyName": "",
+    "Start": 2127,
+    "StructureSegmentEnd": 2146,
+    "End": 2156
+  },
+  {
+    "StructType": 4,
+    "Length": 48,
+    "FriendlyName": "",
+    "Start": 2156,
+    "StructureSegmentEnd": 2204,
+    "End": 2341
+  },
+  {
+    "StructType": 128,
+    "Length": 96,
+    "FriendlyName": "",
+    "Start": 2341,
+    "StructureSegmentEnd": 2437,
+    "End": 2439
+  },
+  {
+    "StructType": 14,
+    "Length": 8,
+    "FriendlyName": "",
+    "Start": 2439,
+    "StructureSegmentEnd": 2447,
+    "End": 2453
+  },
+  {
+    "StructType": 219,
+    "Length": 81,
+    "FriendlyName": "",
+    "Start": 2453,
+    "StructureSegmentEnd": 2534,
+    "End": 2550
+  },
+  {
+    "StructType": 127,
+    "Length": 4,
+    "FriendlyName": "",
+    "Start": 2550,
+    "StructureSegmentEnd": 2554,
+    "End": 2556
+  }
+]
