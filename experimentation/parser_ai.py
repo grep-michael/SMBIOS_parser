@@ -29,8 +29,6 @@ from dataclasses import dataclass, field, asdict
 from html.parser import HTMLParser
 
 
-# ── HTML Table Parser ────────────────────────────────────────────────────────
-
 class _TableHTMLParser(HTMLParser):
     """Extract rows from a single <table> block."""
 
@@ -64,8 +62,6 @@ class _TableHTMLParser(HTMLParser):
             self._current_cell.append(data)
 
 
-# ── Data Structures ──────────────────────────────────────────────────────────
-
 @dataclass
 class ParsedTable:
     """A single parsed table (main or child) with its context and position."""
@@ -75,8 +71,6 @@ class ParsedTable:
     rows: list[dict[str, str]] = field(default_factory=list)
     line: int = 0
 
-
-# ── Parser Class ─────────────────────────────────────────────────────────────
 
 class SMBIOSParser:
     """
@@ -384,8 +378,6 @@ class SMBIOSParser:
 
         return result
 
-
-# ── CLI ──────────────────────────────────────────────────────────────────────
 
 def main():
     argp = argparse.ArgumentParser(
