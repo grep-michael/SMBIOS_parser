@@ -1714,7 +1714,7 @@
             {
               "hex_value": "30h",
               "decimal_value": "48",
-              "meaning": "Alpha Family[2]"
+              "meaning": "Alpha Family"
             },
             {
               "hex_value": "31h",
@@ -4057,7 +4057,7 @@
             },
             {
               "byte_value": "12h",
-              "meaning": "PCMCIA Type I2"
+              "meaning": "PCMCIA Type I"
             },
             {
               "byte_value": "13h",
@@ -4727,10 +4727,10 @@
         },
         {
           "offset": "4+2*(n-1)",
-          "name": "Devicen Type, n ranges from 1 to Number of Devices",
+          "name": "Device Type, n ranges from 1 to Number of Devices",
           "length": "BYTE",
           "value": "Varies",
-          "description": "Bit 7 Devicen Status\n1 - Device Enabled\n0 - Device Disabled\nBits 6:0 Type of Device (see 7.11.1)"
+          "description": "Bit 7 Device Status\n1 - Device Enabled\n0 - Device Disabled\nBits 6:0 Type of Device (see 7.11.1)"
         },
         {
           "offset": "5+2*(n-1)",
@@ -5101,7 +5101,7 @@
         {
           "offset": "0Bh",
           "spec_version": "2.0+",
-          "name": "Log Status[1]",
+          "name": "Log Status",
           "length": "BYTE",
           "value": "Varies",
           "description": "This bit-field describes the current status of the system event-log:\nBits 7:2 Reserved, set to 0s\nBit 1 Log area full, if 1\nBit 0 Log area valid, if 1"
@@ -8060,35 +8060,35 @@
           "name": "Maximum Value",
           "length": "WORD",
           "value": "Varies",
-          "description": "The maximum temperature readable by this probe, in 1/10th degrees C. If the value is unknown, the field is set to 0x8000."
+          "description": "The maximum temperature readable by this probe, in 1/10 degrees C. If the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "08h",
           "name": "Minimum Value",
           "length": "WORD",
           "value": "Varies",
-          "description": "The minimum temperature readable by this probe, in 1/10th degrees C. If the value is unknown, the field is set to 0x8000."
+          "description": "The minimum temperature readable by this probe, in 1/10 degrees C. If the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "0Ah",
           "name": "Resolution",
           "length": "WORD",
           "value": "Varies",
-          "description": "The resolution for the probe's reading, in 1/1000th degrees C. If the value is unknown, the field is set to 0x8000."
+          "description": "The resolution for the probe's reading, in 1/1000 degrees C. If the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "0Ch",
           "name": "Tolerance",
           "length": "WORD",
           "value": "Varies",
-          "description": "The tolerance for reading from this probe, in plus/minus 1/10th degrees C. If the value is unknown, the field is set to 0x8000."
+          "description": "The tolerance for reading from this probe, in plus/minus 1/10 degrees C. If the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "0Eh",
           "name": "Accuracy",
           "length": "WORD",
           "value": "Varies",
-          "description": "The accuracy for reading from this probe, in plus/minus 1/100th of a percent. If the value is unknown, the field is set to 0x8000."
+          "description": "The accuracy for reading from this probe, in plus/minus 1/100 of a percent. If the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "10h",
@@ -8102,7 +8102,7 @@
           "name": "Nominal Value",
           "length": "WORD",
           "value": "Varies",
-          "description": "The nominal value for the probe's reading in 1/10th degrees C. If the value is unknown, the field is set to 0x8000. This field is present in the structure only if the structure's Length is larger than 14h."
+          "description": "The nominal value for the probe's reading in 1/10 degrees C. If the value is unknown, the field is set to 0x8000. This field is present in the structure only if the structure's Length is larger than 14h."
         }
       ],
       "line": 9677,
@@ -9117,14 +9117,14 @@
         },
         {
           "offset": "7 + 3*(n-1)",
-          "name": "Memory Devicen Load",
+          "name": "Memory Device Load",
           "length": "BYTE",
           "value": "Varies",
           "description": "The channel load provided by the nth Memory Device associated with this channel."
         },
         {
           "offset": "8 + 3*(n-1)",
-          "name": "Memory Devicen Handle",
+          "name": "Memory Device Handle",
           "length": "WORD",
           "value": "Varies",
           "description": "The structure handle that identifies the nth Memory Device associated with this channel."

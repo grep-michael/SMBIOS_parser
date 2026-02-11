@@ -10,7 +10,7 @@ type S_BIOSInformationType0 struct {
 	BIOSReleaseDate byte //STRING
 	BIOSROMSize byte //
 	BIOSCharacteristics uint64 //Bit Field
-	BIOSCharacteristicsExtensionBytes Zero or more BYTES //Bit Field
+	BIOSCharacteristicsExtensionBytes interface{} //Bit Field Type:Zero or more BYTES
 	SystemBIOSMajorRelease byte //
 	SystemBIOSMinorRelease byte //
 	EmbeddedControllerFirmwareMajorRelease byte //
@@ -24,7 +24,7 @@ type S_SystemInformationType1 struct {
 	ProductName byte //STRING
 	Version byte //STRING
 	SerialNumber byte //STRING
-	UUID 16 BYTES //
+	UUID interface{} // Type:16 BYTES
 	WakeupType byte //ENUM
 	SKUNumber byte //STRING
 	Family byte //STRING
@@ -58,7 +58,7 @@ type S_SystemEnclosureorChassisType3 struct {
 	NumberofPowerCords byte //
 	ContainedElementCountn byte //
 	ContainedElementRecordLengthm byte //
-	ContainedElements n * m BYTES //
+	ContainedElements interface{} // Type:n * m BYTES
 	SKUNumber byte //STRING
 }
 type S_ProcessorInformationType4 struct {
@@ -102,7 +102,7 @@ type S_MemoryControllerInformationType5Obsolete struct {
 	SupportedMemoryTypes uint16 //Bit Field
 	MemoryModuleVoltage byte //Bit Field
 	NumberofAssociatedMemorySlotsx byte //
-	MemoryModuleConfigurationHandles x WORDs //
+	MemoryModuleConfigurationHandles interface{} // Type:x WORDs
 	EnabledErrorCorrectingCapabilities byte //Bit Field
 }
 type S_MemoryModuleInformationType6Obsolete struct {
@@ -116,8 +116,6 @@ type S_MemoryModuleInformationType6Obsolete struct {
 	InstalledSize byte //
 	EnabledSize byte //
 	ErrorStatus byte //
-	_0  //
-	_1  //
 }
 type S_CacheInformationType7 struct {
 	Type byte //
@@ -164,7 +162,7 @@ type S_OnBoardDevicesInformationType10Obsolete struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
-	DevicenTypenrangesfrom1toNumberofDevices byte //
+	DeviceTypenrangesfrom1toNumberofDevices byte //
 	DescriptionString byte //STRING
 }
 type S_OEMStringsType11 struct {
@@ -185,7 +183,7 @@ type S_BIOSLanguageInformationType13 struct {
 	Handle uint16 //
 	InstallableLanguages byte //
 	Flags byte //Bit Field
-	Reserved 15 BYTES //
+	Reserved interface{} // Type:15 BYTES
 	CurrentLanguage byte //STRING
 }
 type S_GroupAssociationsType14 struct {
@@ -204,13 +202,13 @@ type S_SystemEventLogType15 struct {
 	LogHeaderStartOffset uint16 //
 	LogDataStartOffset uint16 //
 	AccessMethod byte //
-	LogStatus[1] byte //
+	LogStatus byte //
 	LogChangeToken uint32 //
 	AccessMethodAddress uint32 //
 	LogHeaderFormat byte //ENUM
 	NumberofSupportedLogTypeDescriptorsx byte //
 	LengthofeachLogTypeDescriptory byte //
-	ListofSupportedEventLogTypeDescriptors Varies //
+	ListofSupportedEventLogTypeDescriptors interface{} // Type:Varies
 }
 type S_PhysicalMemoryArrayType16 struct {
 	Type byte //
@@ -403,8 +401,8 @@ type S_SystemBootInformationType32 struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
-	Reserved 6 BYTEs //
-	BootStatus Length-10 Bytes //
+	Reserved interface{} // Type:6 BYTEs
+	BootStatus interface{} // Type:Length-10 Bytes
 }
 type S_64 struct {
 	Type byte //
@@ -456,8 +454,8 @@ type S_MemoryChannelType37 struct {
 	MemoryDeviceCountn byte //
 	Memory1DeviceLoad byte //
 	MemoryDevice1Handle uint16 //
-	MemoryDevicenLoad byte //
-	MemoryDevicenHandle uint16 //
+	MemoryDeviceLoad byte //
+	MemoryDeviceHandle uint16 //
 }
 type S_IPMIDeviceInformationType38 struct {
 	Type byte //
@@ -494,7 +492,7 @@ type S_AdditionalInformationType40 struct {
 	Length byte //
 	Handle uint16 //
 	NumberofAdditionalInformationentriesn byte //
-	AdditionalInformationentries Varies //
+	AdditionalInformationentries interface{} // Type:Varies
 }
 type S_OnboardDevicesExtendedInformationType41 struct {
 	Type byte //
@@ -512,7 +510,7 @@ type S_ManagementControllerHostInterfaceType42 struct {
 	Length byte //
 	Handle uint16 //
 	InterfaceType byte //ENUM
-	MCHostInterfaceData n BYTEs //
+	MCHostInterfaceData interface{} // Type:n BYTEs
 }
 type S_InactiveType126 struct {
 	Type byte //

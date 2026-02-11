@@ -37,8 +37,14 @@ class _TableHTMLParser(HTMLParser):
         self._current_row: list[str] | None = None
         self._current_cell: list[str] | None = None
         self._in_cell = False
+        self._skip_tags = {"sup", "sub"}
+        self._skip_depth = 0
 
     def handle_starttag(self, tag, attrs):
+        if tag in self._skip_tags:
+            self._skip_depth += 1
+            return
+        
         if tag == "tr":
             self._current_row = []
         elif tag in ("td", "th"):
@@ -47,7 +53,12 @@ class _TableHTMLParser(HTMLParser):
         elif tag == "br" and self._in_cell:
             self._current_cell.append("\n")
 
+
     def handle_endtag(self, tag):
+        if tag in self._skip_tags:
+            self._skip_depth -= 1
+            return 
+
         if tag in ("td", "th") and self._current_cell is not None:
             self._current_row.append("".join(self._current_cell).strip())
             self._current_cell = None
@@ -57,6 +68,8 @@ class _TableHTMLParser(HTMLParser):
             self._current_row = None
 
     def handle_data(self, data):
+        if self._skip_depth > 0:
+            return 
         if self._in_cell and self._current_cell is not None:
             self._current_cell.append(data)
 
@@ -231,6 +244,10 @@ class SMBIOSParser:
             print("WARNING: Could not find table-of-contents section", file=sys.stderr)
             return
         for line in toc_match.group(1).strip().splitlines():
+            """
+            The ocr that generates the mark down bugs out and will sometimes make the table list into an actual table
+            we fix this by simple removing the table tags :)
+            """
             line = line.strip()
             line = line.replace("<tr>","")
             line = line.replace("<td>","")

@@ -45,8 +45,8 @@ class StructField():
     def _gen_type(self)->str:
         length = self.row["length"]
         if length not in TYPE_MAP:
-            print(length)
-        return TYPE_MAP.get(length,length)
+            self.comment += " Type:" + length
+        return TYPE_MAP.get(length,"interface{}")
 
     def gen_field_string(self) -> str:
         return f"{self.name} {self.type} {self.comment}" 
@@ -70,6 +70,8 @@ class GoStruct():
         count = 0
         for row in rows:
             field = StructField(row)
+            if field.name.strip() == "":
+                continue
             if field.name not in field_names:
                 field_names[field.name] = "present"
             else:
@@ -81,10 +83,7 @@ class GoStruct():
     def gen_struct_string(self) -> str:
         definition = f"type {self.StructName} struct {{\n"
         for row in self.fields:
-            if row.name == "":
-                continue
             field = row.gen_field_string()
-            
             definition += f"\t{field}\n"
         definition+= "}"
         return definition
