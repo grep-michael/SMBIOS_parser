@@ -202,7 +202,7 @@ class SMBIOSParser:
         
         if set(["offset", "name", "length", "value", "description"]).issubset(headers):
             return TABLETYPE_STRUCT
-        #print(headers,file=sys.stderr)
+
         return ""
     # ── Normalization ────────────────────────────────────────────────────
 
@@ -351,7 +351,7 @@ class SMBIOSParser:
                 header_row = [cell.strip() for cell in rows[0]]
                 all_rows.extend(rows)
             else:
-                all_rows.extend(rows[1:])
+                all_rows.extend(rows)
 
         if header_row is None:
             return None
