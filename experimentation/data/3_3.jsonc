@@ -10,7 +10,7 @@
     "total_parsed_tables": 135,
     "main_tables": 46,
     "child_tables": 83,
-    "total_data_rows": 1759
+    "total_data_rows": 1686
   },
   "tables": [
     {
@@ -34,14 +34,6 @@
           "length": "BYTE",
           "value": "0",
           "description": "BIOS Information indicator"
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "01h",
@@ -114,14 +106,6 @@
           "length": "Zero or more BYTEs",
           "value": "Bit Field",
           "description": "Optional space reserved for future supported functions. The number of Extension Bytes that is present is indicated by the Length in offset 1 minus 12h. See 7.1.2 for extensions defined for version 2.1 and later implementations. For version 2.4 and later implementations, two BIOS Characteristics Extension Bytes are defined (12-13h) and bytes 14-17h are also defined."
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "14h",
@@ -974,14 +958,6 @@
           "description": "Number of Contained Element records that follow, in the range 0 to 255\nEach Contained Element group comprises \\( m \\) bytes, as specified by the Contained Element Record Length field that follows. If no Contained Elements are included, this field is set to 0."
         },
         {
-          "offset": "Offset",
-          "specification_version": "Specification Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "14h",
           "specification_version": "2.3+",
           "name": "Contained Element Record Length (m)",
@@ -1103,10 +1079,6 @@
               "meaning": "Peripheral Chassis"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "16h",
               "meaning": "RAID Chassis"
             },
@@ -1196,10 +1168,6 @@
               "meaning": "Warning"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "05h",
               "meaning": "Critical"
             },
@@ -1264,14 +1232,6 @@
               "length": "BYTE",
               "value": "Bit Field",
               "description": "Specifies the type of element associated with this record:\n\nBit(s)    Meaning\n7        Type Select. Identifies whether the Type contains an SMBIOS structure type enumeration (1) or an SMBIOS Baseboard Type enumeration (0).\n6:0      Type. Specifies either an SMBIOS Board Type enumeration (see 7.3.2 for definitions) or an SMBIOS structure type, dependent on the setting of the Type Select.\n\nFor example, a contained Power Supply is specified as A7h (1 0100111b) — the MSB is 1, so the remaining seven bits (27h = 39) represent an SMBIOS structure type; structure type 39 represents a System Power Supply. A contained Server Blade is specified as 03h — the MSB is 0, so the remaining seven bits represent an SMBIOS board type; board type 03h represents a Server Blade."
-            },
-            {
-              "offset": "Offset",
-              "spec_version": "Spec. Version",
-              "name": "Name",
-              "length": "Length",
-              "value": "Value",
-              "description": "Description"
             },
             {
               "offset": "01h",
@@ -1397,14 +1357,6 @@
           "description": "External Clock Frequency, in MHz If the value is unknown, the field is set to 0."
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "14h",
           "spec_version": "2.0+",
           "name": "Max Speed",
@@ -1442,7 +1394,7 @@
           "name": "L1 Cache Handle",
           "length": "WORD",
           "value": "Varies",
-          "description": "Handle of a Cache Information structure that defines the attributes of the primary (Level 1) cache for this processor\nFor version 2.1 and version 2.2 implementations, the value is 0FFFFh if the processor has no L1 cache. For version 2.3 and later implementations, the value is 0FFFFh if the Cache Information structure is not provided.[1]"
+          "description": "Handle of a Cache Information structure that defines the attributes of the primary (Level 1) cache for this processor\nFor version 2.1 and version 2.2 implementations, the value is 0FFFFh if the processor has no L1 cache. For version 2.3 and later implementations, the value is 0FFFFh if the Cache Information structure is not provided."
         },
         {
           "offset": "1Ch",
@@ -1450,15 +1402,7 @@
           "name": "L2 Cache Handle",
           "length": "WORD",
           "value": "Varies",
-          "description": "Handle of a Cache Information structure that defines the attributes of the secondary (Level 2) cache for this processor\nFor version 2.1 and version 2.2 implementations, the value is 0FFFFh if the processor has no L2 cache. For version 2.3 and later implementations, the value is 0FFFFh if the Cache Information structure is not provided.[1]"
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
+          "description": "Handle of a Cache Information structure that defines the attributes of the secondary (Level 2) cache for this processor\nFor version 2.1 and version 2.2 implementations, the value is 0FFFFh if the processor has no L2 cache. For version 2.3 and later implementations, the value is 0FFFFh if the Cache Information structure is not provided."
         },
         {
           "offset": "1Eh",
@@ -1466,7 +1410,7 @@
           "name": "L3 Cache Handle",
           "length": "WORD",
           "value": "Varies",
-          "description": "Handle of a Cache Information structure that defines the attributes of the tertiary (Level 3) cache for this processor\nFor version 2.1 and version 2.2 implementations, the value is 0FFFFh if the processor has no L3 cache. For version 2.3 and later implementations, the value is 0FFFFh if the Cache Information structure is not provided.[1]"
+          "description": "Handle of a Cache Information structure that defines the attributes of the tertiary (Level 3) cache for this processor\nFor version 2.1 and version 2.2 implementations, the value is 0FFFFh if the processor has no L3 cache. For version 2.3 and later implementations, the value is 0FFFFh if the Cache Information structure is not provided."
         },
         {
           "offset": "20h",
@@ -1531,14 +1475,6 @@
           "length": "WORD",
           "value": "Enum",
           "description": "See 7.5.2."
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "2Ah",
@@ -1741,24 +1677,19 @@
               "meaning": "K6 Family [1]"
             },
             {
-              "hex_value": "Hex Value",
-              "decimal_value": "Decimal Value",
-              "meaning": "Meaning"
-            },
-            {
               "hex_value": "1Bh",
               "decimal_value": "27",
-              "meaning": "K6-2[1]"
+              "meaning": "K6-2"
             },
             {
               "hex_value": "1Ch",
               "decimal_value": "28",
-              "meaning": "K6-3[1]"
+              "meaning": "K6-3"
             },
             {
               "hex_value": "1Dh",
               "decimal_value": "29",
-              "meaning": "AMD Athlon™ Processor Family[1]"
+              "meaning": "AMD Athlon™ Processor Family"
             },
             {
               "hex_value": "1Eh",
@@ -1853,7 +1784,7 @@
             {
               "hex_value": "30h",
               "decimal_value": "48",
-              "meaning": "Alpha Family[2]"
+              "meaning": "Alpha Family"
             },
             {
               "hex_value": "31h",
@@ -1949,11 +1880,6 @@
               "hex_value": "43h",
               "decimal_value": "67",
               "meaning": "MIPS R4400"
-            },
-            {
-              "hex_value": "Hex Value",
-              "decimal_value": "Decimal Value",
-              "meaning": "Meaning"
             },
             {
               "hex_value": "44h",
@@ -2161,11 +2087,6 @@
               "meaning": "Available for assignment"
             },
             {
-              "hex_value": "Hex Value",
-              "decimal_value": "Decimal Value",
-              "meaning": "Meaning"
-            },
-            {
               "hex_value": "80h",
               "decimal_value": "128",
               "meaning": "Weitek"
@@ -2369,11 +2290,6 @@
               "hex_value": "B0h",
               "decimal_value": "176",
               "meaning": "Pentium® III Xeon™ processor"
-            },
-            {
-              "hex_value": "Hex Value",
-              "decimal_value": "Decimal Value",
-              "meaning": "Meaning"
             },
             {
               "hex_value": "B1h",
@@ -2581,11 +2497,6 @@
               "meaning": "Dual-Core Intel® Xeon® processor 5xxx Series"
             },
             {
-              "hex_value": "Hex Value",
-              "decimal_value": "Decimal Value",
-              "meaning": "Meaning"
-            },
-            {
               "hex_value": "DBh",
               "decimal_value": "219",
               "meaning": "Quad-Core Intel® Xeon® processor 5xxx Series"
@@ -2791,11 +2702,6 @@
               "meaning": "RISC-V RV128"
             },
             {
-              "hex_value": "Hex Value",
-              "decimal_value": "Decimal Value",
-              "meaning": "Meaning"
-            },
-            {
               "hex_value": "203h-FFFDDh",
               "decimal_value": "515-65533",
               "meaning": "Available for assignment"
@@ -2890,10 +2796,6 @@
             {
               "byte_value": "0Ch",
               "meaning": "Slot M"
-            },
-            {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
             },
             {
               "byte_value": "0Dh",
@@ -3040,10 +2942,6 @@
               "meaning": "Socket BGA1364"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "31h",
               "meaning": "Socket AM4"
             },
@@ -3166,10 +3064,6 @@
             {
               "word_bit_position": "Bit 0",
               "meaning_if_set": "Reserved"
-            },
-            {
-              "word_bit_position": "WORD Bit Position",
-              "meaning_if_set": "Meaning if Set"
             },
             {
               "word_bit_position": "Bit 1",
@@ -3307,14 +3201,6 @@
           "description": "See 7.7.1 for bit-wise descriptions."
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "0Dh",
           "spec_version": "2.0+",
           "name": "Memory Module Voltage",
@@ -3419,10 +3305,6 @@
             {
               "byte_bit_position": "Bit 3",
               "meaning": "Single-Bit Error Correcting"
-            },
-            {
-              "byte_bit_position": "Byte Bit Position",
-              "meaning": "Meaning"
             },
             {
               "byte_bit_position": "Bit 4",
@@ -3543,13 +3425,6 @@
           "description": ""
         },
         {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "02h",
           "name": "Handle",
           "length": "WORD",
@@ -3659,10 +3534,6 @@
               "meaning": "Burst EDO"
             },
             {
-              "word_bit_position": "Word Bit Position",
-              "meaning": "Meaning"
-            },
-            {
               "word_bit_position": "Bit 10",
               "meaning": "SDRAM"
             },
@@ -3743,14 +3614,6 @@
           "description": "String number for reference designation\nEXAMPLE: “CACHE1”, 0"
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "05h",
           "spec_version": "2.0+",
           "name": "Cache Configuration",
@@ -3821,14 +3684,6 @@
           "length": "BYTE",
           "value": "ENUM",
           "description": "Associativity of the cache; see 7.8.5"
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "13h",
@@ -4198,10 +4053,6 @@
               "meaning": "SSA SCSI"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "14h",
               "meaning": "Circular DIN-8 male"
             },
@@ -4359,10 +4210,6 @@
               "meaning": "Keyboard Port"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "0Eh",
               "meaning": "Mouse Port"
             },
@@ -4380,7 +4227,7 @@
             },
             {
               "byte_value": "12h",
-              "meaning": "PCMCIA Type i2"
+              "meaning": "PCMCIA Type i"
             },
             {
               "byte_value": "13h",
@@ -4684,10 +4531,6 @@
               "meaning": "Proprietary"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "0Ah",
               "meaning": "Processor Card Slot"
             },
@@ -4820,10 +4663,6 @@
               "meaning": "PCI Express (see below)"
             },
             {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
-            },
-            {
               "byte_value": "A6h",
               "meaning": "PCI Express x1"
             },
@@ -4935,10 +4774,6 @@
             {
               "byte_value": "02h",
               "meaning": "Unknown"
-            },
-            {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
             },
             {
               "byte_value": "03h",
@@ -5154,10 +4989,6 @@
               "meaning_if_set": "Slot supports hot-plug devices."
             },
             {
-              "byte_bit_position": "BYTE Bit Position",
-              "meaning_if_set": "Meaning if Set"
-            },
-            {
               "byte_bit_position": "Bit 2",
               "meaning_if_set": "PCI slot supports SMBus signal."
             },
@@ -5254,10 +5085,10 @@
         },
         {
           "offset": "4+2*(n-1)",
-          "name": "Devicen Type, n ranges from 1 to Number of Devices",
+          "name": "Device Type, n ranges from 1 to Number of Devices",
           "length": "BYTE",
           "value": "Varies",
-          "description": "Bit 7 Devicen Status\n1 - Device Enabled\n0 - Device Disabled\nBits 6:0 Type of Device (see 7.11.1)"
+          "description": "Bit 7 Device Status\n1 - Device Enabled\n0 - Device Disabled\nBits 6:0 Type of Device (see 7.11.1)"
         },
         {
           "offset": "5+2*(n-1)",
@@ -5343,13 +5174,6 @@
           "length": "BYTE",
           "value": "11",
           "description": "OEM Strings indicator"
-        },
-        {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "01h",
@@ -5516,13 +5340,6 @@
           "description": "Group Associations indicator"
         },
         {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "01h",
           "name": "Length",
           "length": "BYTE",
@@ -5632,14 +5449,6 @@
           "description": "Defines the Location and Method used by"
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "",
           "spec_version": "",
           "name": "Method",
@@ -5650,7 +5459,7 @@
         {
           "offset": "0Bh",
           "spec_version": "2.0+",
-          "name": "Log Status[1]",
+          "name": "Log Status",
           "length": "BYTE",
           "value": "Varies",
           "description": "Current status of the system event-log:\n\n      Bits 7:2 Reserved, set to 0s\n\n      Bit 1 Log area full, if 1\n\n      Bit 0 Log area valid, if 1"
@@ -5670,14 +5479,6 @@
           "length": "DWORD",
           "value": "Varies",
           "description": "Address associated with the access method; the data present depends on the Access Method field value\n\n      The area’s format can be described by the following 1-byte-packed ‘C’ union:\n\n      union\n\n      {\n\n      struct\n\n      {\n\n      short IndexAddr;\n\n      short DataAddr;\n\n      } IO;"
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "",
@@ -5878,13 +5679,6 @@
               "description": "CMOS RAM address (in the range 10h - FFh) associated with the Pre-boot Event Log Reset; the value is 00h if the feature is not supported\nSee below for usage details."
             },
             {
-              "offset": "Offset",
-              "name": "Name",
-              "length": "Length",
-              "value": "Value",
-              "description": "Description"
-            },
-            {
               "offset": "08h",
               "name": "Pre-boot Event Log Reset — CMOS Bit Index",
               "length": "BYTE",
@@ -5946,12 +5740,6 @@
               "name": "Event Type",
               "format": "BYTE",
               "description": "Specifies the “Type” of event noted in an event-log entry as defined in 7.16.6.1"
-            },
-            {
-              "offset": "Offset",
-              "name": "Name",
-              "format": "Format",
-              "description": "Description"
             },
             {
               "offset": "01h",
@@ -6075,10 +5863,6 @@
             {
               "value": "16h",
               "description": "Log Area Reset/Cleared"
-            },
-            {
-              "value": "Value",
-              "description": "Description"
             },
             {
               "value": "17h",
@@ -6409,10 +6193,6 @@
               "name": "Processor #4 temperature out of range"
             },
             {
-              "value": "Value",
-              "name": "Name"
-            },
-            {
               "value": "00000015h - 0000001Fh",
               "name": "Reserved for future out-of-range temperatures, assigned by this specification"
             },
@@ -6526,14 +6306,6 @@
           "length": "WORD",
           "value": "Varies",
           "description": "Handle, or instance number, associated with any error that was previously detected for the array\nIf the system does not provide the error information structure, the field contains FFFEh; otherwise, the field contains either FFFFh (if no error was detected) or the handle of the error-information structure. See 7.18.4 and 7.34."
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "0Dh",
@@ -6798,14 +6570,6 @@
           "description": "Implementation form factor for this memory device\nSee 7.18.1 for definitions."
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "0Fh",
           "spec_version": "2.1+",
           "name": "Device Set",
@@ -6892,14 +6656,6 @@
           "length": "BYTE",
           "value": "Varies",
           "description": "Bits 7-4: reserved\nBits 3-0: rank\n\nValue=0 for unknown rank information"
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "1Ch",
@@ -7006,14 +6762,6 @@
           "description": "Size of the Non-volatile portion of the memory device in Bytes, if any. If the value is 0, there is no non-volatile portion. If the Non-volatile Size is unknown, the field is set to FFFFFFFF FFFFFFFFh.\nSee 7.18.12."
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "3Ch",
           "spec_version": "3.2+",
           "name": "Volatile Size",
@@ -7105,10 +6853,6 @@
             {
               "byte_value": "0Ah",
               "meaning": "TSOP"
-            },
-            {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
             },
             {
               "byte_value": "0Bh",
@@ -7254,10 +6998,6 @@
             {
               "byte_value": "1Dh",
               "meaning": "LPDDR3"
-            },
-            {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
             },
             {
               "byte_value": "1Eh",
@@ -7518,14 +7258,6 @@
           "description": "32-bit physical address of the error based on the addressing of the bus to which the memory array is connected If the address is unknown, this field contains 8000 0000h."
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "0Fh",
           "spec_version": "2.1+",
           "name": "Device Error Address",
@@ -7732,14 +7464,6 @@
           "description": "Physical ending address of the last kilobyte of a range of addresses mapped to the specified Physical Memory Array\nWhen the field value is FFFF FFFFh and the Starting Address field also contains FFFF FFFFh, the actual address is stored in the Extended Ending Address field. When this field contains a valid address, Starting Address must also contain a valid address."
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "0Ch",
           "spec_version": "2.1+",
           "name": "Memory Array Handle",
@@ -7814,14 +7538,6 @@
           "description": "Handle, or instance number, associated with the structure"
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "04h",
           "spec_version": "2.1+",
           "name": "Starting Address",
@@ -7876,14 +7592,6 @@
           "length": "BYTE",
           "value": "Varies",
           "description": "Maximum number of consecutive rows from the referenced Memory Device that are accessed in a single interleaved transfer\nIf the device is not part of an interleave, the field contains 0; if the interleave configuration is unknown, the value is FFh.\n\nEXAMPLES: If a device transfers two rows each time it is read, its Interleaved Data Depth is set to 2. If that device is 2:1 interleaved and in Interleave Position 1, the rows mapped to that device are 1, 2, 5, 6, 9, 10, etc."
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "13h",
@@ -7983,10 +7691,6 @@
             {
               "byte_value": "01h",
               "meaning": "Other"
-            },
-            {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
             },
             {
               "byte_value": "02h",
@@ -8121,14 +7825,6 @@
           "description": "Handle, or instance number, associated with the structure"
         },
         {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "04h",
           "spec_version": "2.1+",
           "name": "Location",
@@ -8215,14 +7911,6 @@
           "length": "WORD",
           "value": "Varies",
           "description": "16-bit value that identifies the battery’s serial number\nThis value, when combined with the Manufacturer, Device Name, and Manufacture Date, uniquely identifies the battery. The Serial Number field must be set to 0 (no string) for this field to be valid."
-        },
-        {
-          "offset": "Offset",
-          "spec_version": "Spec. Version",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "12h",
@@ -8445,13 +8133,6 @@
           "description": "System Power Controls indicator"
         },
         {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "01h",
           "name": "Length",
           "length": "BYTE",
@@ -8565,13 +8246,6 @@
           "length": "WORD",
           "value": "Varies",
           "description": "Minimum voltage level readable by this probe, in millivolts\nIf the value is unknown, the field is set to 0x8000."
-        },
-        {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "0Ah",
@@ -8991,42 +8665,35 @@
           "name": "Maximum Value",
           "length": "WORD",
           "value": "Varies",
-          "description": "Maximum temperature readable by this probe, in 1/10th degrees C\nIf the value is unknown, the field is set to 0x8000."
+          "description": "Maximum temperature readable by this probe, in 1/10 degrees C\nIf the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "08h",
           "name": "Minimum Value",
           "length": "WORD",
           "value": "Varies",
-          "description": "Minimum temperature readable by this probe, in 1/10th degrees C\nIf the value is unknown, the field is set to 0x8000."
-        },
-        {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
+          "description": "Minimum temperature readable by this probe, in 1/10 degrees C\nIf the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "0Ah",
           "name": "Resolution",
           "length": "WORD",
           "value": "Varies",
-          "description": "Resolution for the probe’s reading, in 1/1000th degrees C\nIf the value is unknown, the field is set to 0x8000."
+          "description": "Resolution for the probe’s reading, in 1/1000 degrees C\nIf the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "0Ch",
           "name": "Tolerance",
           "length": "WORD",
           "value": "Varies",
-          "description": "Tolerance for reading from this probe, in plus/minus 1/10th degrees C\nIf the value is unknown, the field is set to 0x8000."
+          "description": "Tolerance for reading from this probe, in plus/minus 1/10 degrees C\nIf the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "0Eh",
           "name": "Accuracy",
           "length": "WORD",
           "value": "Varies",
-          "description": "Accuracy for reading from this probe, in plus/minus 1/100th of a percent\nIf the value is unknown, the field is set to 0x8000."
+          "description": "Accuracy for reading from this probe, in plus/minus 1/100 of a percent\nIf the value is unknown, the field is set to 0x8000."
         },
         {
           "offset": "10h",
@@ -9040,7 +8707,7 @@
           "name": "Nominal Value",
           "length": "WORD",
           "value": "Varies",
-          "description": "Nominal value for the probe’s reading in 1/10th degrees C\nIf the value is unknown, the field is set to 0x8000. This field is present in the structure only if the structure’s Length is larger than 14h."
+          "description": "Nominal value for the probe’s reading in 1/10 degrees C\nIf the value is unknown, the field is set to 0x8000. This field is present in the structure only if the structure’s Length is larger than 14h."
         }
       ],
       "line": 10764,
@@ -9449,13 +9116,6 @@
           "description": "Number of the string that contains the manufacturer of the out-of-band access facility"
         },
         {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "05h",
           "name": "Connections",
           "length": "BYTE",
@@ -9649,13 +9309,6 @@
           "description": "Memory access operation that caused the error\nSee 7.19.3 for definitions."
         },
         {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "07h",
           "name": "Vendor Syndrome",
           "length": "DWORD",
@@ -9773,10 +9426,6 @@
             {
               "byte_value": "03h",
               "meaning": "National Semiconductor LM75"
-            },
-            {
-              "byte_value": "Byte Value",
-              "meaning": "Meaning"
             },
             {
               "byte_value": "04h",
@@ -9903,13 +9552,6 @@
           "length": "WORD",
           "value": "Varies",
           "description": "Handle, or instance number, of the Management Device (see 7.35) that contains this component"
-        },
-        {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "07h",
@@ -10080,14 +9722,14 @@
         },
         {
           "offset": "7 + 3*(n-1)",
-          "name": "Memory Devicen Load",
+          "name": "Memory Device Load",
           "length": "BYTE",
           "value": "Varies",
           "description": "Channel load provided by the nth Memory Device associated with this channel"
         },
         {
           "offset": "8 + 3*(n-1)",
-          "name": "Memory Devicen Handle",
+          "name": "Memory Device Handle",
           "length": "WORD",
           "value": "Varies",
           "description": "Structure handle that identifies the nth Memory Device associated with this channel"
@@ -10194,13 +9836,6 @@
           "length": "QWORD",
           "value": "Varies",
           "description": "Base address (either memory-mapped or I/O) of the BMC\nIf the least-significant bit of the field is a 1, the address is in I/O space; otherwise, the address is memory-mapped. Refer to the IPMI Interface Specification for usage details."
-        },
-        {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
         },
         {
           "offset": "10h",
@@ -10960,10 +10595,6 @@
               "meaning_if_set": "Reserved."
             },
             {
-              "dword_bit_position": "DWORD Bit Position",
-              "meaning_if_set": "Meaning if Set"
-            },
-            {
               "dword_bit_position": "Bit 2",
               "meaning_if_set": "TPM Device Characteristics are not supported."
             },
@@ -11165,13 +10796,6 @@
           "description": "Length of the structure"
         },
         {
-          "offset": "Offset",
-          "name": "Name",
-          "length": "Length",
-          "value": "Value",
-          "description": "Description"
-        },
-        {
           "offset": "02h",
           "name": "Handle",
           "length": "WORD",
@@ -11256,11 +10880,6 @@
               "description": "Added definition for static table interface, to allow the information to be accessed from new operating systems (see 5.2). In addition:\n      \n        Changed references to DMI BIOS to SMBIOS throughout; these changes are unmarked.\n        Added SubFunction DMI_CLEAR_EVENT_LOG2 to Function 54h - SMBIOS Control.\n        For those structure entries that are string numbers, changed the Value field definition of the field from Varies to STRING throughout; these changes are unmarked.\n        BIOS Information structure: Added support for 4-digit year and additional BIOS Characteristics through Characteristics Extension Byte 1.\n        System Information structure: Added Wakeup Type and UUID fields.\n        System Enclosure and Chassis structure: Added Bootup State, Power Supply State, Thermal State, and Security Status to allow the DMTF|Physical Container Global Table to be populated.\n        Processor Information structure: Voltage value can now be specified, rather than using bit-flags, and added enumeration values for Pentium® Pro, Pentium® II, and Slot 1. Also added notes to this section, indicating that the enumerated values for the structure are assigned by the DMTF. This structure was also updated to include the Cache Information handles identifying the L1, L2, and L3 caches associated with the processor."
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "",
               "release_date": "",
               "description": "Memory Controller Information structure: Added Enabled Error Correcting field. Also added note that this structure can never be updated to add string values, to preserve backwards compatibility.\n        Cache Information structure: Added Speed, Error Correction Type, Type, and Associativity fields.\n        Port Connector Information structure: Added enumerated values to Connector Types and Port Types.\n        System Slots structure: Added AGP enumeration values to Slot Type field.\n        BIOS Language Information structure: Added abbreviated-format for language strings and corrected example.\n        System Event Log structure: OEM-specific Access Methods can now be defined, added standard log header definitions, and a mechanism to allow the log entry’s variable data formats to be described. Added note that this structure can never be updated to include string values, to preserve backwards compatibility.\n        Added Physical Memory Array, Memory Device, Memory Error Information, Memory Array Mapped Address, and Memory Device Mapped Address structures to support the population of the DMTF Enhanced Physical Memory groups.\n        Added Built-in Pointing Device structure to support the population of the DMTF Pointing Device group.\n        Added Portable Battery structure to support the population of the DMTF Portable Battery group.\n        Added appendices that contain a structure checklist and table-convention parsing pseudo-code."
@@ -11271,11 +10890,6 @@
               "description": "The following changes were made to version 2.1 of the document to produce this version:\n      \n        Accepted all changes introduced at Version 2.1\n        Added ACPI statement-of-direction for dynamic state and event notification\n        Table-convention is required for version 2.2 and later compliance\n        Corrected Structure Table entry point length value.\n        Added Command type 06h to the Plug-and-Play Set SMBIOS Structure function (52h).\n        Added new processor enumerations from the updated DMTF MASTER.MIF\n        System Enclosure: Added enumeration value for “Sealed-case PC”, to support Net PC-type chassis’.\n        Memory Controller Information: Corrected description of how the BIOS computes the structure Length.\n        System Event Log:\n          \n            Added definition for end-of-log data, Event Log Type OFFh.\n            Added generic system-management event type; the handle of an associated probe or cooling device identifies the specific failing device.\n          \n        \n        Memory Error Information: Corrected structure size and offsets.\n        Portable Battery: Corrected the structure length and some of the offsets, added Smart Battery-formatted fields\n        Memory Device: Added RIMM form factor\n        Added the following new structures\n          \n            System Reset structure to support the population of the DMTF Automatic System Reset group.\n            Hardware Security structure to support the population of the DMTF System"
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "",
               "release_date": "",
               "description": "Hardware Security group.\n\n      - System Power Control structure to support the population of the DMTF System Power Control group.\n\n      - Added Voltage Probe structure to support the population of the DMTF Voltage Probe group.\n\n      - Cooling Device structure to support the population of the DMTF Cooling Device group.\n\n      - Temperature Probe structure to support the population of the DMTF Temperature Probe group.\n\n      - Electrical Current Probe structure to support the population of the DMTF Electrical Current Probe group.\n\n      - Out-of-Band Remote Access structure to support the population of the DMTF Out-of-Band Remote Access group.\n\n      - Inactive structure type to support standard structure superset definitions.\n\n      - End-of-Table structure type to facilitate easier traversing of the structure data."
@@ -11284,11 +10898,6 @@
               "version": "2.3.0",
               "release_date": "1998-08-12",
               "description": "The following changes were made to version 2.2 of the document to produce this version:\n\n      • Accepted all changes introduced at Version 2.2\n\n      • Clarified and corrected referenced documents\n\n      • A minimum set of structures (and their data) is now required for SMBIOS compliance.\n\n      • Documented an additional structure usage guideline, to optional structure growth.\n\n      • BIOS Information:\n\n        - 4-digit year format for BIOS Release Date required for SMBIOS 2.3 and later\n\n        - Added BIOS Characteristic Extension Byte 2 to include status that the BIOS supports the BIOS Boot Specification.\n\n      • System Information:\n\n        - Added enumeration for Wake-up Type\n\n      • System Enclosure or Chassis:\n\n        - Added OEM-defined field.\n\n      • Processor Information:\n\n        - Added enumerated values for new processors from the updated MASTER.MIF and identified that one structure is present for each processor instance.\n\n        - Modified interpretation of Lx Cache Handle fields for version 2.3 and later implementations\n\n      • Memory Module Information:\n\n        - Corrected example, adding double-null to terminate the structure.\n\n      • System Slots:\n\n        - Added hot-plug characteristic definition and clarified usage of the PCI \"Slot ID\" field.\n\n      • Memory Device:\n\n        - Added enumerations for Form Factor and Device Type\n\n        - Added new field for memory Speed\n\n      • System Event Log:\n\n        - Added note describing how century portion of the 2-digit year within a log record is to be interpreted."
-            },
-            {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
             },
             {
               "version": "",
@@ -11311,11 +10920,6 @@
               "description": "The following changes were made to version 2.3.1 of the document to produce this version:\n      \n        Accepted all changes introduced at version 2.3.1\n        Released as DMTF Specification DSP0130 (Preliminary)\n        Updated the Abstract and Overview sections to be more DMTF-general than DMI-specific. Change bars are present in the Overview section only.\n        Deleted section 1.1 (future direction for ACPI interface specification). Any ACPI interface to provide these structures should be provided by a future version of the ACPI specification itself.\n        Removed \"References\" that had broken links.\n        Modified sections 2 and 2.2 to indicate that the PnP calling interface is being"
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "",
               "release_date": "",
               "description": "deprecated at this specification version.\n\n      • Noted in section 2.1 that the structure table data is boot-time static.\n\n      • For each enumerated list that indicated that the enumeration is controlled by the \"DMTF, not this specification\", identified which CIM class, property and DMI group.attribute are mapped to the enumerated value. Also added a note in the Overview section to indicate where change requests should be sent.\n\n      • Baseboard Information (Type 2)\n\n        - Added fields: Asset Tag, Feature Flags, Location in Chassis, Chassis Handle, Baseboard Type, and Contained Objects to support multi-system chassis like server blades.\n\n      • System Enclosure or Chassis (Type 3)\n\n        - Added fields: Height, Number of Power Cords, Contained Element Count, and Contained Elements to support multi-system chassis like server blades.\n\n      • Processor Information (Type 4)\n\n        - Added new enumerations to Processor Family and Processor Upgrade\n\n        - Removed (SMBIOS-only) reserved ranges. These ranges are controlled by the DMTF, not the SMBIOS group. The DMTF Device MOF (starting with version 2.3) has commentary around the Processor Family enumeration that suggests that enumerations below 256 be used only for those processor types that are going to be reported by SMBIOS (because this specification's Processor Family field is a 1-byte entity).\n\n      • Cache (Type 7)\n\n        - Added new enumerations to Associativity\n\n      • Memory Device (Type 17)\n\n        - Added new enumerations to Memory Type\n\n      • Built-in Pointing Device (Type 21)\n\n        - Added new enumerations to Pointing Device Type\n\n        - Removed out-of-date section Correlation to DMTF Groups, in favor of updated section 3.3."
@@ -11336,19 +10940,9 @@
               "description": "The following changes were made to version 2.3.4 of the document to produce this version:"
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "2.5.0",
               "release_date": "2006-09-05",
               "description": "Processor Information (Type 4)\n          \n            Added new enumerations to Processor Family (CR00951, CR01152)\n          \n        \n        System Slots (Type 9)\n          \n            Added PCI Express enumeration to Slot Type (CR01259)\n            Added new enumerations to Slot Data Bus Width (CR01324)\n          \n        \n        Memory Device (Type 17)\n          \n            Added DDR2 enumeration to Type (CR01263)\n          \n        \n        BIOS Information (Type 0)\n          \n            Added fields: System BIOS Major Release, System BIOS Minor Release, Embedded Controller Firmware Major Release, and Embedded Controller Firmware Minor Release (CR01270)\n            Added BIOS Characteristic Extension Byte 2, bit 2, to identify that the BIOS supports Targeted Content Distribution (CR01270)\n          \n        \n        System Information (Type 1)\n          \n            Added fields: SKU Number and Family (CR01270)\n            Updated Conformance Guidelines and added corrections\n          \n        \n      \n      The following changes were made to version 2.4 of the document to produce this version:\n      \n        Shortened abstract\n        Removed obsolete references to DMI, which is no longer maintained by the DMTF. Added references to the Pre-OS and CIM Core Working Groups. (PreOSCR00017.001)\n        References:\n          \n            Updated specification revisions and URLs (PreOSCR00019.001)\n          \n        \n        Table Convention:\n          \n            Added EFI-specific information (PreOSCR00011.005)\n          \n        \n        SMBIOS Structure Table Entry Point:\n          \n            Corrected typo, the SMBIOS BCD Revision is at offset 1Eh, not 1Dh (PreOSCR00020.000)\n          \n        \n        Required Structures and Data:\n          \n            Added DIG64 information (PreOSCR00013.000)\n          \n        \n        System Enclosure or Chassis (Type 3)\n          \n            Added new types for CompactPCI and AdvancedTCA (PreOSCR00012.001)\n          \n        \n        Processor Information (Type 4)\n          \n            Added AMD Sempron to Processor Family (DMTFCR01473)\n            Added AMD Turion to Processor Family (SysdevCR00708)\n            Added multi-core, multi-thread and 64-bit extension processor characteristics (PreOSCR00002)\n            Added new processor values (Celeron D, Pentium D, Pentium Extreme Edition) (PreOSCR00005)\n            Added new processor upgrade (socket 939) (DMI CR00005)\n            Added AMD dual-core Opteron and Athlon 64 X2 (PreOSCR00015.003)\n            Added new Processor Upgrade values (PreOSCR00016.001)\n          \n        \n        Cache Information (Type 7)\n          \n            Added note on cache size for multi-core processors (PreOSCR00002)"
-            },
-            {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
             },
             {
               "version": "",
@@ -11366,11 +10960,6 @@
               "description": "The following changes were made to version 2.6 of the document to produce this version:"
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "",
               "release_date": "",
               "description": "System Information (Type 1):\n          \n            Fixed typo in section 3.3.2 (Type 1 structure): at offset 18h (Wake-up type), the cross-reference should be to 3.3.2.2, not 3.3.2.1.\n          \n        \n        Processor Information (Type 4):\n          \n            SMBIOSRC000046: Add new Processor Family values: AMD Quad Core and Third Generation Opteron Processors\n            SMBIOSRC000047: Add new Processor Family values: AMD Phenom and Athlon Processors\n            SMBIOSRC000049: Add new Processor Family value: Embedded AMD Opteron Processor\n            SMBIOSRC000051: Add new processor family value: AMD Phenom Triple-Core Processor Family\n            SMBIOSRC000055: Add new processor values for Intel processors\n            SMBIOSRC000058: Add new processor family values for AMD processors\n            SMBIOSRC000059: Add value for Intel(R) Atom(TM) processors\n            SMBIOSRC000060: Add number for \"Quad-Core Intel(R) Xeon(R) processor 5400 Series\" and a general number for \"Quad-Core Intel(R) Xeon(R) processor\"\n            SMBIOSRC000065: Add LGA1366 to Processor Upgrade enum\n            SMBIOSRC000068: Add numbers for new Intel processors\n          \n        \n        Cache Information (Type 7):\n          \n            SMBIOSRC000062: Add values to cache associativity enum to cover new processors\n          \n        \n        System Slots (Type 9):\n          \n            SMBIOSRC000064: Add PCIe Gen 2 slot types to Type 9\n          \n        \n        Memory Device (Type 17):\n          \n            SMBIOSRC000052: Add new memory device types: DDR3 and FBD2"
@@ -11381,19 +10970,9 @@
               "description": "The following changes were made to version 2.6.1 of the document to produce this version:\n      \n        Document layout:\n          \n            SMBIOSRC000073: Move SMBIOS structure definitions to a new top-level section\n            SMBIOSRC000074: Remove Appendix C, “Plug-and-Play Calling Convention”\n          \n        \n        Various sections:\n          \n            SMBIOSRC000096: Miscellaneous clerical changes\n          \n        \n        Section 1.1, Document Version Number Conventions:\n          \n            SMBIOSRC000085: Add more description to the document version number convention\n          \n        \n        Section 3.1.2, Structure Header Format:\n          \n            SMBIOSRC000048: Reserve handle number for consistency with UEFI PI specification\n          \n        \n        Section 3.1.3, Text Strings:\n          \n            SMBIOSRC000086: Remove maximum string size limitation\n          \n        \n        Section 3.2, Required Structures and Data:\n          \n            SMBIOSRC000095: Increase the capacity to represent system memory of 4 terabytes or greater."
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "",
               "release_date": "",
               "description": "Bios Information (Type 0):\n          \n            SMBIOSRCR000056: Add UEFI support to BIOS characteristics\n            SMBIOSRCR000071: Add support to describe virtualized platforms (bit 4)\n          \n        \n        System Enclosure or Chassis (Type 3):\n          \n            SMBIOSRCR000076: Add SKU Number field to type 3 structure (System Enclosure or Chassis)\n            SMBIOSRCR000096: Fix offset for SKU Number entry (to 15h+n*m instead of 16h+n*m)\n          \n        \n        Processor Information (Type 4):\n          \n            SMBIOSRCR000063: Add new processor characteristics to Type 4\n            SMBIOSRCR000070: Add new processor family values for AMD processors\n            SMBIOSRCR000072: Add new processor family values for AMD processors\n            SMBIOSRCR000077: Add new processor family values for VIA processors\n            SMBIOSRCR000080: Add numbers for new Intel processors\n            SMBIOSRCR000082: Add number for new AMD processor family\n            SMBIOSRCR000083: Add new processor upgrade type (Socket G34)\n            SMBIOSRCR000087: Add new processor upgrade type (Socket AM3)\n            SMBIOSRCR000088: Add number for new Intel processor family: \"Intel(R) Core(TM) i3 processor\"\n            SMBIOSRCR000090: Add number for new AMD processor family\n            SMBIOSRCR000091: Add new processor upgrade type (Socket C32)\n            SMBIOSRCR000092: Add new processor upgrade type (Socket LGA1156, Socket LGA1567)\n            SMBIOSRCR000093: Add new processor upgrade type (Socket PGA988A, Socket BGA1288)\n            SMBIOSRCR000094: Add footnote in processor family table for types 24-29\n            SMBIOSRCR000097: Update processor trademarks for Intel processors\n          \n        \n        Physical Memory Array (Type 16):\n          \n            SMBIOSRCR000095: Increase the capacity to represent system memory of 4 terabytes or greater.\n          \n        \n        Memory Device (Type 17):\n          \n            SMBIOSRCR000050: Add support for memory >= 32GB in type 17\n            SMBIOSRCR000053: Add memory type details of Registered and Unbuffered\n            SMBIOSRCR000081: Add configured memory clock speed\n          \n        \n        Memory Array Mapped Address (Type 19) and Memory Device Mapped Address (Type 20):\n          \n            SMBIOSRCR000095: Increase the capacity to represent system memory of 4 terabytes or greater.\n          \n        \n        Cooling Device (Type 27):\n          \n            SMBIOSRCR000075: Add new \"description\" field in structure type 27\n          \n        \n        IPMI Device Information (Type 38):\n          \n            SMBIOSRCR000078: Update Type 38 to match IPMI specification\n            SMBIOSRCR000079: Add Type 42 Management Controller Host Interface\n            SMBIOSRCR000096: Replace \"record\" with \"structure\"\n          \n        \n        Management Controller Host Interface (Type 42):"
-            },
-            {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
             },
             {
               "version": "",
@@ -11416,11 +10995,6 @@
               "description": "The following changes were made to version 2.8.0 of the document to produce this version:\n      \n        Accessing SMBIOS Information:\n          \n            SMBIOSCR00115: add new entry point\n            SMBIOSCR00139: add GUID values for discovering SMBIOS tables in UEFI"
             },
             {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
-            },
-            {
               "version": "",
               "release_date": "",
               "description": "System Enclosure or Chassis (Type 3):\n          \n            SMBIOSCR00130: add new chassis types: Tablet, Convertible, and Detachable\n          \n        \n        Processor Information (Type 4):\n          \n            SMBIOSCR00124: extend core, core enabled and thread count ranges\n            SMBIOSCR00126: add new socket type Intel LGA1150\n            SMBIOSCR00127: add new socket type Intel BGA1168\n            SMBIOSCR00128: add processor family names\n            SMBIOSCR00136: add new Intel socket types BGA1234 and BGA1364\n            SMBIOSCR00137: add new Intel processor family type-SMBIOSCR00138: update SMBIOSCR00124. Extend core, core enabled, and thread count ranges.\n          \n        \n        Cache Information (Type 7):\n          \n            SMBIOSCR00134: add additional description for Unified cache type\n          \n        \n        System Slots (Type 9):\n          \n            SMBIOSCR00132: add M.2 family of form factors\n            SMBIOSCR00133: add MXM family of slots\n            SMBIOSCR00135: add SFF-8639 slot types\n          \n        \n        Memory Device (Type 17):\n          \n            SMBIOSCR00129: add new memory device type: DDR4\n            SMBIOSCR00131: add new memory device types: LPDDR, LPDDR2, LPDDR3, LPDDR4"
@@ -11429,11 +11003,6 @@
               "version": "3.1.0",
               "release_date": "2016-11-16",
               "description": "The following changes were made to version 3.0.0 of the document to produce this version:\n      \n        Structure Standards:\n          \n            SMBIOSCR00151: Clarify limitation on string lengths\n          \n        \n        BIOS Information (Type 0):\n          \n            SMBIOSCR00156: Add new entry for extended BIOS ROM size\n          \n        \n        System Enclosure or Chassis (Type 3):\n          \n            SMBIOSCR00148: Add new chassis types: IoT Gateway and Embedded PC\n            SMBIOSCR00155: Add new chassis types: Mini PC and Stick PC\n          \n        \n        Processor Information (Type 4):\n          \n            SMBIOSCR00142: Add Intel Core m3 m5 m7 processors\n            SMBIOSCR00143: Add processor socket AM4\n            SMBIOSCR00144: Add processor socket LGA1151\n            SMBIOSCR00145: Add processor socket BGA1356, BGA1440, BGA1515\n            SMBIOSCR00146: Add AMD Opteron A-Series processor\n            SMBIOSCR00149: Add processor socket LGA3647-1\n            SMBIOSCR00150: Add processor socket SP3\n            SMBIOSCR00153: Clarify the Processor ID field for ARM32 and ARM64 Processors\n            SMBIOSCR00154: Add families for ARMv7 and ARMv8\n            SMBIOSCR00157: Add family for AMD Opteron(TM) X3000 Series APU"
-            },
-            {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
             },
             {
               "version": "",
@@ -11449,11 +11018,6 @@
               "version": "3.2.0",
               "release_date": "2018-04-26",
               "description": "The following changes were made to version 3.1.1 of the document to produce this version:\n      \n        Table convention (section 5.2):\n          \n            SMBIOSCR00177: Erratum: clarify that 32-bit and 64-bit tables must be the same version\n          \n        \n        Processor Information (Type 4):\n          \n            SMBIOSCR00163: add socket LGA2066\n            SMBIOSCR00173: add Intel Core i9\n            SMBIOSCR00176: add new processor sockets\n          \n        \n        Port Connector Information (Type 8):\n          \n            SMBIOSCR00168: add USB Type-C\n          \n        \n        System Slots (Type 9):\n          \n            SMBIOSCR00164: add “unavailable” to current usage field\n            SMBIOSCR00167: add support for PCIe bifurcation\n          \n        \n        Memory Device (Type 17):\n          \n            SMBIOSCR00162: add support for NVDIMMs\n            SMBIOSCR00166: extend support for NVDIMMs and add support for logical memory type\n            SMBIOSCR00172: rename “Configured Memory Clock Speed” to “Configured Memory Speed”\n            SMBIOSCR00174: add new memory technology value (Intel Persistent Memory, 3D XPoint)\n          \n        \n        IPMI Device Information (Type 38):\n          \n            SMBIOSCR00171: add SSIF\n          \n        \n        Management Controller Host Interface (Type 42)\n          \n            SMBIOSCR00175: fix structure data parsing issue"
-            },
-            {
-              "version": "Version",
-              "release_date": "Release Date",
-              "description": "Description"
             },
             {
               "version": "",

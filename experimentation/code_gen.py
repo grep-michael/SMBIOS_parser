@@ -42,9 +42,10 @@ def FilterName(name:str) -> str:
 class StructField():
     def __init__(self,row_table:dict):
         self.row:dict = row_table
+        self.name:str = FilterName(self.row["name"])
         self.comment:str = self._gen_comment()
         self.type:str = self._gen_type()
-        self.name:str = FilterName(self.row["name"])
+        
     
     def _gen_comment(self):
         comment = "//"
@@ -60,13 +61,19 @@ class StructField():
         length = self.row["length"]
         if length not in TYPE_MAP:
             self.comment += " Type:" + length
-        return TYPE_MAP.get(length,"interface{}")
+        
+        type_s = TYPE_MAP.get(length,"interface{}")
+        #manual override for bios characteristics
+        if self.name == "BIOSCharacteristicsExtensionBytes":
+            type_s = "[2]byte"
+        return type_s
 
     def gen_field_string(self) -> str:
         return f"{self.name} {self.type} {self.comment}" 
 
 class GoStruct():
-    def __init__(self,table:dict):
+    def __init__(self,table:dict,smbios_ver:str):
+        self.ver = smbios_ver.replace(".","_")
         self.table = table
         self.StructName: str = ""
         self.StructNumber:str = ""
@@ -76,13 +83,14 @@ class GoStruct():
 
 
     def _gen_name(self):
-        #name:str = self.table["table_name"].replace(" ","")
         name:str = self.table["rows"][0]["description"]
         struct_num:str = self.table["rows"][0]["value"]
 
         self.StructName = FilterName(name)
-        self.StructName = "S_" + struct_num + "_" + self.StructName#.replace("structure","").replace("Structure","")
+        self.StructName = f"SMB{self.ver}_S{struct_num}_{self.StructName.lower()}"
+        
         self.StructNumber = struct_num
+
 
     def _gen_fields(self):
         rows:list = self.table["rows"]
@@ -144,7 +152,7 @@ class CodeGenerator():
         return f"smbios_{version}.go"
 
     def _gen_struct_table(self,table:dict):
-        struct = GoStruct(table)
+        struct = GoStruct(table,self.json_struct["DocumentInfo"]["Version"])
         self.structs.append(struct)
         
 

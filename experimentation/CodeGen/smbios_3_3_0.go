@@ -1,6 +1,6 @@
 package GeneratedCode
 
-type SMB2_7_1_S0_biosinformationindicator struct {
+type SMB3_3_0_S0_biosinformationindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -10,13 +10,14 @@ type SMB2_7_1_S0_biosinformationindicator struct {
 	BIOSReleaseDate byte //STRING
 	BIOSROMSize byte //
 	BIOSCharacteristics uint64 //Bit Field
-	BIOSCharacteristicsExtensionBytes [2]byte //Bit Field Type:Zero or more BYTES
+	BIOSCharacteristicsExtensionBytes [2]byte //Bit Field Type:Zero or more BYTEs
 	SystemBIOSMajorRelease byte //
 	SystemBIOSMinorRelease byte //
 	EmbeddedControllerFirmwareMajorRelease byte //
 	EmbeddedControllerFirmwareMinorRelease byte //
+	ExtendedBIOSROMSize uint16 //Bit Field
 }
-type SMB2_7_1_S1_systeminformationindicator struct {
+type SMB3_3_0_S1_systeminformationindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -24,12 +25,12 @@ type SMB2_7_1_S1_systeminformationindicator struct {
 	ProductName byte //STRING
 	Version byte //STRING
 	SerialNumber byte //STRING
-	UUID interface{} // Type:16 BYTES
+	UUID interface{} // Type:16 BYTEs
 	WakeupType byte //ENUM
 	SKUNumber byte //STRING
 	Family byte //STRING
 }
-type SMB2_7_1_S3_systemenclosureindicator struct {
+type SMB3_3_0_S3_systemenclosureindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -50,7 +51,7 @@ type SMB2_7_1_S3_systemenclosureindicator struct {
 	ContainedElements interface{} // Type:n * m BYTES
 	SKUNumber byte //STRING
 }
-type SMB2_7_1_S4_processorinformationindicator struct {
+type SMB3_3_0_S4_processorinformationindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -77,8 +78,11 @@ type SMB2_7_1_S4_processorinformationindicator struct {
 	ThreadCount byte //
 	ProcessorCharacteristics uint16 //Bit Field
 	ProcessorFamily2 uint16 //
+	CoreCount2 uint16 //
+	CoreEnabled2 uint16 //
+	ThreadCount2 uint16 //
 }
-type SMB2_7_1_S16_physicalmemoryarraytype struct {
+type SMB3_3_0_S16_physicalmemoryarraytype struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -90,7 +94,7 @@ type SMB2_7_1_S16_physicalmemoryarraytype struct {
 	NumberofMemoryDevices uint16 //
 	ExtendedMaximumCapacity uint64 //
 }
-type SMB2_7_1_S17_memorydevicetype struct {
+type SMB3_3_0_S17_memorydevicetype struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -112,9 +116,25 @@ type SMB2_7_1_S17_memorydevicetype struct {
 	PartNumber byte //STRING
 	Attributes byte //
 	ExtendedSize uint32 //
-	ConfiguredMemoryClockSpeed uint16 //
+	ConfiguredMemorySpeed uint16 //
+	Minimumvoltage uint16 //
+	Maximumvoltage uint16 //
+	Configuredvoltage uint16 //
+	MemoryTechnology byte //
+	MemoryOperatingModeCapability uint16 //Bit Field
+	FirmwareVersion byte //STRING
+	ModuleManufacturerID uint16 //
+	ModuleProductID uint16 //
+	MemorySubsystemControllerManufacturerID uint16 //
+	MemorySubsystemControllerProductID uint16 //
+	NonvolatileSize uint64 //
+	VolatileSize uint64 //
+	CacheSize uint64 //
+	LogicalSize uint64 //
+	ExtendedSpeed uint32 //
+	ExtendedConfiguredMemorySpeed uint32 //
 }
-type SMB2_7_1_S22_portablebatteryindicator struct {
+type SMB3_3_0_S22_portablebatteryindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -134,13 +154,13 @@ type SMB2_7_1_S22_portablebatteryindicator struct {
 	DesignCapacityMultiplier byte //
 	OEMspecific uint32 //
 }
-type SMB2_7_1_S24_hardwaresecurityindicator struct {
+type SMB3_3_0_S24_hardwaresecurityindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
 	HardwareSecuritySettings byte //
 }
-type SMB2_7_1_S39_powersupplystructureindicator struct {
+type SMB3_3_0_S39_powersupplystructureindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -158,12 +178,12 @@ type SMB2_7_1_S39_powersupplystructureindicator struct {
 	CoolingDeviceHandle uint16 //
 	InputCurrentProbeHandle uint16 //
 }
-type SMB2_7_1_S126_inactivestructureindicator struct {
+type SMB3_3_0_S126_inactivestructureindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
 }
-type SMB2_7_1_S127_endoftableindicator struct {
+type SMB3_3_0_S127_endoftableindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
