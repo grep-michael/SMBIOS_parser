@@ -28,7 +28,6 @@ from pathlib import Path
 from dataclasses import dataclass, field, asdict
 from html.parser import HTMLParser
 
-
 class _TableHTMLParser(HTMLParser):
     """Extract rows from a single <table> block."""
 
@@ -67,10 +66,14 @@ class ParsedTable:
     """A single parsed table (main or child) with its context and position."""
     context: str
     table_name: str
+    type: str
     headers: list[str] = field(default_factory=list)
     rows: list[dict[str, str]] = field(default_factory=list)
     line: int = 0
 
+TABLETYPE_STRUCT = "Struct"
+TABLETYPE_ENUM = "Enum"
+TABLETYPE_BITFIELD = "BitField"
 
 class SMBIOSParser:
     """
@@ -89,6 +92,8 @@ class SMBIOSParser:
         self.filepath = Path(filepath)
         self.table_map: dict[str, str] = {}
         self.stats: dict = {}
+        self.Name:str = ""
+        self.Version:str = ""
         self.tables: list[dict] = []
         self._lines: list[str] = []
 
@@ -117,6 +122,7 @@ class SMBIOSParser:
         raw = self.filepath.read_text(encoding="utf-8")
         normalized = self._normalize_dashes(raw)
         self._load_table_map(normalized)
+        self._parse_version(normalized)
         self._lines = normalized.splitlines()
 
         blocks = self._extract_table_blocks()
@@ -151,7 +157,10 @@ class SMBIOSParser:
     def to_json(self, indent: int = 2) -> str:
         """Return the parsed result as a JSON string."""
         return json.dumps(
-            {"stats": self.stats, "tables": self.tables},
+            {"DocumentInfo":
+                {"Version":self.Version,"DocumentName":self.Name,"File":self.filepath.as_posix()},
+             "stats": self.stats, "tables": self.tables,
+             "TableMap":self.table_map},
             indent=indent,
             ensure_ascii=False,
         )
@@ -168,6 +177,28 @@ class SMBIOSParser:
         print(f"  Total data rows:            {s['total_data_rows']}", file=file)
         print(f"───────────────────────────────────────", file=file)
 
+    # human made shit
+
+    def _parse_version(self,markdown:str):
+        top_of_file = markdown[:1000]
+        #the document name is sometimes labeled as Document Identifier and sometimes as Document Number
+        document_name = re.search(r"Document\s*.*:\s*(.*)",top_of_file) 
+        self.Name = document_name.group(1) if document_name != None else "DocumentNameNotFound"
+        version = re.search(r"Version\s*.*:\s*(.*)",top_of_file)
+        self.Version = version.group(1) if version != None else "VersionNotFound"
+
+    def _get_table_type(self,table_rows:list[str]) -> str:
+        headers = [h.strip().lower() for h in table_rows]
+        if "value" in headers[0] and "meaning" in headers[-1]:
+            return TABLETYPE_ENUM
+        
+        if ("bit position" in headers[0] or "bit range" in headers[0]):# and "meaning" in headers[-1]:
+            return TABLETYPE_BITFIELD
+        
+        if set(["offset", "name", "length", "value", "description"]).issubset(headers):
+            return TABLETYPE_STRUCT
+        #print(headers,file=sys.stderr)
+        return ""
     # ── Normalization ────────────────────────────────────────────────────
 
     @staticmethod
@@ -183,6 +214,7 @@ class SMBIOSParser:
     # ── Table-of-contents map ────────────────────────────────────────────
 
     def _load_table_map(self, markdown: str):
+        # sometimes the ocr detects the tables as just text but sometimes it generates an actual table for the tables
         """
         Build a lookup from 'Table N' -> table title by parsing the
         document's table-of-contents section.
@@ -193,9 +225,13 @@ class SMBIOSParser:
         if toc_match is None:
             print("WARNING: Could not find table-of-contents section", file=sys.stderr)
             return
-
         for line in toc_match.group(1).strip().splitlines():
-            m = re.search(r"(Table\s+\d+)\s*-\s*(.*?)\s*\.{2,}", line)
+            line = line.strip()
+            line = line.replace("<tr>","")
+            line = line.replace("<td>","")
+            line = line.split("...")[0]
+            line = line.split("</td>")[0]            
+            m = re.search(r"(Table\s+\d+)\s*-\s*(.*)", line)
             if m:
                 self.table_map[m.group(1)] = m.group(2)
 
@@ -318,9 +354,11 @@ class SMBIOSParser:
         context = group[0]["context"]
         line = group[0]["start"]
         name = self._find_table_name(context)
+        type = self._get_table_type(header_row)
 
         table = ParsedTable(
             table_name=name,
+            type=type,
             context=context,
             headers=header_row,
             line=line,

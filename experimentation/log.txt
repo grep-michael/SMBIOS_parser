@@ -1,8 +1,0 @@
-── Stats ──────────────────────────────
-  HTML <table> blocks found:  212
-  Merged table groups:        135
-  Total parsed tables:        135
-  Main type tables:           46
-  Child tables:               83
-  Total data rows:            1685
-───────────────────────────────────────
