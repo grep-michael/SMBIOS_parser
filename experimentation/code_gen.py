@@ -60,7 +60,7 @@ class GoStruct():
     def _gen_name(self):
         name:str = self.table["table_name"].replace(" ","")
         self.StructName = FilterName(name)
-        self.StructName = self.StructName.replace("structure","")
+        self.StructName = "S_" + self.StructName.replace("structure","").replace("Structure","")
 
     def _gen_fields(self):
         rows:list = self.table["rows"]

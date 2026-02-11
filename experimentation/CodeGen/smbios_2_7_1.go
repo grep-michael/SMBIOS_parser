@@ -15,7 +15,6 @@ type S_BIOSInformationType0 struct {
 	SystemBIOSMinorRelease byte //
 	EmbeddedControllerFirmwareMajorRelease byte //
 	EmbeddedControllerFirmwareMinorRelease byte //
-	ExtendedBIOSROMSize uint16 //Bit Field
 }
 type S_SystemInformationType1 struct {
 	Type byte //
@@ -40,11 +39,6 @@ type S_BaseboardorModuleInformationType2 struct {
 	SerialNumber byte //STRING
 	AssetTag byte //STRING
 	FeatureFlags byte //Bit Field
-	LocationinChassis byte //STRING
-	ChassisHandle uint16 //
-	BoardType byte //ENUM
-	NumberofContainedObjectHandlesn byte //
-	ContainedObjectHandles byte //
 }
 type S_SystemEnclosureorChassisType3 struct {
 	Type byte //
@@ -94,9 +88,6 @@ type S_ProcessorInformationType4 struct {
 	ThreadCount byte //
 	ProcessorCharacteristics uint16 //Bit Field
 	ProcessorFamily2 uint16 //
-	CoreCount2 uint16 //
-	CoreEnabled2 uint16 //
-	ThreadCount2 uint16 //
 }
 type S_MemoryControllerInformationType5Obsolete struct {
 	Type byte //
@@ -124,7 +115,9 @@ type S_MemoryModuleInformationType6Obsolete struct {
 	CurrentMemoryType uint16 //Bit Field
 	InstalledSize byte //
 	EnabledSize byte //
-	ErrorStatus byte //
+	 byte //
+	_0 byte //
+	_1 byte //
 }
 type S_CacheInformationType7 struct {
 	Type byte //
@@ -140,8 +133,6 @@ type S_CacheInformationType7 struct {
 	ErrorCorrectionType byte //ENUM
 	SystemCacheType byte //ENUM
 	Associativity byte //ENUM
-	MaximumCacheSize2 uint32 //Bit Field
-	InstalledCacheSize2 uint32 //Bit Field
 }
 type S_PortConnectorInformationType8 struct {
 	Type byte //
@@ -156,13 +147,24 @@ type S_PortConnectorInformationType8 struct {
 type S_SystemSlotsType9 struct {
 	Type byte //
 	Length byte //
+	Handle uint16 //
+	SlotDesignation byte //STRING
+	SlotType byte //ENUM
+	SlotDataBusWidth byte //ENUM
+	CurrentUsage byte //ENUM
+	SlotLength byte //ENUM
+	SlotID uint16 //
+	SlotCharacteristics1 byte //Bit Field
+	SlotCharacteristics2 byte //Bit Field
+	SegmentGroupNumber uint16 //
+	BusNumber byte //
+	DeviceFunctionNumber byte //
 }
 type S_OnBoardDevicesInformationType10Obsolete struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
 	DevicenTypenrangesfrom1toNumberofDevices byte //
-	DescriptionString byte //STRING
 }
 type S_OEMStringsType11 struct {
 	Type byte //
@@ -200,12 +202,11 @@ type S_SystemEventLogType15 struct {
 	LogAreaLength uint16 //
 	LogHeaderStartOffset uint16 //
 	LogDataStartOffset uint16 //
-	Access byte //
-	Method byte //
+	AccessMethod byte //
+	 byte //
 	LogStatus[1] byte //
 	LogChangeToken uint32 //
 	AccessMethodAddress uint32 //
-	 byte //
 	LogHeaderFormat byte //ENUM
 	NumberofSupportedLogTypeDescriptorsx byte //
 	LengthofeachLogTypeDescriptory byte //
@@ -245,23 +246,7 @@ type S_MemoryDeviceType17 struct {
 	PartNumber byte //STRING
 	Attributes byte //
 	ExtendedSize uint32 //
-	ConfiguredMemorySpeed uint16 //
-	Minimumvoltage uint16 //
-	Maximumvoltage uint16 //
-	Configuredvoltage uint16 //
-	MemoryTechnology byte //
-	MemoryOperatingModeCapability uint16 //Bit Field
-	FirmwareVersion byte //STRING
-	ModuleManufacturerID uint16 //
-	ModuleProductID uint16 //
-	MemorySubsystemControllerManufacturerID uint16 //
-	MemorySubsystemControllerProductID uint16 //
-	NonvolatileSize uint64 //
-	VolatileSize uint64 //
-	CacheSize uint64 //
-	LogicalSize uint64 //
-	ExtendedSpeed uint32 //
-	ExtendedConfiguredMemorySpeed uint32 //
+	ConfiguredMemoryClockSpeed uint16 //
 }
 type S_32BitMemoryErrorInformationType18 struct {
 	Type byte //
@@ -527,30 +512,7 @@ type S_ManagementControllerHostInterfaceType42 struct {
 	Length byte //
 	Handle uint16 //
 	InterfaceType byte //ENUM
-	InterfaceTypeSpecificDataLength byte //
-	InterfaceTypeSpecificData byte //
-	NumberofProtocolRecords byte //
-	ProtocolRecords byte //
-}
-type S_TPMDeviceType43 struct {
-	Type byte //
-	Length byte //
-	Handle uint16 //
-	VendorID byte //
-	MajorSpecVersion byte //
-	MinorSpecVersion byte //
-	FirmwareVersion1 uint32 //
-	FirmwareVersion2 uint32 //
-	Description byte //STRING
-	Characteristics uint64 //
-	OEMdefined uint32 //
-}
-type S_ProcessorAdditionalInformationType44 struct {
-	Type byte //
-	Length byte //
-	Handle uint16 //
-	ReferencedHandle uint16 //
-	ProcessorSpecificBlock byte //
+	MCHostInterfaceData byte //
 }
 type S_InactiveType126 struct {
 	Type byte //

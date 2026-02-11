@@ -66,6 +66,7 @@ class ParsedTable:
     """A single parsed table (main or child) with its context and position."""
     context: str
     table_name: str
+    table_num:str
     type: str
     headers: list[str] = field(default_factory=list)
     rows: list[dict[str, str]] = field(default_factory=list)
@@ -239,7 +240,7 @@ class SMBIOSParser:
             if m:
                 self.table_map[m.group(1)] = m.group(2)
 
-    def _find_table_name(self, context: str) -> str:
+    def _find_table_identifiers(self, context: str) -> tuple[str,str]:
         """
         Extract a table name from the context text.
         Tries an inline 'Table N - ... (Type N)' pattern first,
@@ -247,14 +248,15 @@ class SMBIOSParser:
         """
         match = re.search(r"Table \d+\s?-\s?.*Type \d+\)", context)
         if match is not None:
-            return match.group(0)
+            ids = match.group(0).split("-")
+            return (ids[0].strip(),ids[1].strip())
 
         refs = re.findall(r"Table\s\d+", context)
         if refs:
-            table_num = refs[-1]
-            return (table_num + " " + self.table_map.get(table_num, "")).strip()
+            table_num:str = refs[-1]
+            return (table_num.strip(),self.table_map.get(table_num, "").strip())
 
-        return ""
+        return ("","")
 
     # ── Block extraction ─────────────────────────────────────────────────
 
@@ -357,11 +359,12 @@ class SMBIOSParser:
         keys = [self._to_key(h) for h in header_row]
         context = group[0]["context"]
         line = group[0]["start"]
-        name = self._find_table_name(context)
+        table_num,table_name = self._find_table_identifiers(context)
         type = self._get_table_type(header_row)
 
         table = ParsedTable(
-            table_name=name,
+            table_name=table_name,
+            table_num=table_num,
             type=type,
             context=context,
             headers=header_row,

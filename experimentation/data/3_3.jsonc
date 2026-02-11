@@ -15,7 +15,8 @@
   "tables": [
     {
       "context": "7 Structure definitions\n7.1 BIOS Information (Type 0)\nTable 6 shows the BIOS Information structure.",
-      "table_name": "Table 6 BIOS Information (Type 0) structure",
+      "table_name": "BIOS Information (Type 0) structure",
+      "table_num": "Table 6",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -151,7 +152,8 @@
       "children": [
         {
           "context": "7.1.1 BIOS Characteristics\nTable 7 shows the BIOS Characteristics layout.\nTable 7 - BIOS Characteristics",
-          "table_name": "Table 7 BIOS Characteristics",
+          "table_name": "BIOS Characteristics",
+          "table_num": "Table 7",
           "type": "BitField",
           "headers": [
             "QWORD Bit Position",
@@ -299,7 +301,8 @@
         },
         {
           "context": "7.1.2 BIOS Characteristics Extension Bytes\nNOTE All Characteristics Extension Bytes are reserved for assignment through this specification.\n7.1.2.1 BIOS Characteristics Extension Byte 1\nTable 8 shows the BIOS Characteristics Extension Byte 1 layout. This information, available for SMBIOS version 2.1 and later, appears at offset 12h within the BIOS Information structure.",
-          "table_name": "Table 8 BIOS Characteristics Extension Byte 1",
+          "table_name": "BIOS Characteristics Extension Byte 1",
+          "table_num": "Table 8",
           "type": "BitField",
           "headers": [
             "Byte Bit Position",
@@ -343,7 +346,8 @@
         },
         {
           "context": "7.1.2.2 BIOS Characteristics Extension Byte 2\nTable 9 shows the BIOS Characteristics for Extension Byte 2 layout. This information, available for SMBIOS version 2.3 and later, appears at offset 13h within the BIOS Information structure.",
-          "table_name": "Table 9 BIOS Characteristics Extension Byte 2",
+          "table_name": "BIOS Characteristics Extension Byte 2",
+          "table_num": "Table 9",
           "type": "BitField",
           "headers": [
             "Byte Bit Position",
@@ -381,7 +385,8 @@
     },
     {
       "context": "7.2 System Information (Type 1)\nThe information in this structure defines attributes of the overall system and is intended to be associated with the Component ID group of the system’s MIF. An SMBIOS implementation is associated with a single system instance and contains one and only one System Information (Type 1) structure. Table 10 shows the contents of this structure.\nTable 10 - System Information (Type 1) structure",
-      "table_name": "Table 10 - System Information (Type 1)",
+      "table_name": "System Information (Type 1)",
+      "table_num": "Table 10",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -485,7 +490,8 @@
       "children": [
         {
           "context": "7.2.1 System — UUID\nA UUID is an identifier that is designed to be unique across both time and space. It requires no central registration process. The UUID is 128 bits long. Its format is described in RFC4122, but the actual field contents are opaque and not significant to the SMBIOS specification, which is only concerned with the byte order. Table 11 shows the field names; these field names, particularly for multiplexed fields, follow historical practice.\nTable 11 - UUID byte order and RFC4122 field names",
-          "table_name": "Table 11 UUID byte order and RFC4122 field names",
+          "table_name": "UUID byte order and RFC4122 field names",
+          "table_num": "Table 11",
           "type": "",
           "headers": [
             "Offset",
@@ -542,7 +548,8 @@
         },
         {
           "context": "33 22 11 00 55 44 77 66 88 99 AA BB CC DD EE FF.\nIf the value is all FFh, the ID is not currently present in the system, but it can be set. If the value is all 00h, the ID is not present in the system.\n7.2.2 System — Wake-up Type\nTable 12 shows what the byte values mean for the System — Wake-up Type field.\nTable 12 - System: Wake-up Type field",
-          "table_name": "Table 12 System: Wake-up Type field",
+          "table_name": "System: Wake-up Type field",
+          "table_num": "Table 12",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -592,7 +599,8 @@
     },
     {
       "context": "7.3 Baseboard (or Module) Information (Type 2)\nAs shown in Table 13, the information in this structure defines attributes of a system baseboard (for example, a motherboard, planar, server blade, or other standard system module).\nNOTE If more than one Type 2 structure is provided by an SMBIOS implementation, each structure shall include the Number of Contained Object Handles and Contained Object Handles fields to specify which system elements are contained on which boards. If a single Type 2 structure is provided and the contained object\ninformation is not present¹, or if no Type 2 structure is provided, all system elements identified by the SMBIOS implementation are associated with a single motherboard.\nTable 13 - Baseboard (or Module) Information (Type 2) structure",
-      "table_name": "Table 13 - Baseboard (or Module) Information (Type 2)",
+      "table_name": "Baseboard (or Module) Information (Type 2)",
+      "table_num": "Table 13",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -705,7 +713,8 @@
       "children": [
         {
           "context": "7.3.1 Baseboard — feature flags\nTable 14 shows the baseboard feature flags.\nNOTE Refer to 6.3 for the CIM properties associated with these bit fields.\n¹ This information is \"not present\" if either the Length of the Type 2 structure is less than 14 (0Eh) or the Number of Contained Object Handles field at offset 0Dh is set to 0.\nTable 14 - Baseboard: feature flags",
-          "table_name": "Table 14 Baseboard: feature flags",
+          "table_name": "Baseboard: feature flags",
+          "table_num": "Table 14",
           "type": "BitField",
           "headers": [
             "Bit Position(s)",
@@ -741,7 +750,8 @@
         },
         {
           "context": "7.3.2 Baseboard — Board Type\nTable 15 shows the byte values for the Baseboard — Board Type field.\nNOTE These enumerations are also used within the System Enclosure or Chassis (Type 3) structure’s Contained Element record (see 7.4).\nTable 15 - Baseboard: Board Type",
-          "table_name": "Table 15 Baseboard: Board Type",
+          "table_name": "Baseboard: Board Type",
+          "table_num": "Table 15",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -807,7 +817,8 @@
     },
     {
       "context": "7.4 System Enclosure or Chassis (Type 3)\nThe information in this structure (see Table 16) defines attributes of the system’s mechanical enclosure(s). For example, if a system included a separate enclosure for its peripheral devices, two structures would be returned: one for the main system enclosure and the second for the peripheral device enclosure. The additions to this structure in version 2.1 of this specification support the population of the CIM_Chassis class.\nTable 16 - System Enclosure or Chassis (Type 3) structure",
-      "table_name": "Table 16 - System Enclosure or Chassis (Type 3)",
+      "table_name": "System Enclosure or Chassis (Type 3)",
+      "table_num": "Table 16",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -975,7 +986,8 @@
       "children": [
         {
           "context": "7.4.1 System Enclosure or Chassis Types\nTable 17 shows the byte values for the System Enclosure or Chassis Types field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 17 System Enclosure or Chassis Types",
+          "table_name": "System Enclosure or Chassis Types",
+          "table_num": "Table 17",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -1131,7 +1143,8 @@
         },
         {
           "context": "7.4.2 System Enclosure or Chassis States\nTable 18 shows the byte values for the System Enclosure or Chassis States field.",
-          "table_name": "Table 18 System Enclosure or Chassis States",
+          "table_name": "System Enclosure or Chassis States",
+          "table_num": "Table 18",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -1167,7 +1180,8 @@
         },
         {
           "context": "7.4.3 System Enclosure or Chassis Security Status\nTable 19 shows the byte values for the System Enclosure or Chassis Security Status field.",
-          "table_name": "Table 19 System Enclosure or Chassis Security Status field",
+          "table_name": "System Enclosure or Chassis Security Status field",
+          "table_num": "Table 19",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -1199,7 +1213,8 @@
         },
         {
           "context": "7.4.4 System Enclosure or Chassis — Contained Elements\nEach Contained Element record consists of sub-fields that further describe elements contained by the chassis, as shown in Table 20. Relative offset and size of fields within each record shall remain the same in future revisions to this specification, but new fields might be added to the end of the current definitions.",
-          "table_name": "Table 20 System Enclosure or Chassis: Contained Elements",
+          "table_name": "System Enclosure or Chassis: Contained Elements",
+          "table_num": "Table 20",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -1241,7 +1256,8 @@
     },
     {
       "context": "7.5 Processor Information (Type 4)\nThe information in this structure (see Table 21) defines the attributes of a single processor; a separate structure instance is provided for each system processor socket/slot. For example, a system with an IntelDX2™ processor would have a single structure instance while a system with an IntelSX2™ processor would have a structure to describe the main CPU and a second structure to describe the 80487 co-processor.\nNOTE One structure is provided for each processor instance in a system. For example, a system that supports up to two processors includes two Processor Information structures — even if only one processor is currently installed. Software that interprets the SMBIOS information can count the Processor Information structures to determine the maximum possible configuration of the system.\nTable 21 - Processor Information (Type 4) structure",
-      "table_name": "Table 21 - Processor Information (Type 4)",
+      "table_name": "Processor Information (Type 4)",
+      "table_num": "Table 21",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -1489,7 +1505,8 @@
       "children": [
         {
           "context": "[1] Beginning with version 2.3 implementations, if the <i>Cache Handle</i> is 0FFFFh, management software must make no assumptions about the cache's attributes and should report all cache-related attributes as unknown. The definitive absence of a specific cache is identified by referencing a <i>Cache Information</i> structure and setting that structure's <i>Installed Size</i> field to 0.\n7.5.1 Processor Information — Processor Type\nTable 22 shows what the byte values mean for the Processor Information — Processor Type field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 22 - Processor Information: Processor Type field",
-          "table_name": "Table 22 Processor Information: Processor Type field",
+          "table_name": "Processor Information: Processor Type field",
+          "table_num": "Table 22",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -1525,7 +1542,8 @@
         },
         {
           "context": "7.5.2 Processor Information — Processor Family\nTable 23 details the values for the Processor Information — Processor Family field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value. ® and ™ in this table are equivalent to (R) and (TM) in the MOF file.\nTable 23 - Processor Information: Processor Family field",
-          "table_name": "Table 23 Processor Information: Processor Family field",
+          "table_name": "Processor Information: Processor Family field",
+          "table_num": "Table 23",
           "type": "Enum",
           "headers": [
             "Hex Value",
@@ -2698,7 +2716,8 @@
         },
         {
           "context": "For ARM64-class CPUs, the Processor ID field contains two DWORD-formatted values. The first (offsets 08h-0Bh) is the contents of the MIDR_EL1 register; the second (offsets 0Ch-0Fh) is zero.\n7.5.3.4 RISC-V-class CPUs\nFor RISC-V class CPUs, the processor ID contains a QWORD Machine Vendor ID CSR (mvendorid) of RISC-V processor hart 0. More information of RISC-V class CPU feature is described in RISC-V processor additional information (SMBIOS structure Type 44, 7.45).\n7.5.4 Processor Information — Voltage\nTwo forms of information can be specified by the SMBIOS in this field, dependent on the value present in bit 7 (the most-significant bit). If bit 7 is 0 (legacy mode), the remaining bits of the field represent the specific voltages that the processor socket can accept, as shown in Table 24.",
-          "table_name": "Table 24 Processor Information: Voltage field",
+          "table_name": "Processor Information: Voltage field",
+          "table_num": "Table 24",
           "type": "BitRange",
           "headers": [
             "Byte Bit Range",
@@ -2722,7 +2741,8 @@
         },
         {
           "context": "EXAMPLE: The field value for a processor voltage of 1.8 volts would be:\n92h = 80h + (1.8 * 10) = 80h + 18 = 80h +12h\n7.5.5 Processor Information — Processor Upgrade\nTable 25 shows what the byte values mean for the Processor Information — Processor Upgrade field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 25 Processor Information: Processor Upgrade field",
+          "table_name": "Processor Information: Processor Upgrade field",
+          "table_num": "Table 25",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -2974,7 +2994,8 @@
         },
         {
           "context": "7.5.6 Processor Information — Core Count\nCore Count is the number of cores detected by the BIOS for this processor socket. It does not necessarily indicate the full capability of the processor. For example, platform hardware may have the capability to limit the number of cores reported by the processor without BIOS intervention or knowledge. For a dual-core processor installed in a platform where the hardware is set to limit it to one core, the BIOS reports a value of 1 in Core Count. For a dual-core processor with multi-core support disabled by BIOS, the BIOS reports a value of 2 in Core Count.\nThe Core Count 2 field supports core counts > 255. For core counts of 256 or greater, the Core Count field is set to FFh and the Core Count 2 field is set to the number of cores. For core counts of 255 or fewer, if Core Count 2 is present it shall be set the same value as Core Count. Table 26 presents examples of the use and interpretation of the Core Count and Core Count 2 fields.\nTable 26 - Examples of Core Count and Core Count 2 use",
-          "table_name": "Table 26 Examples of Core Count and Core Count 2 use",
+          "table_name": "Examples of Core Count and Core Count 2 use",
+          "table_num": "Table 26",
           "type": "",
           "headers": [
             "Core Count Field",
@@ -3033,6 +3054,7 @@
         {
           "context": "Multi-Core indicates the processor has more than one core. This bit does not indicate the number of cores (Core Count) enabled by hardware or the number of cores (Core Enabled) enabled by BIOS.\nHardware Thread indicates that the processor supports multiple hardware threads per core. This bit does not indicate the state or number of threads.\nExecute Protection indicates that the processor supports marking specific memory regions as non-executable. For example, this is the NX (No eXecute) feature of AMD processors and the XD (eXecute Disable) feature of Intel processors. This bit does not indicate the present state of this feature.\nEnhanced Virtualization indicates that the processor is capable of executing enhanced virtualization instructions. This bit does not indicate the present state of this feature.\nPower/Performance Control indicates that the processor is capable of load-based power savings. This bit does not indicate the present state of this feature.",
           "table_name": "",
+          "table_num": "",
           "type": "BitField",
           "headers": [
             "WORD Bit Position",
@@ -3086,7 +3108,8 @@
     },
     {
       "context": "7.6 Memory Controller Information (Type 5, Obsolete)\nThe information in this structure defines the attributes of the system’s memory controller(s) and the supported attributes of any memory-modules present in the sockets controlled by this controller. See Table 28 for the details of this structure.\nNOTE This structure, and its companion, Memory Module Information (Type 6, Obsolete), are obsolete starting with version 2.1 of this specification; the Physical Memory Array (Type 16) and Memory Device (Type 17) structures should be used instead. BIOS providers might choose to implement both memory description types to allow existing DMI browsers to properly display the system’s memory attributes.\nTable 28 - Memory Controller Information (Type 5, Obsolete) structure",
-      "table_name": "Table 28 Memory Controller Information (Type 5, Obsolete) structure",
+      "table_name": "Memory Controller Information (Type 5, Obsolete) structure",
+      "table_num": "Table 28",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -3214,7 +3237,8 @@
       "children": [
         {
           "context": "7.6.1 Memory Controller Error Detecting Method\nTable 29 shows the byte values for the Memory Controller Error Detecting Method field.",
-          "table_name": "Table 29 Memory Controller Error Detecting Method field",
+          "table_name": "Memory Controller Error Detecting Method field",
+          "table_num": "Table 29",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -3258,7 +3282,8 @@
         },
         {
           "context": "7.6.2 Memory Controller Error Correcting Capability\nTable 30 shows the values for the Memory Controller Error Correcting Capability field.",
-          "table_name": "Table 30 Memory Controller Error Correcting Capability field",
+          "table_name": "Memory Controller Error Correcting Capability field",
+          "table_num": "Table 30",
           "type": "BitField",
           "headers": [
             "Byte Bit Position",
@@ -3294,7 +3319,8 @@
         },
         {
           "context": "7.6.3 Memory Controller Information — Interleave Support\nTable 31 shows the byte values for the Memory Controller Information — Interleave Support field.",
-          "table_name": "Table 31 Memory Controller Information: Interleave Support field",
+          "table_name": "Memory Controller Information: Interleave Support field",
+          "table_num": "Table 31",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -3334,7 +3360,8 @@
         },
         {
           "context": "7.6.4 Memory Controller Information — Memory Speeds\nThe bit-field shown in Table 32 describes the speed of the memory modules supported by the system.",
-          "table_name": "Table 32 Memory Controller Information: Memory Speeds Bit field",
+          "table_name": "Memory Controller Information: Memory Speeds Bit field",
+          "table_num": "Table 32",
           "type": "BitField",
           "headers": [
             "Word Bit Position",
@@ -3372,7 +3399,8 @@
     },
     {
       "context": "7.7 Memory Module Information (Type 6, Obsolete)\nOne Memory Module Information structure is included for each memory-module socket in the system. As shown in Table 33, the structure describes the speed, type, size, and error status of each system memory module. The supported attributes of each module are described by the “owning” Memory Controller Information structure.\nNOTE This structure and its companion Memory Controller Information (Type 5, Obsolete) are obsolete starting with version 2.1 of this specification; the Physical Memory Array (Type 16) and Memory Device (Type 17) structures should be used instead. BIOS providers might choose to implement both memory description types to allow existing DMI browsers to properly display the system’s memory attributes.",
-      "table_name": "Table 33 Memory Module Information (Type 6, Obsolete) structure",
+      "table_name": "Memory Module Information (Type 6, Obsolete) structure",
+      "table_num": "Table 33",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -3457,7 +3485,8 @@
       "children": [
         {
           "context": "7.7.1 Memory Module Information — Memory Types\nThe bit-field shown in Table 34 describes the physical characteristics of the memory modules that are supported by (and currently installed in) the system.\nTable 34 - Memory Module Information: Memory Types",
-          "table_name": "Table 34 Memory Module Information: Memory Types",
+          "table_name": "Memory Module Information: Memory Types",
+          "table_num": "Table 34",
           "type": "BitField",
           "headers": [
             "Word Bit Position",
@@ -3517,7 +3546,8 @@
         },
         {
           "context": "7.7.2 Memory Module Information — Memory Size\nThe Size fields of the Memory Module Configuration Information structure define the amount of memory currently installed (and enabled) in a memory-module connector. Table 35 shows the meaning of the bytes and bits in the Memory Size field.\nThe Installed Size fields identify the size of the memory module that is installed in the socket, as determined by reading and correlating the module’s presence-detect information. If the system does not support presence-detect mechanisms, the Installed Size field is set to 7Dh to indicate that the installed size is not determinable. The Enabled Size field identifies the amount of memory currently enabled for the system’s use from the module. If a module is known to be installed in a connector, but all memory in the module has been disabled due to error, the Enabled Size field is set to 7Eh.",
-          "table_name": "Table 35 Memory Module Information: Memory Size field",
+          "table_name": "Memory Module Information: Memory Size field",
+          "table_num": "Table 35",
           "type": "BitRange",
           "headers": [
             "Byte Bit Range",
@@ -3539,7 +3569,8 @@
     },
     {
       "context": "db 0        ; No errors\ndb \"B2\",0   ; String#1: Reference Designator\ndb 0        ; End-of-strings\n7.8 Cache Information (Type 7)\nAs shown in Table 36, the information in this structure defines the attributes of CPU cache device in the system. One structure is specified for each such device, whether the device is internal to or external to the CPU module. Cache modules can be associated with a processor structure in one or two ways depending on the SMBIOS version; see 7.5 and 7.15 for more information.",
-      "table_name": "Table 36 Cache Information (Type 7) structure",
+      "table_name": "Cache Information (Type 7) structure",
+      "table_num": "Table 36",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -3675,7 +3706,8 @@
       "children": [
         {
           "context": "7.8.1 Cache Information — Maximum Cache Size and Installed Size\nFor multi-core processors, the cache size for the different levels of the cache (L1, L2, L3) is the total amount of cache per level per processor socket. The cache size is independent of the core count. For example, the cache size is 2 MB for both a dual core processor with a 2 MB L3 cache shared between the cores and a dual core processor with 1 MB L3 cache (non-shared) per core.\nRefer to the descriptions of the <i>Maximum Cache Size 2</i> and <i>Installed Cache 2</i> fields for information on representing cache sizes >2047MB.\n7.8.2 Cache Information — SRAM Type\nTable 37 shows the values for the Cache Information — SRAM Type field.",
-          "table_name": "Table 37 Cache Information: SRAM Type field",
+          "table_name": "Cache Information: SRAM Type field",
+          "table_num": "Table 37",
           "type": "BitField",
           "headers": [
             "Word Bit Position",
@@ -3719,7 +3751,8 @@
         },
         {
           "context": "7.8.3 Cache Information — Error Correction Type\nTable 38 shows the values for the Cache Information — Error Correction Type field.",
-          "table_name": "Table 38 Cache Information: Error Correction Type field",
+          "table_name": "Cache Information: Error Correction Type field",
+          "table_num": "Table 38",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -3755,7 +3788,8 @@
         },
         {
           "context": "7.8.4 Cache Information — System Cache Type\nTable 39 shows the values for the Cache Information — System Cache Type field.\nThe cache type for a cache level (L1, L2, L3, ...) is type 03h (Instruction) when all the caches at that level are Instruction caches. The cache type for a specific cache level (L1, L2, L3, ...) is type 04h (Data) when all the caches at that level are Data caches. The cache type for a cache level (L1, L2, L3, ...) is type 05h (Unified) when the caches at that level are a mix of Instruction and Data caches.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 39 Cache Information: System Cache Type field",
+          "table_name": "Cache Information: System Cache Type field",
+          "table_num": "Table 39",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -3787,7 +3821,8 @@
         },
         {
           "context": "7.8.5 Cache Information — Associativity\nTable 40 shows the values for the Cache Information — Associativity field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 40 - Cache Information: Associativity field",
-          "table_name": "Table 40 Cache Information: Associativity field",
+          "table_name": "Cache Information: Associativity field",
+          "table_num": "Table 40",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -3857,7 +3892,8 @@
     },
     {
       "context": "7.9 Port Connector Information (Type 8)\nAs shown in Table 41, the information in this structure defines the attributes of a system port connector (for example, parallel, serial, keyboard, or mouse ports). The port’s type and connector information are provided. One structure is present for each port provided by the system.\nTable 41 - Port Connector Information (Type 8) structure",
-      "table_name": "Table 41 - Port Connector Information (Type 8)",
+      "table_name": "Port Connector Information (Type 8)",
+      "table_num": "Table 41",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -3928,7 +3964,8 @@
       "children": [
         {
           "context": "db 'COM A',0 ; External reference\ndb 0\nIf an External Connector is not used (as in the case of a CD-ROM Sound connector), the External Reference Designator and the External Connector Type should be set to zero. If an Internal Connector is not used (as in the case of a soldered-on Parallel Port connector that extends outside of the chassis), the Internal Reference Designation and Connector Type should be set to zero.\n7.9.2 Port Information — Connector Types\nTable 42 shows the values of the bytes in the Port Information — Connector Types field.",
-          "table_name": "Table 42 Port Information: Connector Types Field",
+          "table_name": "Port Information: Connector Types Field",
+          "table_num": "Table 42",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -4108,7 +4145,8 @@
         },
         {
           "context": "7.9.3 Port Types\nTable 43 shows the values for the Port Types field.",
-          "table_name": "Table 43 Port Types field",
+          "table_name": "Port Types field",
+          "table_num": "Table 43",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -4278,7 +4316,8 @@
     },
     {
       "context": "7.10 System Slots (Type 9)\nAs shown in Table 44, the information in this structure defines the attributes of a system slot. One structure is provided for each slot in the system.\nTable 44 - System Slots (Type 9) structure",
-      "table_name": "Table 44 - System Slots (Type 9)",
+      "table_name": "System Slots (Type 9)",
+      "table_num": "Table 44",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -4311,6 +4350,7 @@
         {
           "context": "2 Prior to version 2.7.1, this specification incorrectly described this value as \"PCMCIA Type II\".",
           "table_name": "",
+          "table_num": "",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -4446,7 +4486,8 @@
         },
         {
           "context": "7.10.1 System Slots — Slot Type\nTable 45 shows the values of the System Slots — Slot Type field.",
-          "table_name": "Table 45 System Slots: Slot Type field",
+          "table_name": "System Slots: Slot Type field",
+          "table_num": "Table 45",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -4718,7 +4759,8 @@
         },
         {
           "context": "NOTE Slot types A5h, ABh, B1h, and B8h should be used only for PCI Express slots where the physical width is identical to the electrical width; in that case the System Slots - Slot Data Bus Width field specifies the width. Other PCI Express slot types (A6h-AAh, ACh-B0h, B2h-B6h, B9h-BDh) should be used to describe slots where the physical width is different from the maximum electrical width; in these cases the width indicated in this field refers to the physical width of the slot, while electrical width is described in the System Slots - Slot Data Bus Width field.\n7.10.2 System Slots — Slot Data Bus Width\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 46 shows the values for the System Slots - Slot Data Bus Width field. Slot Data Bus Width meanings of type “n bit” are for parallel buses such as PCI. Slot Data Bus Width meanings of type “nx or xn” are for serial buses such as PCI Express.\nNOTE For PCI Express, width refers to the maximum supported electrical width of the “data bus”; physical slot width is described in System Slots - Slot Type, and the actual link width resulting from PCI Express link training can be read from configuration space.",
-          "table_name": "Table 46 System Slots: Slot Data Bus Width field",
+          "table_name": "System Slots: Slot Data Bus Width field",
+          "table_num": "Table 46",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -4786,7 +4828,8 @@
         },
         {
           "context": "7.10.3 System Slots — Current Usage\nTable 47 shows the values of the System Slots — Current Usage field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 47 System Slots: Current Usage field",
+          "table_name": "System Slots: Current Usage field",
+          "table_num": "Table 47",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -4818,7 +4861,8 @@
         },
         {
           "context": "7.10.4 System Slots — Slot Length\nTable 48 shows the values of the System Slots — Slot Length field.",
-          "table_name": "Table 48 System Slots: Slot Length field",
+          "table_name": "System Slots: Slot Length field",
+          "table_num": "Table 48",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -4854,7 +4898,8 @@
         },
         {
           "context": "7.10.5 System Slots — Slot ID\nThe Slot ID field of the System Slot structure provides a mechanism to correlate the physical attributes of the slot to its logical access method (which varies based on the Slot Type field). The Slot ID field has meaning only for the slot types described in Table 49.",
-          "table_name": "Table 49 System Slots: Slot ID",
+          "table_name": "System Slots: Slot ID",
+          "table_num": "Table 49",
           "type": "",
           "headers": [
             "Slot Type",
@@ -4882,7 +4927,8 @@
         },
         {
           "context": "7.10.6 Slot Characteristics 1\nTable 50 shows the values for the Slot Characteristics 1 field.",
-          "table_name": "Table 50 Slot Characteristics 1 field",
+          "table_name": "Slot Characteristics 1 field",
+          "table_num": "Table 50",
           "type": "BitField",
           "headers": [
             "BYTE Bit Position",
@@ -4926,7 +4972,8 @@
         },
         {
           "context": "7.10.7 Slot Characteristics 2\nTable 51 shows the values for the Slot Characteristics 2 field.",
-          "table_name": "Table 51 Slot Characteristics 2",
+          "table_name": "Slot Characteristics 2",
+          "table_num": "Table 51",
           "type": "BitField",
           "headers": [
             "BYTE Bit Position",
@@ -4958,7 +5005,8 @@
         },
         {
           "context": "For PCI Express slots, Bus Number and Device/Function Number refer to the endpoint in the slot, not the upstream switch.\n7.10.9 Peer Devices\nBecause some slots can be partitioned into smaller electrical widths, additional peer device Segment/Bus/Device/Function are defined. These peer groups are defined in Table 52. The base device is the lowest ordered Segment/Bus/Device/Function and is listed first (offsets 0Dh-11h). Peer devices are listed in the peer grouping section.\nThis definition does not cover children devices i.e., devices behind a PCIe bridge in the slot.\nTable 52 - System Slots: Peer Segment/Bus/Device/Function/Width Groups",
-          "table_name": "Table 52 System Slots: Peer Segment/Bus/Device/Function/Width Groups",
+          "table_name": "System Slots: Peer Segment/Bus/Device/Function/Width Groups",
+          "table_num": "Table 52",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -5003,7 +5051,8 @@
     },
     {
       "context": "7.11 On Board Devices Information (Type 10, Obsolete)\nNOTE This structure is obsolete starting with version 2.6 of this specification; the Onboard Devices Extended Information (Type 41) structure should be used instead (see 7.42). BIOS providers can choose to implement both types to allow existing SMBIOS browsers to properly display the system’s onboard devices information.\nThe information in this structure (shown in Table 53) defines the attributes of devices that are onboard (soldered onto) a system element, usually the baseboard. In general, an entry in this table implies that the BIOS has some level of control over the enabling of the associated device for use by the system.\nNOTE Because this structure was originally defined with the Length implicitly defining the number of devices present, no further fields can be added to this structure without adversely affecting existing software’s ability to properly parse the data. Thus, if additional fields are required for this structure type a brand new structure must be defined to add a device count field, carry over the existing fields, and add the new information.\nTable 53 - On Board Devices Information (Type 10, Obsolete) structure",
-      "table_name": "Table 53 On Board Devices Information (Type 10, Obsolete) structure",
+      "table_name": "On Board Devices Information (Type 10, Obsolete) structure",
+      "table_num": "Table 53",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -5053,7 +5102,8 @@
       "children": [
         {
           "context": "NOTE There may be a single structure instance containing the information for all onboard devices, or there may be a unique structure instance for each onboard device.\n7.11.1 Onboard Device Types\nTable 54 shows what the bytes mean for the Onboard Device Types field.\nTable 54 - Onboard Device Types",
-          "table_name": "Table 54 Onboard Device Types",
+          "table_name": "Onboard Device Types",
+          "table_num": "Table 54",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -5107,7 +5157,8 @@
     },
     {
       "context": "7.12 OEM Strings (Type 11)\nThis structure (shown in Table 55) contains free-form strings defined by the OEM. Examples of this are part numbers for system reference documents, contact information for the manufacturer, etc.\nTable 55 - OEM Strings (Type 11) structure",
-      "table_name": "Table 55 - OEM Strings (Type 11)",
+      "table_name": "OEM Strings (Type 11)",
+      "table_num": "Table 55",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -5151,7 +5202,8 @@
     },
     {
       "context": "This structure (shown in Table 56) contains information required to configure the baseboard's Jumpers and Switches.\nEXAMPLES:\n\"JP2: 1-2 Cache Size is 256K, 2-3 Cache Size is 512K\"\n\"SW1-1: Close to Disable On Board Video\"\nTable 56 - System Configuration Options (Type 12) structure",
-      "table_name": "Table 56 - System Configuration Options (Type 12)",
+      "table_name": "System Configuration Options (Type 12)",
+      "table_num": "Table 56",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -5195,7 +5247,8 @@
     },
     {
       "context": "7.14 BIOS Language Information (Type 13)\nThe information in this structure (shown in Table 57) defines the installable language attributes of the BIOS.\nTable 57 - BIOS Language Information (Type 13) structure",
-      "table_name": "Table 57 - BIOS Language Information (Type 13)",
+      "table_name": "BIOS Language Information (Type 13)",
+      "table_num": "Table 57",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -5268,7 +5321,8 @@
     },
     {
       "context": "db 'jaJP',0 ; language 3 is Japanese\ndb 0 ; Structure termination\n7.15 Group Associations (Type 14)\nTable 58 shows the values for the Group Associations (Type 14) structure.\nNOTE Because this structure was originally defined with the Length implicitly defining the number of items present, no further fields can be added to this structure without adversely affecting existing software’s ability to properly parse the data. Thus, if additional fields are required for this structure type, a brand new structure must be defined to add an item count field, carry over the existing fields, and add the new information.",
-      "table_name": "Table 58 Group Associations (Type 14) structure",
+      "table_name": "Group Associations (Type 14) structure",
+      "table_num": "Table 58",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -5326,7 +5380,8 @@
     },
     {
       "context": "db 'Dual-Processor CPU Complex', 0\ndb 0\n7.16 System Event Log (Type 15)\nThe presence of this structure within the SMBIOS data returned for a system indicates that the system supports an event log. See Table 59 for details. An event log is a fixed-length area within a non-volatile storage element, starting with a fixed-length (and vendor-specific) header record, followed by one or more variable-length log records. See 7.16.4 for more information.\nAn application can implement event-log change notification by periodically reading the System Event Log structure (by its assigned handle) and looking for a change in the Log Change Token. This token uniquely identifies the last time the event log was updated. When it sees the token changed, the application can retrieve the entire event log and determine the changes since the last time it read the event log.",
-      "table_name": "Table 59 System Event Log (Type 15) structure",
+      "table_name": "System Event Log (Type 15) structure",
+      "table_num": "Table 59",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -5470,7 +5525,8 @@
       "children": [
         {
           "context": "[1] The Log Status and Log Change Token fields might not be up-to-date (dynamic) when the structure is accessed using the table interface.\n7.16.1 Supported Event Log Type descriptors\nEach entry consists of a 1-byte type field and a 1-byte data-format descriptor, as shown in Table 60. The presence of an entry identifies that the Log Type is supported by the system and the format of any variable data that accompanies the first bytes of the log’s variable data — a specific log record might have more variable data than specified by its Variable Data Format Type.",
-          "table_name": "Table 60 Supported Event Log Type Descriptors",
+          "table_name": "Supported Event Log Type Descriptors",
+          "table_num": "Table 60",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -5499,7 +5555,8 @@
         },
         {
           "context": "out dx, ax\nmov dx, DataAddr ;Value from event-log structure\nin al, dx ;Read current value\n7.16.3 Access Method Address — DWORD layout\nTable 61 shows the DWORD layout of the Access Method Address.",
-          "table_name": "Table 61 Access Method Address: DWORD layout",
+          "table_name": "Access Method Address: DWORD layout",
+          "table_num": "Table 61",
           "type": "",
           "headers": [
             "Access Type",
@@ -5535,7 +5592,8 @@
         },
         {
           "context": "7.16.4 Event Log organization\nThe event log is organized as an optional (and implementation-specific) fixed-length header, followed by one or more variable-length event records, as illustrated in Table 62. From one implementation to the\nnext, the format of the log header and the size of the overall log area might change; all other required fields of the event log area are consistent across all systems.\nTable 62 - Event Log organization",
-          "table_name": "Table 62 Event Log organization",
+          "table_name": "Event Log organization",
+          "table_num": "Table 62",
           "type": "",
           "headers": [
             "Log Header (Optional)"
@@ -5552,7 +5610,8 @@
         },
         {
           "context": "7.16.5 Log Header format\nTable 63 contains the byte enumeration values (available for SMBIOS 2.1 and later) that identify the standard formats of the event log headers.\nTable 63 - Log Header format",
-          "table_name": "Table 63 Log Header format",
+          "table_name": "Log Header format",
+          "table_num": "Table 63",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -5580,7 +5639,8 @@
         },
         {
           "context": "7.16.5.1 Log Header Type 1 format\nThe type 1 event log header consists of the following fields shown in Table 64.\nTable 64 - Log Header Type 1 format",
-          "table_name": "Table 64 Log Header Type 1 format",
+          "table_name": "Log Header Type 1 format",
+          "table_num": "Table 64",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -5665,7 +5725,8 @@
         },
         {
           "context": "To perform the field setting, application software follows these steps, as long as the Pre-boot Event Log Reset - CMOS Address field of the header is non-zero:\n• Read the address specified by Pre-boot Event Log Reset — CMOS Address from CMOS RAM. Set the bit specified by the CMOS Bit Index field to 1. Rewrite the CMOS RAM address with the updated data.\n• If the CMOS Checksum - Starting Offset field is non-zero, recalculate the CMOS RAM checksum value for the range starting at the Starting Offset field for Byte Count bytes into a 2-byte value. Subtract that value from 0 to create the checksum value for the range and store that 2-byte value into the CMOS RAM; the least-significant byte of the value is stored at the CMOS RAM Checksum Offset and the most-significant byte of the value is stored at (Checksum Offset)+1.\n7.16.6 Log Record format\nEach log record consists of a required fixed-length record header, followed by (optional) additional data that is defined by the event type. The fixed-length log record header is present as the first eight bytes of each log record, regardless of event type. Details are shown in Table 65.",
-          "table_name": "Table 65 Log Record format",
+          "table_name": "Log Record format",
+          "table_num": "Table 65",
           "type": "",
           "headers": [
             "Offset",
@@ -5703,7 +5764,8 @@
         },
         {
           "context": "7.16.6.1 Event Log types\nTable 66 shows the values for Event Log types.",
-          "table_name": "Table 66 Event Log types",
+          "table_name": "Event Log types",
+          "table_num": "Table 66",
           "type": "",
           "headers": [
             "Value",
@@ -5823,7 +5885,8 @@
         },
         {
           "context": "7.16.6.2 Event Log Variable Data Format Type\nThe Variable Data Format Type, specified in the Event Log structure’s Supported Event Type fields, identifies the standard format that application software can apply to the first \\( n \\) bytes of the associated Log Type’s variable data. Additional OEM-specific data might follow in the log’s variable data field. Table 67 shows the values for this field.\nTable 67 - Event Log Variable Data Format Type",
-          "table_name": "Table 67 Event Log Variable Data Format Type",
+          "table_name": "Event Log Variable Data Format Type",
+          "table_num": "Table 67",
           "type": "",
           "headers": [
             "Value",
@@ -5881,7 +5944,8 @@
         },
         {
           "context": "- If the date/time of the original log entry is outside of METW minutes: a new log entry is written, and the internal BIOS counter is reset to 0;\n- If the log’s current multiple-event counter is 00000000h or if the internal BIOS counter is less than the MECI value: no recording happens (other than the internal counter increment);\n- Otherwise: The next non-zero bit of the multiple-event counter is set to 0.\n7.16.6.4 POST Results Bitmap\nThis variable data type, when present, is expected to be associated with the POST Error (08h) event log type and identifies that one or more error types have occurred. The bitmap consists of two DWORD values, described in Table 68. Any bit within the DWORD pair that is specified as Reserved is set to 0 within the log data and is available for assignment by this specification. A set bit ('1'b) at a DWORD bit position implies that the error associated with that position has occurred.",
-          "table_name": "Table 68 POST Results Bitmap",
+          "table_name": "POST Results Bitmap",
+          "table_num": "Table 68",
           "type": "BitField",
           "headers": [
             "Bit Position",
@@ -5970,6 +6034,7 @@
         {
           "context": "3 All BIOS counters that support the Multiple-Event Counters are reset to zero each time the system boots.",
           "table_name": "",
+          "table_num": "",
           "type": "BitField",
           "headers": [
             "Bit Position",
@@ -6067,7 +6132,8 @@
         },
         {
           "context": "7.16.6.5 System management types\nTable 69 defines the system management types present in an event log record’s variable data. In general, each type is associated with a management event that occurred within the system.",
-          "table_name": "Table 69 System management types",
+          "table_name": "System management types",
+          "table_num": "Table 69",
           "type": "",
           "headers": [
             "Value",
@@ -6165,7 +6231,8 @@
     },
     {
       "context": "7.17 Physical Memory Array (Type 16)\nThis structure describes a collection of memory devices that operate together to form a memory address space. Table 70 provides the details.\nTable 70 - Physical Memory Array (Type 16) structure",
-      "table_name": "Table 70 - Physical Memory Array (Type 16)",
+      "table_name": "Physical Memory Array (Type 16)",
+      "table_num": "Table 70",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -6261,7 +6328,8 @@
       "children": [
         {
           "context": "7.17.1 Memory Array — Location\nTable 71 shows what the byte values mean for the Memory Array — Location field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 71 Memory Array: Location field",
+          "table_name": "Memory Array: Location field",
+          "table_num": "Table 71",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -6333,7 +6401,8 @@
         },
         {
           "context": "7.17.2 Memory Array — Use\nTable 72 shows what the byte values mean for the Memory Array — Use field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 72 - Memory Array: Use field",
-          "table_name": "Table 72 Memory Array: Use field",
+          "table_name": "Memory Array: Use field",
+          "table_num": "Table 72",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -6373,7 +6442,8 @@
         },
         {
           "context": "7.17.3 Memory Array — Error Correction Types\nTable 73 shows what the byte values mean for the Memory Array — Error Correction Types field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 73 - Memory Array: Error Correction Types field",
-          "table_name": "Table 73 Memory Array: Error Correction Types field",
+          "table_name": "Memory Array: Error Correction Types field",
+          "table_num": "Table 73",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -6415,7 +6485,8 @@
     },
     {
       "context": "7.18 Memory Device (Type 17)\nThis structure describes a single memory device that is part of a larger Physical Memory Array (Type 16) structure. See 7.17 for more details.\nTable 74 provides information about the Memory Device (Type 17) structure.\nNOTE If a system includes memory-device sockets, the SMBIOS implementation includes a Memory Device structure instance for each slot, whether or not the socket is currently populated.\nTable 74 - Memory Device (Type 17) structure",
-      "table_name": "Table 74 - Memory Device (Type 17)",
+      "table_name": "Memory Device (Type 17)",
+      "table_num": "Table 74",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -6735,7 +6806,8 @@
       "children": [
         {
           "context": "7.18.1 Memory Device — Form Factor\nTable 75 shows what the byte values mean for the Memory Device — Form Factor field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 75 Memory Device: Form Factor field",
+          "table_name": "Memory Device: Form Factor field",
+          "table_num": "Table 75",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -6811,7 +6883,8 @@
         },
         {
           "context": "7.18.2 Memory Device — Type\nTable 76 shows what the byte values mean for the Memory Device — Type field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 76 - Memory Device: Type",
-          "table_name": "Table 76 Memory Device: Type",
+          "table_name": "Memory Device: Type",
+          "table_num": "Table 76",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -6947,7 +7020,8 @@
         },
         {
           "context": "7.18.3 Memory Device — Type Detail\nTable 77 shows what the word bit positions mean for the Memory Device — Type Detail field.\nNOTE    Multiple bits are set if more than one attribute applies.",
-          "table_name": "Table 77 Memory Device: Type Detail field",
+          "table_name": "Memory Device: Type Detail field",
+          "table_num": "Table 77",
           "type": "BitField",
           "headers": [
             "Word Bit Position",
@@ -7023,7 +7097,8 @@
         },
         {
           "context": "Bit 31 is reserved for future use and must be set to 0.\nBits 30:0 represent the size of the memory device in megabytes.\nEXAMPLE: 0000_8000h indicates a 32 GB memory device (32,768 MB), 0002_0000h represents a 128 GB memory device (131,072 MB), and 0000_7FFFh represents a 32,767 MB (32 GB - 1 MB) device.\n7.18.6 Memory Device — Memory Technology\nTable 78 shows what the byte values mean for the Memory Device - Memory Technology field.",
-          "table_name": "Table 78 Memory Device: Memory Technology field",
+          "table_name": "Memory Device: Memory Technology field",
+          "table_num": "Table 78",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7063,7 +7138,8 @@
         },
         {
           "context": "7.18.7 Memory Device — Memory Operating Mode Capability\nTable 79 shows what the word bit positions mean for the Memory Device - Memory Operating Mode Capability field. This field indicates the supported operating mode(s); it does not indicate the current configured operating mode(s).",
-          "table_name": "Table 79 Memory Device: Memory Operating Mode Capability",
+          "table_name": "Memory Device: Memory Operating Mode Capability",
+          "table_num": "Table 79",
           "type": "BitField",
           "headers": [
             "WORD Bit Position",
@@ -7105,7 +7181,8 @@
     },
     {
       "context": "The Extended Speed and Extended Configured Memory Speed fields are intended to represent memory devices that operate faster than 65,535 MT/s, which cannot be described using the Speed or Configured Memory Speed fields. These fields are only meaningful if the value in the Speed or Configured Memory Speed fields are FFFFh. For compatibility with older SMBIOS parsers, memory devices slower than 65,535 MT/s should represent their speed using the Speed and Configured Memory Speed fields, leaving the Extended Speed and Extended Configured Memory Speed fields set to 0.\nBit 31 is reserved for future use and must be set to 0\nBits 30:0 represent the speed or configured memory speed of the device in MT/s. See 7.18.4 for details.\n7.19 32-Bit Memory Error Information (Type 18)\nThis structure identifies the specifics of an error that might be detected within a Physical Memory Array. Table 80 shows the details for this structure.",
-      "table_name": "Table 80 32-Bit Memory Error Information (Type 18) structure",
+      "table_name": "32-Bit Memory Error Information (Type 18) structure",
+      "table_num": "Table 80",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -7201,7 +7278,8 @@
       "children": [
         {
           "context": "7.19.1 Memory Error — Error Type\nTable 81 shows what the byte values mean for the Memory Error — Error Type field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 81 Memory Error: Error Type field",
+          "table_name": "Memory Error: Error Type field",
+          "table_num": "Table 81",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7269,7 +7347,8 @@
         },
         {
           "context": "7.19.2 Memory Error — Error Granularity\nTable 82 shows what the byte values mean for the Memory Error — Error Granularity field.",
-          "table_name": "Table 82 Memory Error: Error Granularity field",
+          "table_name": "Memory Error: Error Granularity field",
+          "table_num": "Table 82",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7297,7 +7376,8 @@
         },
         {
           "context": "7.19.3 Memory Error — Error Operation\nTable 83 shows what the byte values mean for the Memory Error — Error Operation field.\nNOTE    Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 83 Memory Error: Error Operation field",
+          "table_name": "Memory Error: Error Operation field",
+          "table_num": "Table 83",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7331,7 +7411,8 @@
     },
     {
       "context": "7.20 Memory Array Mapped Address (Type 19)\nThis structure provides the address mapping for a Physical Memory Array. Details are provided in Table 84.\nOne structure is present for each contiguous address range described.\nSee 7.17, 7.18, and 7.21 for more information.",
-      "table_name": "Table 84 Memory Array Mapped Address (Type 19) structure",
+      "table_name": "Memory Array Mapped Address (Type 19) structure",
+      "table_num": "Table 84",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -7420,7 +7501,8 @@
     },
     {
       "context": "7.21 Memory Device Mapped Address (Type 20)\nThis structure maps memory address space usually to a device-level granularity. Details are provided in Table 85.\nOne structure is present for each contiguous address range described.\nNOTE A Memory Device Mapped Address structure is provided only if a Memory Device has a mapped address; there is no provision within this structure to map a zero-length address space.\nSee 7.17, 7.18, and 7.21 for more information.",
-      "table_name": "Table 85 Memory Device Mapped Address (Type 20) structure",
+      "table_name": "Memory Device Mapped Address (Type 20) structure",
+      "table_num": "Table 85",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -7533,7 +7615,8 @@
     },
     {
       "context": "7.22 Built-in Pointing Device (Type 21)\nThis structure describes the attributes of the built-in pointing device for the system. Details are provided in Table 86.\nThe presence of this structure does not imply that the built-in pointing device is active for the system’s use.\nTable 86 - Built-in Pointing Device (Type 21) structure",
-      "table_name": "Table 86 - Built-in Pointing Device (Type 21)",
+      "table_name": "Built",
+      "table_num": "Table 86",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -7597,7 +7680,8 @@
       "children": [
         {
           "context": "7.22.1 Pointing Device — Type\nTable 87 shows what the byte values mean for the Pointing Device — Type field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.\nTable 87 - Pointing Device: Type field",
-          "table_name": "Table 87 Pointing Device: Type field",
+          "table_name": "Pointing Device: Type field",
+          "table_num": "Table 87",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7645,7 +7729,8 @@
         },
         {
           "context": "7.22.2 Pointing Device — Interface\nTable 88 shows what the byte values mean for the Pointing Device — Interface field.",
-          "table_name": "Table 88 Pointing Device: Interface field",
+          "table_name": "Pointing Device: Interface field",
+          "table_num": "Table 88",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7703,7 +7788,8 @@
     },
     {
       "context": "7.23 Portable Battery (Type 22)\nThis structure describes the attributes of the portable battery or batteries for the system. The structure contains the static attributes for the group. Each structure describes a single battery pack's attributes. Details are provided in Table 89.",
-      "table_name": "Table 89 Portable Battery (Type 22) structure",
+      "table_name": "Portable Battery (Type 22) structure",
+      "table_num": "Table 89",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -7863,7 +7949,8 @@
       "children": [
         {
           "context": "7.23.1 Portable Battery — Device Chemistry\nTable 90 shows what the byte values mean for the Portable Battery — Device Chemistry field.\nNOTE Refer to 6.3 for the CIM properties associated with this enumerated value.",
-          "table_name": "Table 90 Portable Battery: Device Chemistry field",
+          "table_name": "Portable Battery: Device Chemistry field",
+          "table_num": "Table 90",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -7909,7 +7996,8 @@
     },
     {
       "context": "7.24 System Reset (Type 23)\nThis structure describes whether Automatic System Reset functions are enabled (<i>Status</i>). Details are provided in Table 91.\nIf the system has a watchdog timer and the timer is not reset (Timer Reset) before the Interval elapses, an automatic system reset occurs. The system re-boots according to the Boot Option. This function may repeat until the Limit is reached, at which time the system re-boots according to the Boot Option at Limit.\nNOTE    This structure type was added for version 2.2 of this specification.\nTable 91 - System Reset (Type 23) structure",
-      "table_name": "Table 91 - System Reset (Type 23)",
+      "table_name": "System Reset (Type 23)",
+      "table_num": "Table 91",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -7981,7 +8069,8 @@
     },
     {
       "context": "7.25 Hardware Security (Type 24)\nThis structure describes the system-wide hardware security settings. Details are provided in Table 92.\nNOTE    This structure type was added in version 2.2 of this specification.\nTable 92 - Hardware Security (Type 24) structure",
-      "table_name": "Table 92 - Hardware Security (Type 24)",
+      "table_name": "Hardware Security (Type 24)",
+      "table_num": "Table 92",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -8025,7 +8114,8 @@
     },
     {
       "context": "7.26 System Power Controls (Type 25)\nThis structure describes the attributes for controlling the main power supply to the system. Details are provided in Table 93.\nSoftware that interprets this structure uses the month, day, hour, minute, and second values to determine the number of seconds until the next power-on of the system. The presence of this structure implies that a timed power-on facility is available for the system.\nNOTE    This structure type was added in version 2.2 of the specification.\nTable 93 - System Power Controls (Type 25) structure",
-      "table_name": "Table 93 - System Power Controls (Type 25)",
+      "table_name": "System Power Controls (Type 25)",
+      "table_num": "Table 93",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -8097,7 +8187,8 @@
     },
     {
       "context": "The DMTF System Power Controls group contains a Next Scheduled Power-on Time, specified as the number of seconds until the next scheduled power-on of the system. Management software uses the date and time information specified in the associated SMBIOS structure to calculate the total number of seconds.\nAny date or time field in the structure whose value is outside of the field’s specified range does not contribute to the total-seconds count. For example, if the Month field contains the value 0xFF the next power-on is scheduled to fall within the next month, perhaps on a specific day-of-month and time.\n7.27 Voltage Probe (Type 26)\nThis describes the attributes for a voltage probe in the system. Each structure describes a single voltage probe. Details are provided in Table 94.\nNOTE This structure type was added in version 2.2 of this specification.",
-      "table_name": "Table 94 Voltage Probe (Type 26) structure",
+      "table_name": "Voltage Probe (Type 26) structure",
+      "table_num": "Table 94",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -8196,7 +8287,8 @@
       "children": [
         {
           "context": "7.27.1 Voltage Probe — Location and Status\nTable 95 provides details about the Location and Status fields.",
-          "table_name": "Table 95 Voltage Probe: Location and Status fields",
+          "table_name": "Voltage Probe: Location and Status fields",
+          "table_num": "Table 95",
           "type": "BitRange",
           "headers": [
             "Bit Range",
@@ -8314,7 +8406,8 @@
     },
     {
       "context": "7.28 Cooling Device (Type 27)\nThis structure describes the attributes for a cooling device in the system. Each structure describes a single cooling device. Details are provided in Table 96.\nNOTE    This structure type was added in version 2.2 of this specification.\nTable 96 - Cooling Device (Type 27) structure",
-      "table_name": "Table 96 - Cooling Device (Type 27)",
+      "table_name": "Cooling Device (Type 27)",
+      "table_num": "Table 96",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -8402,7 +8495,8 @@
       "children": [
         {
           "context": "7.28.1 Cooling Device — Device Type and Status\nTable 97 provides details about the Device Type and Status fields.\nTable 97 - Cooling Device: Device Type and Status fields",
-          "table_name": "Table 97 Cooling Device: Device Type and Status fields",
+          "table_name": "Cooling Device: Device Type and Status fields",
+          "table_num": "Table 97",
           "type": "BitRange",
           "headers": [
             "Bit Range",
@@ -8520,7 +8614,8 @@
     },
     {
       "context": "7.29 Temperature Probe (Type 28)\nThis structure describes the attributes for a temperature probe in the system. Each structure describes a single temperature probe. Table 98 provides details.\nNOTE This structure type was added in version 2.2 of this specification.\nTable 98 - Temperature Probe (Type 28) structure",
-      "table_name": "Table 98 - Temperature Probe (Type 28)",
+      "table_name": "Temperature Probe (Type 28)",
+      "table_num": "Table 98",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -8619,7 +8714,8 @@
       "children": [
         {
           "context": "7.29.1 Temperature Probe — Location and Status\nTable 99 provides details about the Location and Status fields.\nNOTE Refer to 6.3 for the CIM properties associated with these enumerated values.\nTable 99 - Temperature Probe: Location and Status field",
-          "table_name": "Table 99 Temperature Probe: Location and Status field",
+          "table_name": "Temperature Probe: Location and Status field",
+          "table_num": "Table 99",
           "type": "BitRange",
           "headers": [
             "Bit Range",
@@ -8761,7 +8857,8 @@
     },
     {
       "context": "7.30 Electrical Current Probe (Type 29)\nThis structure describes the attributes for an electrical current probe in the system. Each structure describes a single electrical current probe. Table 100 provides details.\nNOTE This structure type was added in version 2.2 of this specification.\nTable 100 - Electrical Current Probe (Type 29) structure",
-      "table_name": "Table 100 - Electrical Current Probe (Type 29)",
+      "table_name": "Electrical Current Probe (Type 29)",
+      "table_num": "Table 100",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -8860,7 +8957,8 @@
       "children": [
         {
           "context": "7.30.1 Current Probe — Location and Status\nTable 101 provides details about the Location and Status fields.\nNOTE Refer to 6.3 for the CIM properties associated with these enumerated values.\nTable 101 - Current Probe: Location and Status field",
-          "table_name": "Table 101 Current Probe: Location and Status field",
+          "table_name": "Current Probe: Location and Status field",
+          "table_num": "Table 101",
           "type": "BitRange",
           "headers": [
             "Bit Range",
@@ -8978,7 +9076,8 @@
     },
     {
       "context": "7.31 Out-of-Band Remote Access (Type 30)\nThis structure describes the attributes and policy settings of a hardware facility that may be used to gain remote access to a hardware system when the operating system is not available due to power-down status, hardware failures, or boot failures. Details are provided in Table 102.\nNOTE This structure type was added in version 2.2 of this specification.\nTable 102 - Out-of-Band Remote Access (Type 30) structure",
-      "table_name": "Table 102 - Out-of-Band Remote Access (Type 30)",
+      "table_name": "Out",
+      "table_num": "Table 102",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9029,7 +9128,8 @@
     },
     {
       "context": "NOTE This structure type was added in version 2.3 of this specification.\n7.33 System Boot Information (Type 32)\nThe client system firmware (for example, BIOS) communicates the System Boot Status to the client’s Pre-boot Execution Environment (PXE) boot image or OS-present management application through this structure. Table 103 provides details on this structure.\nWhen used in the PXE environment, for example, this code identifies the reason the PXE was initiated and can be used by boot-image software to further automate an enterprise’s PXE sessions. For example, an enterprise could choose to automatically download a hardware-diagnostic image to a client whose reason code indicated either a firmware- or an operating system-detected hardware failure.\nNOTE This structure type was added in version 2.3 of this specification.",
-      "table_name": "Table 103 System Boot Information (Type 32) structure",
+      "table_name": "System Boot Information (Type 32) structure",
+      "table_num": "Table 103",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9079,7 +9179,8 @@
       "children": [
         {
           "context": "7.33.1 System boot status\nTable 104 provides information about system boot status.\nTable 104 - System boot status",
-          "table_name": "Table 104 System boot status",
+          "table_name": "System boot status",
+          "table_num": "Table 104",
           "type": "",
           "headers": [
             "Description",
@@ -9154,7 +9255,8 @@
     },
     {
       "context": "7.34 64-Bit Memory Error Information (Type 33)\nThis structure describes an error within a Physical Memory Array, when the error address is above 4G (0xFFFFFFFF). Table 105 provides details.\nNOTE This structure type was added in version 2.3 of this specification.\nTable 105 - 64-Bit Memory Error Information (Type 33) structure",
-      "table_name": "Table 105 - 64-Bit Memory Error Information (Type 33)",
+      "table_name": "64",
+      "table_num": "Table 105",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9240,7 +9342,8 @@
     },
     {
       "context": "7.35 Management Device (Type 34)\nThe information in this structure defines the attributes of a Management Device. Table 106 provides details.\nA Management Device might control one or more fans or voltage, current, or temperature probes as defined by one or more Management Device Component structures. See 7.36 for more information.\nNOTE This structure type was added in version 2.3 of this specification.\nTable 106 - Management Device (Type 34) structure",
-      "table_name": "Table 106 - Management Device (Type 34)",
+      "table_name": "Management Device (Type 34)",
+      "table_num": "Table 106",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9304,7 +9407,8 @@
       "children": [
         {
           "context": "7.35.1 Management Device — Type\nTable 107 shows what the byte values mean for the Management Device — Type field.\nTable 107 - Management Device: Type field",
-          "table_name": "Table 107 Management Device: Type field",
+          "table_name": "Management Device: Type field",
+          "table_num": "Table 107",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -9368,7 +9472,8 @@
         },
         {
           "context": "7.35.2 Management Device — Address Type\nTable 108 shows what the byte values mean for the Management Device — Address Type field.",
-          "table_name": "Table 108 Management Device: Address Type field",
+          "table_name": "Management Device: Address Type field",
+          "table_num": "Table 108",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -9402,7 +9507,8 @@
     },
     {
       "context": "7.36 Management Device Component (Type 35)\nThis structure associates a cooling device or environmental probe with structures that define the controlling hardware device and (optionally) the component’s thresholds. Table 109 provides details.\nNOTE This structure type was added in version 2.3 of this specification.",
-      "table_name": "Table 109 Management Device Component (Type 35) structure",
+      "table_name": "Management Device Component (Type 35) structure",
+      "table_num": "Table 109",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9467,7 +9573,8 @@
     },
     {
       "context": "The information in this structure defines threshold information for a component (probe or cooling-unit) contained within a Management Device. Table 110 provides details.\nFor each threshold field present in the structure:\n• The threshold units (millivolts, millamps, 1/10^{th} degrees C, or RPMs) are as defined by the associated probe or cooling-unit component structure.\n• If the value is unavailable, the field is set to 0x8000.\nNOTE This structure type was added in version 2.3 of this specification.",
-      "table_name": "Table 110 Management Device Threshold Data (Type 36) structure",
+      "table_name": "Management Device Threshold Data (Type 36) structure",
+      "table_num": "Table 110",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9546,7 +9653,8 @@
     },
     {
       "context": "7.38 Memory Channel (Type 37)\nThe information in this structure provides the correlation between a Memory Channel and its associated Memory Devices. Table 111 provides details.\nEach device presents one or more loads to the channel; the sum of all device loads cannot exceed the channel’s defined maximum.\nNOTE This structure type was added in version 2.3 of this specification.\nTable 111 - Memory Channel (Type 37) structure",
-      "table_name": "Table 111 - Memory Channel (Type 37)",
+      "table_name": "Memory Channel (Type 37)",
+      "table_num": "Table 111",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9631,7 +9739,8 @@
       "children": [
         {
           "context": "7.38.1 Memory Channel — Channel Type\nTable 112 shows what the byte values mean for the Memory Channel — Channel Type field.\nNOTE: Enumerated values are controlled by the DMTF, not by this specification.\nTable 112 - Memory Channel: Channel Type field",
-          "table_name": "Table 112 Memory Channel: Channel Type field",
+          "table_name": "Memory Channel: Channel Type field",
+          "table_num": "Table 112",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -9661,7 +9770,8 @@
     },
     {
       "context": "7.39 IPMI Device Information (Type 38)\nThe information in this structure defines the attributes of an Intelligent Platform Management Interface (IPMI) Baseboard Management Controller (BMC). Table 113 provides the details about this structure. Refer to the <i>Intelligent Platform Management Interface (IPMI) Interface Specification</i> for full documentation of IPMI and additional information on the use of this structure.\nThe Type 42 structure can also be used to describe a physical management controller host interface and one or more protocols that share that interface. If IPMI is not shared with other protocols, either the Type 38 or the Type 42 structures can be used. Providing Type 38 is recommended for backward compatibility. See 7.43 for additional information on Type 42.\nTable 113 - IPMI Device Information (Type 38) Structure",
-      "table_name": "Table 113 - IPMI Device Information (Type 38)",
+      "table_name": "IPMI Device Information (Type 38)",
+      "table_num": "Table 113",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9746,7 +9856,8 @@
       "children": [
         {
           "context": "7.39.1 IPMI Device Information — BMC Interface Type\nTable 114 shows what the byte values mean for the IPMI Device Information — BMC Interface Type field.",
-          "table_name": "Table 114 IPMI Device Information: BMC Interface Type field",
+          "table_name": "IPMI Device Information: BMC Interface Type field",
+          "table_num": "Table 114",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -9784,7 +9895,8 @@
     },
     {
       "context": "7.40 System Power Supply (Type 39)\nThis structure identifies attributes of a system power supply. Table 115 provides details. One instance of this structure is present for each possible power supply in a system.\nNOTE This structure type was added in version 2.3.1 of this specification.\nTable 115 - System Power Supply (Type 39) structure",
-      "table_name": "Table 115 - System Power Supply (Type 39)",
+      "table_name": "System Power Supply (Type 39)",
+      "table_num": "Table 115",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -9911,7 +10023,8 @@
       "children": [
         {
           "context": "7.40.1 Power supply characteristics\nTable 116 provides information about power supply characteristics.\nNOTE    Refer to 6.3 for the CIM properties associated with these enumerated values.",
-          "table_name": "Table 116 Power supply characteristics",
+          "table_name": "Power supply characteristics",
+          "table_num": "Table 116",
           "type": "BitRange",
           "headers": [
             "Bit Range",
@@ -9953,7 +10066,8 @@
     },
     {
       "context": "7.41 Additional Information (Type 40)\nThis structure is intended to provide additional information for handling unspecified enumerated values and interim field updates in another structure. Table 117 provides details.\nNOTE    This structure type was added in version 2.6 of this specification.\nTable 117 - Additional Information (Type 40) structure",
-      "table_name": "Table 117 - Additional Information (Type 40)",
+      "table_name": "Additional Information (Type 40)",
+      "table_num": "Table 117",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10003,7 +10117,8 @@
       "children": [
         {
           "context": "7.41.1 Additional Information Entry format\nTable 118 describes an Additional Information Entry format.\nTable 118 - Additional Information Entry format",
-          "table_name": "Table 118 Additional Information Entry format",
+          "table_name": "Additional Information Entry format",
+          "table_num": "Table 118",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -10055,7 +10170,8 @@
     },
     {
       "context": "- The Additional Information Entry String field should be filled so as to uniquely describe what needs to be modified (for example, “XYZ capability needs to be defined”).\n7.42 Onboard Devices Extended Information (Type 41)\nThe information in this structure defines the attributes of devices that are onboard (soldered onto) a system element, usually the baseboard. Table 119 provides details.\nIn general, an entry in this table implies that the BIOS has some level of control over the enablement of the associated device for use by the system.\nNOTE This structure replaces Onboard Device Information (Type 10) starting with version 2.6 of this specification. BIOS providers can choose to implement both types to allow existing SMBIOS browsers to properly display the system’s onboard devices information.",
-      "table_name": "Table 119 Onboard Devices Extended Information (Type 41) structure",
+      "table_name": "Onboard Devices Extended Information (Type 41) structure",
+      "table_num": "Table 119",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10133,7 +10249,8 @@
       "children": [
         {
           "context": "7.42.1 Reference Designation\nThe Reference Designation string is typically the silkscreen label.\n7.42.2 Onboard Device Types\nTable 120 shows what the byte values mean for the Onboard Device Types field.",
-          "table_name": "Table 120 Onboard Device Types field",
+          "table_name": "Onboard Device Types field",
+          "table_num": "Table 120",
           "type": "Enum",
           "headers": [
             "Byte Value",
@@ -10187,7 +10304,8 @@
     },
     {
       "context": "The information in this structure defines the attributes of a Management Controller Host Interface that is not discoverable by “Plug and Play” mechanisms. Table 121 provides details. The Type 42 structure can be used to describe a physical management controller host interface and one or more protocols that share that interface.\nType 42 should be used for management controller host interfaces that use protocols other than IPMI or that use multiple protocols on a single host interface type.\nThis structure should also be provided if IPMI is shared with other protocols over the same interface hardware. If IPMI is not shared with other protocols, either the Type 38 or the Type 42 structures can be used. Providing Type 38 is recommended for backward compatibility. The structures are not required to\nbe mutually exclusive. Type 38 and Type 42 structures may be implemented simultaneously to provide backward compatibility with IPMI applications or drivers that do not yet recognize the Type 42 structure. Refer to the Intelligent Platform Management Interface (IPMI) Interface Specification for full documentation of IPMI and additional information on the use of this structure with IPMI.\nTable 121 - Management Controller Host Interface (Type 42) structure",
-      "table_name": "Table 121 - Management Controller Host Interface (Type 42)",
+      "table_name": "Management Controller Host Interface (Type 42)",
+      "table_num": "Table 121",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10258,7 +10376,8 @@
       "children": [
         {
           "context": "In SMBIOS 3.2, a Change Request is applied to this structure to add the missing information that is needed to parse the structure completely. The addition of the Interface Type Specific Data Length field may cause parser (prior to SMBIOS 3.2) compatibility issue when Interface Type = OEM. Prior to SMBIOS 3.2, when Interface Type = OEM, the first four bytes following the Interface Type field is the IANA-assigned vendor ID.\nTable 122 - Protocol Record Data Format",
-          "table_name": "Table 122 Protocol Record Data Format",
+          "table_name": "Protocol Record Data Format",
+          "table_num": "Table 122",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -10294,7 +10413,8 @@
         },
         {
           "context": "7.43.1 Management Controller Host Interface - Interface Types\nTable 123 describes the possible values for the Interface Type field.\nTable 123 - Management Controller Host Interface Types",
-          "table_name": "Table 123 Management Controller Host Interface Types",
+          "table_name": "Management Controller Host Interface Types",
+          "table_num": "Table 123",
           "type": "",
           "headers": [
             "Value",
@@ -10322,7 +10442,8 @@
         },
         {
           "context": "7.43.2 Management Controller Host Interface - Protocol Types\nTable 124 describes the possible values for the Protocol 1...n Type fields.\nTable 124 - Management Controller Host Interface Protocol Types",
-          "table_name": "Table 124 Management Controller Host Interface Protocol Types",
+          "table_name": "Management Controller Host Interface Protocol Types",
+          "table_num": "Table 124",
           "type": "",
           "headers": [
             "Value",
@@ -10364,7 +10485,8 @@
     },
     {
       "context": "7.44 TPM Device (Type 43)\nTable 125 - TPM Device (Type 43) structure",
-      "table_name": "Table 125 - TPM Device (Type 43)",
+      "table_name": "TPM Device (Type 43)",
+      "table_num": "Table 125",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10456,7 +10578,8 @@
       "children": [
         {
           "context": "7.44.1 TPM Device Characteristics\nTable 126 - TPM Device Characteristics",
-          "table_name": "Table 126 TPM Device Characteristics",
+          "table_name": "TPM Device Characteristics",
+          "table_num": "Table 126",
           "type": "BitField",
           "headers": [
             "DWORD Bit Position",
@@ -10498,7 +10621,8 @@
     },
     {
       "context": "7.45 Processor Additional Information (Type 44)\nThe information in this structure defines the processor additional information in case SMBIOS type 4 is not sufficient to describe processor characteristics. The SMBIOS type 44 structure has a reference handle field to link back to the related SMBIOS type 4 structure. There may be multiple SMBIOS type 44 structures linked to the same SMBIOS type 4 structure. For example, when cores are not identical in a processor, SMBIOS type 44 structures describe different core-specific information.\nSMBIOS type 44 defines the standard header for the processor-specific block (see 7.45.1), while the contents of processor-specific data are maintained by processor architecture workgroups or vendors in separate documents (see 7.45.2).\nTable 127 -Processor Additional Information (Type 44) structure",
-      "table_name": "Table 127 -Processor Additional Information (Type 44)",
+      "table_name": "Processor Additional Information (Type 44)",
+      "table_num": "Table 127",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10548,7 +10672,8 @@
       "children": [
         {
           "context": "7.45.1 Processor-specific Block\nThe <i>Processor-specific Block</i> is the standard container of processor-specific data.\nTable 128 - Processor-Specific Block Format",
-          "table_name": "Table 128 Processor-Specific Block Format",
+          "table_name": "Processor-Specific Block Format",
+          "table_num": "Table 128",
           "type": "Struct",
           "headers": [
             "Offset",
@@ -10577,7 +10702,8 @@
         },
         {
           "context": "Table 129 - Processor Architecture Types",
-          "table_name": "Table 129 Processor Architecture Types",
+          "table_name": "Processor Architecture Types",
+          "table_num": "Table 129",
           "type": "",
           "headers": [
             "Byte value",
@@ -10637,7 +10763,8 @@
     },
     {
       "context": "This structure definition supports a system implementation where the SMBIOS structure-table is a superset of all supported system attributes and provides a standard mechanism for the system BIOS to signal that a structure is currently inactive and should not be interpreted by the upper-level software. Table 130 provides details.\nFor example, a portable system might include System Slot structures that are reported only when the portable is docked. An undocked system would report those structures as Inactive. When the system is docked, the system-specific software would change the Type structure from Inactive to the System Slot equivalent.\nUpper-level software that interprets the SMBIOS structure-table should bypass an Inactive structure just as it would for a structure type that the software does not recognize.\nNOTE This structure type was added in version 2.2 of this specification.\nTable 130 - Inactive (Type 126) structure",
-      "table_name": "Table 130 - Inactive (Type 126)",
+      "table_name": "Inactive (Type 126)",
+      "table_num": "Table 130",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10674,7 +10801,8 @@
     },
     {
       "context": "7.47 End-of-Table (Type 127)\nThis structure type identifies the end of the structure table that might be earlier than the last byte within the buffer specified by the structure. Table 131 provides details.\nTo ensure backward compatibility with management software written to previous versions of this specification, a system implementation should use the end-of-table indicator in a manner similar to the Inactive (Type 126) structure type; the structure table is still reported as a fixed-length, and the entire length of the table is still indexable. If the end-of-table indicator is used in the last physical structure in a table, the field’s length is encoded as 4.\nNOTE This structure type was added in version 2.2 of this specification.",
-      "table_name": "Table 131 End-of-Table (Type 127) structure",
+      "table_name": "End-of-Table (Type 127) structure",
+      "table_num": "Table 131",
       "type": "Struct",
       "headers": [
         "Offset",
@@ -10711,6 +10839,7 @@
         {
           "context": "return handle;\n} /* END FindStructure */\nANNEX C\n(informative)\nChange log",
           "table_name": "",
+          "table_num": "",
           "type": "",
           "headers": [
             "Version",
