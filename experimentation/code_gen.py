@@ -98,15 +98,24 @@ class CodeGenerator():
         
         tables = self.json_struct["tables"]
         for table in tables:
-            self.gen_struct_table(table)
+            self._gen_struct_table(table)
         
         code = "package GeneratedCode\n\n"
         for struct in self.structs:
             code += struct.gen_struct_string()
             code += "\n"
-        return code
+        
+        outfile = self.dest_dir.joinpath(self._gen_output_filename())
+        with open(outfile,"w") as f:
+            f.write(code)
+    
 
-    def gen_struct_table(self,table:dict):
+    def _gen_output_filename(self) -> str:
+        version:str = self.json_struct["DocumentInfo"]["Version"]
+        version = version.replace(".","_")
+        return f"smbios_{version}.go"
+
+    def _gen_struct_table(self,table:dict):
         struct = GoStruct(table)
         self.structs.append(struct)
         

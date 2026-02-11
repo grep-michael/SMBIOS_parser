@@ -74,6 +74,7 @@ class ParsedTable:
 TABLETYPE_STRUCT = "Struct"
 TABLETYPE_ENUM = "Enum"
 TABLETYPE_BITFIELD = "BitField"
+TABLETYPE_BITRANGE = "BitRange"
 
 class SMBIOSParser:
     """
@@ -192,8 +193,11 @@ class SMBIOSParser:
         if "value" in headers[0] and "meaning" in headers[-1]:
             return TABLETYPE_ENUM
         
-        if ("bit position" in headers[0] or "bit range" in headers[0]):# and "meaning" in headers[-1]:
+        if "bit position" in headers[0]:
             return TABLETYPE_BITFIELD
+        
+        if "bit range" in headers[0]:
+            return TABLETYPE_BITRANGE
         
         if set(["offset", "name", "length", "value", "description"]).issubset(headers):
             return TABLETYPE_STRUCT

@@ -2,7 +2,7 @@
   "DocumentInfo": {
     "Version": "3.3.0",
     "DocumentName": "DSP0134",
-    "File": "DSP0134_3.3.0.md"
+    "File": "data/DSP0134_3.3.0.md"
   },
   "stats": {
     "total_html_table_blocks": 212,
@@ -2699,7 +2699,7 @@
         {
           "context": "For ARM64-class CPUs, the Processor ID field contains two DWORD-formatted values. The first (offsets 08h-0Bh) is the contents of the MIDR_EL1 register; the second (offsets 0Ch-0Fh) is zero.\n7.5.3.4 RISC-V-class CPUs\nFor RISC-V class CPUs, the processor ID contains a QWORD Machine Vendor ID CSR (mvendorid) of RISC-V processor hart 0. More information of RISC-V class CPU feature is described in RISC-V processor additional information (SMBIOS structure Type 44, 7.45).\n7.5.4 Processor Information — Voltage\nTwo forms of information can be specified by the SMBIOS in this field, dependent on the value present in bit 7 (the most-significant bit). If bit 7 is 0 (legacy mode), the remaining bits of the field represent the specific voltages that the processor socket can accept, as shown in Table 24.",
           "table_name": "Table 24 Processor Information: Voltage field",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Byte Bit Range",
             "Meaning"
@@ -3518,7 +3518,7 @@
         {
           "context": "7.7.2 Memory Module Information — Memory Size\nThe Size fields of the Memory Module Configuration Information structure define the amount of memory currently installed (and enabled) in a memory-module connector. Table 35 shows the meaning of the bytes and bits in the Memory Size field.\nThe Installed Size fields identify the size of the memory module that is installed in the socket, as determined by reading and correlating the module’s presence-detect information. If the system does not support presence-detect mechanisms, the Installed Size field is set to 7Dh to indicate that the installed size is not determinable. The Enabled Size field identifies the amount of memory currently enabled for the system’s use from the module. If a module is known to be installed in a connector, but all memory in the module has been disabled due to error, the Enabled Size field is set to 7Eh.",
           "table_name": "Table 35 Memory Module Information: Memory Size field",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Byte Bit Range",
             "Meaning"
@@ -8197,7 +8197,7 @@
         {
           "context": "7.27.1 Voltage Probe — Location and Status\nTable 95 provides details about the Location and Status fields.",
           "table_name": "Table 95 Voltage Probe: Location and Status fields",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Bit Range",
             "Field Name",
@@ -8403,7 +8403,7 @@
         {
           "context": "7.28.1 Cooling Device — Device Type and Status\nTable 97 provides details about the Device Type and Status fields.\nTable 97 - Cooling Device: Device Type and Status fields",
           "table_name": "Table 97 Cooling Device: Device Type and Status fields",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Bit Range",
             "Field Name",
@@ -8620,7 +8620,7 @@
         {
           "context": "7.29.1 Temperature Probe — Location and Status\nTable 99 provides details about the Location and Status fields.\nNOTE Refer to 6.3 for the CIM properties associated with these enumerated values.\nTable 99 - Temperature Probe: Location and Status field",
           "table_name": "Table 99 Temperature Probe: Location and Status field",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Bit Range",
             "Field Name",
@@ -8861,7 +8861,7 @@
         {
           "context": "7.30.1 Current Probe — Location and Status\nTable 101 provides details about the Location and Status fields.\nNOTE Refer to 6.3 for the CIM properties associated with these enumerated values.\nTable 101 - Current Probe: Location and Status field",
           "table_name": "Table 101 Current Probe: Location and Status field",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Bit Range",
             "Field Name",
@@ -9912,7 +9912,7 @@
         {
           "context": "7.40.1 Power supply characteristics\nTable 116 provides information about power supply characteristics.\nNOTE    Refer to 6.3 for the CIM properties associated with these enumerated values.",
           "table_name": "Table 116 Power supply characteristics",
-          "type": "BitField",
+          "type": "BitRange",
           "headers": [
             "Bit Range",
             "Meaning"
