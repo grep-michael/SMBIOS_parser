@@ -44,7 +44,9 @@ class StructField():
     
     def _gen_type(self)->str:
         length = self.row["length"]
-        return TYPE_MAP.get(length,"byte")
+        if length not in TYPE_MAP:
+            print(length)
+        return TYPE_MAP.get(length,length)
 
     def gen_field_string(self) -> str:
         return f"{self.name} {self.type} {self.comment}" 
@@ -79,7 +81,10 @@ class GoStruct():
     def gen_struct_string(self) -> str:
         definition = f"type {self.StructName} struct {{\n"
         for row in self.fields:
+            if row.name == "":
+                continue
             field = row.gen_field_string()
+            
             definition += f"\t{field}\n"
         definition+= "}"
         return definition

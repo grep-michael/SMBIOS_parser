@@ -10,7 +10,7 @@
     "total_parsed_tables": 126,
     "main_tables": 44,
     "child_tables": 76,
-    "total_data_rows": 1523
+    "total_data_rows": 1526
   },
   "tables": [
     {
@@ -334,6 +334,10 @@
             {
               "byte_bit_position": "Bit 0",
               "meaning_if_set": "BIOS Boot Specification is supported."
+            },
+            {
+              "byte_bit_position": "Bit",
+              "meaning_if_set": "Description"
             },
             {
               "byte_bit_position": "Bit 1",
@@ -3170,6 +3174,13 @@
           "description": "See 7.7.2."
         },
         {
+          "offset": "0Bh",
+          "name": "Error Status",
+          "length": "BYTE",
+          "value": "Varies",
+          "description": "Bits 7:3"
+        },
+        {
           "offset": "",
           "name": "",
           "length": "",
@@ -4720,6 +4731,13 @@
           "length": "BYTE",
           "value": "Varies",
           "description": "Bit 7 Devicen Status\n1 - Device Enabled\n0 - Device Disabled\nBits 6:0 Type of Device (see 7.11.1)"
+        },
+        {
+          "offset": "5+2*(n-1)",
+          "name": "Description String",
+          "length": "BYTE",
+          "value": "STRING",
+          "description": "String number of device description"
         }
       ],
       "line": 6071,

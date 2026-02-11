@@ -338,6 +338,12 @@ class SMBIOSParser:
         """
         Parse a group of consecutive table blocks into a single ParsedTable.
         Merges continuation blocks and deduplicates headers.
+
+        the olmocr model will put tables that extend across pages into multiple table segments
+        so we make the assumption that all consecutive tables are actually ment to be one table
+
+        Another fun quark, the dmtf.org guys will sometimes forget to add the table headers to a continued table
+        this throws the algorithum off
         """
         all_rows: list[list[str]] = []
         header_row: list[str] | None = None
@@ -351,7 +357,11 @@ class SMBIOSParser:
                 header_row = [cell.strip() for cell in rows[0]]
                 all_rows.extend(rows)
             else:
-                all_rows.extend(rows)
+                if header_row != None and rows[0] == header_row: 
+                    #if we already have a header, and the first of this table matches the headers, we skip it
+                    all_rows.extend(rows[1:])
+                else:
+                    all_rows.extend(rows)
 
         if header_row is None:
             return None
