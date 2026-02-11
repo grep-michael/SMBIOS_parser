@@ -19,6 +19,20 @@ TYPE_MAP = {
     "QWORD":"uint64"
 }
 
+DESIRED_TYPES = [
+    "0",
+    "1",
+    "3",
+    "4",
+    "16",
+    "17",
+    "22",
+    "24",
+    "39",
+    "126",
+    "127"
+]
+
 def FilterName(name:str) -> str:
     chacters_to_remove = " ()-,./"#[" ","(",")","-",]
     for c in chacters_to_remove:
@@ -55,14 +69,20 @@ class GoStruct():
     def __init__(self,table:dict):
         self.table = table
         self.StructName: str = ""
+        self.StructNumber:str = ""
         self.fields:list[StructField] = []
         self._gen_name()
         self._gen_fields()
 
+
     def _gen_name(self):
-        name:str = self.table["table_name"].replace(" ","")
+        #name:str = self.table["table_name"].replace(" ","")
+        name:str = self.table["rows"][0]["description"]
+        struct_num:str = self.table["rows"][0]["value"]
+
         self.StructName = FilterName(name)
-        self.StructName = "S_" + self.StructName.replace("structure","").replace("Structure","")
+        self.StructName = "S_" + struct_num + "_" + self.StructName#.replace("structure","").replace("Structure","")
+        self.StructNumber = struct_num
 
     def _gen_fields(self):
         rows:list = self.table["rows"]
@@ -84,6 +104,8 @@ class GoStruct():
         definition = f"type {self.StructName} struct {{\n"
         for row in self.fields:
             field = row.gen_field_string()
+            if "interface" in field:
+                print(self.StructName, field) 
             definition += f"\t{field}\n"
         definition+= "}"
         return definition
@@ -106,6 +128,8 @@ class CodeGenerator():
         
         code = "package GeneratedCode\n\n"
         for struct in self.structs:
+            if struct.StructNumber not in DESIRED_TYPES:
+                continue
             code += struct.gen_struct_string()
             code += "\n"
         
