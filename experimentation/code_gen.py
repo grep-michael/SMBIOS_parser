@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import argparse,os,json
+import argparse,os,json,re
 from pathlib import Path
 
 """
@@ -58,23 +58,32 @@ class StructField():
         return comment
     
     def _gen_type(self)->str:
-        length = self.row["length"]
+        length:str = self.row["length"]
         if length not in TYPE_MAP:
             self.comment += " Type:" + length
         
-        type_s = TYPE_MAP.get(length,"interface{}")
+        type_s = TYPE_MAP.get(length,None)
+        if type_s != None:
+            return type_s
         #manual override for bios characteristics
         if self.name == "BIOSCharacteristicsExtensionBytes":
-            type_s = "[2]byte"
-        return type_s
+            return "[2]byte"
+        if self.name == "ContainedElements":
+            return "[3]byte"
+        match = re.match(r"(\d+) bytes",length.lower())
+        if match != None:
+            return f"[{match.group(1)}]byte"
+
+        return "interface{}"
 
     def gen_field_string(self) -> str:
         return f"{self.name} {self.type} {self.comment}" 
 
 class GoStruct():
     def __init__(self,table:dict,smbios_ver:str):
-        self.ver = smbios_ver.replace(".","_")
-        self.table = table
+        self.ver:str = smbios_ver.replace(".","_")
+        self.table:dict = table
+        self.field_names:dict = {}
         self.StructName: str = ""
         self.StructNumber:str = ""
         self.fields:list[StructField] = []
@@ -94,14 +103,14 @@ class GoStruct():
 
     def _gen_fields(self):
         rows:list = self.table["rows"]
-        field_names = {}
+        self.field_names = {}
         count = 0
         for row in rows:
             field = StructField(row)
             if field.name.strip() == "":
                 continue
-            if field.name not in field_names:
-                field_names[field.name] = "present"
+            if field.name not in self.field_names:
+                self.field_names[field.name] = "present"
             else:
                 field.name = field.name + "_" +str(count) 
                 count += 1

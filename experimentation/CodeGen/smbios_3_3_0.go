@@ -25,7 +25,7 @@ type SMB3_3_0_S1_systeminformationindicator struct {
 	ProductName byte //STRING
 	Version byte //STRING
 	SerialNumber byte //STRING
-	UUID interface{} // Type:16 BYTEs
+	UUID [16]byte // Type:16 BYTEs
 	WakeupType byte //ENUM
 	SKUNumber byte //STRING
 	Family byte //STRING
@@ -48,7 +48,7 @@ type SMB3_3_0_S3_systemenclosureindicator struct {
 	NumberofPowerCords byte //
 	ContainedElementCountn byte //
 	ContainedElementRecordLengthm byte //
-	ContainedElements interface{} // Type:n * m BYTES
+	ContainedElements [3]byte // Type:n * m BYTES
 	SKUNumber byte //STRING
 }
 type SMB3_3_0_S4_processorinformationindicator struct {
