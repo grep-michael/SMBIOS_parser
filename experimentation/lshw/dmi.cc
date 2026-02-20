@@ -995,6 +995,7 @@ int dmiversionrev)
   data = buf;
 
   //TODO this is where all the bs happens
+  // How did i not notice that the structs are just all mega evelutions of their previous version, kill me
 
   while (data + sizeof(struct dmi_header) <= (u8 *) buf + len)
   {

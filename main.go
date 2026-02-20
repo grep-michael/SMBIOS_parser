@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -27,14 +26,4 @@ func main() {
 	fmt.Printf("Loading %d test, looking for %d structs\n", *test_index, *desired_struct)
 	test_data := smbiosdata.GetTestData(*test_index)
 	err = test_data.LoadDMITable()
-	printObj(err)
-	printObj(test_data.DMITable.Processors[0].Processor.GetProcessorUpgrade())
-}
-
-func printObj(obj any) {
-	js, err := json.MarshalIndent(obj, "", "  ")
-	if err != nil {
-		log.Println("Error unmarshaling")
-	}
-	fmt.Println(string(js))
 }

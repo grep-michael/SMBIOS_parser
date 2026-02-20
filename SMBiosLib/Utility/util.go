@@ -3,7 +3,10 @@ package utility
 import (
 	"bytes"
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
+	"log"
+	"reflect"
 )
 
 func ParseNullTerminatedStrings(data []byte) []string {
@@ -29,8 +32,24 @@ func ParseNullTerminatedStrings(data []byte) []string {
 
 func ReadIntoStruct(data []byte, obj interface{}) error {
 	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.LittleEndian, obj); err != nil {
-		return fmt.Errorf("failed to read binary data: %w", err)
+	value := reflect.ValueOf(obj).Elem()
+	for i := 0; i < value.NumField(); i++ {
+		field := value.Field(i)
+		if reader.Len() < int(field.Type().Size()) {
+			break
+		}
+		err := binary.Read(reader, binary.LittleEndian, field.Addr().Interface())
+		if err != nil {
+			return fmt.Errorf("field %d: %w", i, err)
+		}
 	}
 	return nil
+}
+
+func PrintObj(obj any) {
+	js, err := json.MarshalIndent(obj, "", "  ")
+	if err != nil {
+		log.Println("Error unmarshaling")
+	}
+	fmt.Println(string(js))
 }
