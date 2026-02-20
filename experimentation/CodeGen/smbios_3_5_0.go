@@ -203,44 +203,8 @@ func (s *SMB3_5_0_S0_biosinformationindicator) GetVendor(strings []string) strin
 	return ""
 }
 
-func (s *SMB3_5_0_S0_biosinformationindicator) GetBIOSVersion(strings []string) string {
-	idx := int(s.BIOSVersion)
-	if idx > 0 && idx <= len(strings) {
-		return strings[idx-1]
-	}
-	return ""
-}
-
 func (s *SMB3_5_0_S0_biosinformationindicator) GetBIOSStartingAddressSegment() uint16 {
 	return s.BIOSStartingAddressSegment
-}
-
-func (s *SMB3_5_0_S0_biosinformationindicator) GetBIOSReleaseDate(strings []string) string {
-	idx := int(s.BIOSReleaseDate)
-	if idx > 0 && idx <= len(strings) {
-		return strings[idx-1]
-	}
-	return ""
-}
-
-func (s *SMB3_5_0_S0_biosinformationindicator) GetBIOSROMSize() byte {
-	return s.BIOSROMSize
-}
-
-func (s *SMB3_5_0_S0_biosinformationindicator) GetBIOSCharacteristics() uint64 {
-	return s.BIOSCharacteristics
-}
-
-func (s *SMB3_5_0_S0_biosinformationindicator) GetBIOSCharacteristicsExtensionBytes() [2]byte {
-	return s.BIOSCharacteristicsExtensionBytes
-}
-
-func (s *SMB3_5_0_S0_biosinformationindicator) GetSystemBIOSMajorRelease() byte {
-	return s.SystemBIOSMajorRelease
-}
-
-func (s *SMB3_5_0_S0_biosinformationindicator) GetSystemBIOSMinorRelease() byte {
-	return s.SystemBIOSMinorRelease
 }
 
 func (s *SMB3_5_0_S0_biosinformationindicator) GetEmbeddedControllerFirmwareMajorRelease() byte {

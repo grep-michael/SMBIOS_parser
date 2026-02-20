@@ -3,14 +3,7 @@ package GeneratedCode
 // BIOS
 type BIOSInfo interface {
 	GetVendor(strings []string) string
-	GetBIOSVersion(strings []string) string
 	GetBIOSStartingAddressSegment() uint16
-	GetBIOSReleaseDate(strings []string) string
-	GetBIOSROMSize() byte
-	GetBIOSCharacteristics() uint64
-	GetBIOSCharacteristicsExtensionBytes() [2]byte
-	GetSystemBIOSMajorRelease() byte
-	GetSystemBIOSMinorRelease() byte
 	GetEmbeddedControllerFirmwareMajorRelease() byte
 	GetEmbeddedControllerFirmwareMinorRelease() byte
 }

@@ -1,23 +1,23 @@
 package GeneratedCode
 
-type SMB3_7_0_S0_biosinformationindicator struct {
+type SMB3_9_0_S0_platformfirmwareinformationindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
 	Vendor byte //STRING
-	BIOSVersion byte //STRING
+	FirmwareVersion byte //STRING
 	BIOSStartingAddressSegment uint16 //
-	BIOSReleaseDate byte //STRING
-	BIOSROMSize byte //
-	BIOSCharacteristics uint64 //Bit Field
-	BIOSCharacteristicsExtensionBytes [2]byte //Bit Field Type:Zero or more BYTEs
-	SystemBIOSMajorRelease byte //
-	SystemBIOSMinorRelease byte //
+	FirmwareReleaseDate byte //STRING
+	FirmwareROMSize byte //
+	FirmwareCharacteristics uint64 //Bit Field
+	FirmwareCharacteristicsExtensionBytes interface{} //Bit Field Type:Zero or more BYTEs
+	PlatformFirmwareMajorRelease byte //
+	PlatformFirmwareMinorRelease byte //
 	EmbeddedControllerFirmwareMajorRelease byte //
 	EmbeddedControllerFirmwareMinorRelease byte //
-	ExtendedBIOSROMSize uint16 //Bit Field
+	ExtendedFirmwareROMSize uint16 //Bit Field
 }
-type SMB3_7_0_S1_systeminformationindicator struct {
+type SMB3_9_0_S1_systeminformationindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -30,7 +30,7 @@ type SMB3_7_0_S1_systeminformationindicator struct {
 	SKUNumber byte //STRING
 	Family byte //STRING
 }
-type SMB3_7_0_S3_systemenclosureindicator struct {
+type SMB3_9_0_S3_systemenclosureindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -50,8 +50,10 @@ type SMB3_7_0_S3_systemenclosureindicator struct {
 	ContainedElementRecordLengthm byte //
 	ContainedElements [3]byte // Type:n * m BYTES
 	SKUNumber byte //STRING
+	RackType byte //
+	RackHeight byte //
 }
-type SMB3_7_0_S4_processorinformationindicator struct {
+type SMB3_9_0_S4_processorinformationindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -82,12 +84,13 @@ type SMB3_7_0_S4_processorinformationindicator struct {
 	CoreEnabled2 uint16 //
 	ThreadCount2 uint16 //
 	ThreadEnabled uint16 //
+	SocketType byte //STRING
 }
-type SMB3_7_0_S9_systemslotstructureindicator struct {
+type SMB3_9_0_S9_systemslotstructureindicator struct {
 	Type byte //
 	Length byte //
 }
-type SMB3_7_0_S16_physicalmemoryarraytype struct {
+type SMB3_9_0_S16_physicalmemoryarraytype struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -99,7 +102,7 @@ type SMB3_7_0_S16_physicalmemoryarraytype struct {
 	NumberofMemoryDevices uint16 //
 	ExtendedMaximumCapacity uint64 //
 }
-type SMB3_7_0_S17_memorydevicetype struct {
+type SMB3_9_0_S17_memorydevicetype struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -143,7 +146,7 @@ type SMB3_7_0_S17_memorydevicetype struct {
 	RCDManufacturerID uint16 //
 	RCDRevisionNumber uint16 //
 }
-type SMB3_7_0_S22_portablebatteryindicator struct {
+type SMB3_9_0_S22_portablebatteryindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -163,13 +166,13 @@ type SMB3_7_0_S22_portablebatteryindicator struct {
 	DesignCapacityMultiplier byte //
 	OEMspecific uint32 //
 }
-type SMB3_7_0_S24_hardwaresecurityindicator struct {
+type SMB3_9_0_S24_hardwaresecurityindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
 	HardwareSecuritySettings byte //
 }
-type SMB3_7_0_S39_powersupplystructureindicator struct {
+type SMB3_9_0_S39_powersupplystructureindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -187,12 +190,12 @@ type SMB3_7_0_S39_powersupplystructureindicator struct {
 	CoolingDeviceHandle uint16 //
 	InputCurrentProbeHandle uint16 //
 }
-type SMB3_7_0_S126_inactivestructureindicator struct {
+type SMB3_9_0_S126_inactivestructureindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
 }
-type SMB3_7_0_S127_endoftableindicator struct {
+type SMB3_9_0_S127_endoftableindicator struct {
 	Type byte //
 	Length byte //
 	Handle uint16 //
@@ -200,7 +203,7 @@ type SMB3_7_0_S127_endoftableindicator struct {
 
 // -- BIOS interface methods --
 
-func (s *SMB3_7_0_S0_biosinformationindicator) GetVendor(strings []string) string {
+func (s *SMB3_9_0_S0_platformfirmwareinformationindicator) GetVendor(strings []string) string {
 	idx := int(s.Vendor)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -208,22 +211,22 @@ func (s *SMB3_7_0_S0_biosinformationindicator) GetVendor(strings []string) strin
 	return ""
 }
 
-func (s *SMB3_7_0_S0_biosinformationindicator) GetBIOSStartingAddressSegment() uint16 {
+func (s *SMB3_9_0_S0_platformfirmwareinformationindicator) GetBIOSStartingAddressSegment() uint16 {
 	return s.BIOSStartingAddressSegment
 }
 
-func (s *SMB3_7_0_S0_biosinformationindicator) GetEmbeddedControllerFirmwareMajorRelease() byte {
+func (s *SMB3_9_0_S0_platformfirmwareinformationindicator) GetEmbeddedControllerFirmwareMajorRelease() byte {
 	return s.EmbeddedControllerFirmwareMajorRelease
 }
 
-func (s *SMB3_7_0_S0_biosinformationindicator) GetEmbeddedControllerFirmwareMinorRelease() byte {
+func (s *SMB3_9_0_S0_platformfirmwareinformationindicator) GetEmbeddedControllerFirmwareMinorRelease() byte {
 	return s.EmbeddedControllerFirmwareMinorRelease
 }
 
 
 // -- System interface methods --
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetManufacturer(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetManufacturer(strings []string) string {
 	idx := int(s.Manufacturer)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -231,7 +234,7 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetManufacturer(strings []strin
 	return ""
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetProductName(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetProductName(strings []string) string {
 	idx := int(s.ProductName)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -239,7 +242,7 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetProductName(strings []string
 	return ""
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetVersion(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetVersion(strings []string) string {
 	idx := int(s.Version)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -247,7 +250,7 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetVersion(strings []string) st
 	return ""
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetSerialNumber(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetSerialNumber(strings []string) string {
 	idx := int(s.SerialNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -255,11 +258,11 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetSerialNumber(strings []strin
 	return ""
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetUUID() [16]byte {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetUUID() [16]byte {
 	return s.UUID
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetWakeupType(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetWakeupType(strings []string) string {
 	idx := int(s.WakeupType)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -267,7 +270,7 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetWakeupType(strings []string)
 	return ""
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetSKUNumber(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetSKUNumber(strings []string) string {
 	idx := int(s.SKUNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -275,7 +278,7 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetSKUNumber(strings []string) 
 	return ""
 }
 
-func (s *SMB3_7_0_S1_systeminformationindicator) GetFamily(strings []string) string {
+func (s *SMB3_9_0_S1_systeminformationindicator) GetFamily(strings []string) string {
 	idx := int(s.Family)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -286,7 +289,7 @@ func (s *SMB3_7_0_S1_systeminformationindicator) GetFamily(strings []string) str
 
 // -- Chassis interface methods --
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetManufacturer(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetManufacturer(strings []string) string {
 	idx := int(s.Manufacturer)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -294,11 +297,11 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetManufacturer(strings []string)
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetType_0() byte {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetType_0() byte {
 	return s.Type_0
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetVersion(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetVersion(strings []string) string {
 	idx := int(s.Version)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -306,7 +309,7 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetVersion(strings []string) stri
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetSerialNumber(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetSerialNumber(strings []string) string {
 	idx := int(s.SerialNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -314,7 +317,7 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetSerialNumber(strings []string)
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetAssetTagNumber(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetAssetTagNumber(strings []string) string {
 	idx := int(s.AssetTagNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -322,7 +325,7 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetAssetTagNumber(strings []strin
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetBootupState(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetBootupState(strings []string) string {
 	idx := int(s.BootupState)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -330,7 +333,7 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetBootupState(strings []string) 
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetPowerSupplyState(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetPowerSupplyState(strings []string) string {
 	idx := int(s.PowerSupplyState)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -338,7 +341,7 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetPowerSupplyState(strings []str
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetThermalState(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetThermalState(strings []string) string {
 	idx := int(s.ThermalState)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -346,7 +349,7 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetThermalState(strings []string)
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetSecurityStatus(strings []string) string {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetSecurityStatus(strings []string) string {
 	idx := int(s.SecurityStatus)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -354,34 +357,34 @@ func (s *SMB3_7_0_S3_systemenclosureindicator) GetSecurityStatus(strings []strin
 	return ""
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetOEMdefined() uint32 {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetOEMdefined() uint32 {
 	return s.OEMdefined
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetHeight() byte {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetHeight() byte {
 	return s.Height
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetNumberofPowerCords() byte {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetNumberofPowerCords() byte {
 	return s.NumberofPowerCords
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetContainedElementCountn() byte {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetContainedElementCountn() byte {
 	return s.ContainedElementCountn
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetContainedElementRecordLengthm() byte {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetContainedElementRecordLengthm() byte {
 	return s.ContainedElementRecordLengthm
 }
 
-func (s *SMB3_7_0_S3_systemenclosureindicator) GetContainedElements() [3]byte {
+func (s *SMB3_9_0_S3_systemenclosureindicator) GetContainedElements() [3]byte {
 	return s.ContainedElements
 }
 
 
 // -- Processor interface methods --
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetSocketDesignation(strings []string) string {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetSocketDesignation(strings []string) string {
 	idx := int(s.SocketDesignation)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -389,7 +392,7 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetSocketDesignation(strings
 	return ""
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorType(strings []string) string {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetProcessorType(strings []string) string {
 	idx := int(s.ProcessorType)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -397,7 +400,7 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorType(strings []s
 	return ""
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorFamily(strings []string) string {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetProcessorFamily(strings []string) string {
 	idx := int(s.ProcessorFamily)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -405,7 +408,7 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorFamily(strings [
 	return ""
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorManufacturer(strings []string) string {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetProcessorManufacturer(strings []string) string {
 	idx := int(s.ProcessorManufacturer)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -413,11 +416,11 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorManufacturer(str
 	return ""
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorID() uint64 {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetProcessorID() uint64 {
 	return s.ProcessorID
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorVersion(strings []string) string {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetProcessorVersion(strings []string) string {
 	idx := int(s.ProcessorVersion)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -425,27 +428,27 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorVersion(strings 
 	return ""
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetVoltage() byte {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetVoltage() byte {
 	return s.Voltage
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetExternalClock() uint16 {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetExternalClock() uint16 {
 	return s.ExternalClock
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetMaxSpeed() uint16 {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetMaxSpeed() uint16 {
 	return s.MaxSpeed
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetCurrentSpeed() uint16 {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetCurrentSpeed() uint16 {
 	return s.CurrentSpeed
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetStatus() byte {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetStatus() byte {
 	return s.Status
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorUpgrade(strings []string) string {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetProcessorUpgrade(strings []string) string {
 	idx := int(s.ProcessorUpgrade)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -453,7 +456,7 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetProcessorUpgrade(strings 
 	return ""
 }
 
-func (s *SMB3_7_0_S4_processorinformationindicator) GetL1CacheHandle() uint16 {
+func (s *SMB3_9_0_S4_processorinformationindicator) GetL1CacheHandle() uint16 {
 	return s.L1CacheHandle
 }
 
@@ -464,7 +467,7 @@ func (s *SMB3_7_0_S4_processorinformationindicator) GetL1CacheHandle() uint16 {
 
 // -- PhysicalMemoryArray interface methods --
 
-func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetLocation(strings []string) string {
+func (s *SMB3_9_0_S16_physicalmemoryarraytype) GetLocation(strings []string) string {
 	idx := int(s.Location)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -472,7 +475,7 @@ func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetLocation(strings []string) str
 	return ""
 }
 
-func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetUse(strings []string) string {
+func (s *SMB3_9_0_S16_physicalmemoryarraytype) GetUse(strings []string) string {
 	idx := int(s.Use)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -480,7 +483,7 @@ func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetUse(strings []string) string {
 	return ""
 }
 
-func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetMemoryErrorCorrection(strings []string) string {
+func (s *SMB3_9_0_S16_physicalmemoryarraytype) GetMemoryErrorCorrection(strings []string) string {
 	idx := int(s.MemoryErrorCorrection)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -488,42 +491,42 @@ func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetMemoryErrorCorrection(strings 
 	return ""
 }
 
-func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetMaximumCapacity() uint32 {
+func (s *SMB3_9_0_S16_physicalmemoryarraytype) GetMaximumCapacity() uint32 {
 	return s.MaximumCapacity
 }
 
-func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetMemoryErrorInformationHandle() uint16 {
+func (s *SMB3_9_0_S16_physicalmemoryarraytype) GetMemoryErrorInformationHandle() uint16 {
 	return s.MemoryErrorInformationHandle
 }
 
-func (s *SMB3_7_0_S16_physicalmemoryarraytype) GetNumberofMemoryDevices() uint16 {
+func (s *SMB3_9_0_S16_physicalmemoryarraytype) GetNumberofMemoryDevices() uint16 {
 	return s.NumberofMemoryDevices
 }
 
 
 // -- MemoryDevice interface methods --
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetPhysicalMemoryArrayHandle() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetPhysicalMemoryArrayHandle() uint16 {
 	return s.PhysicalMemoryArrayHandle
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetMemoryErrorInformationHandle() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetMemoryErrorInformationHandle() uint16 {
 	return s.MemoryErrorInformationHandle
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetTotalWidth() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetTotalWidth() uint16 {
 	return s.TotalWidth
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetDataWidth() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetDataWidth() uint16 {
 	return s.DataWidth
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetSize() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetSize() uint16 {
 	return s.Size
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetFormFactor(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetFormFactor(strings []string) string {
 	idx := int(s.FormFactor)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -531,11 +534,11 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetFormFactor(strings []string) string {
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetDeviceSet() byte {
+func (s *SMB3_9_0_S17_memorydevicetype) GetDeviceSet() byte {
 	return s.DeviceSet
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetDeviceLocator(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetDeviceLocator(strings []string) string {
 	idx := int(s.DeviceLocator)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -543,7 +546,7 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetDeviceLocator(strings []string) strin
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetBankLocator(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetBankLocator(strings []string) string {
 	idx := int(s.BankLocator)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -551,7 +554,7 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetBankLocator(strings []string) string 
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetMemoryType(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetMemoryType(strings []string) string {
 	idx := int(s.MemoryType)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -559,15 +562,15 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetMemoryType(strings []string) string {
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetTypeDetail() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetTypeDetail() uint16 {
 	return s.TypeDetail
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetSpeed() uint16 {
+func (s *SMB3_9_0_S17_memorydevicetype) GetSpeed() uint16 {
 	return s.Speed
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetManufacturer(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetManufacturer(strings []string) string {
 	idx := int(s.Manufacturer)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -575,7 +578,7 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetManufacturer(strings []string) string
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetSerialNumber(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetSerialNumber(strings []string) string {
 	idx := int(s.SerialNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -583,7 +586,7 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetSerialNumber(strings []string) string
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetAssetTag(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetAssetTag(strings []string) string {
 	idx := int(s.AssetTag)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -591,7 +594,7 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetAssetTag(strings []string) string {
 	return ""
 }
 
-func (s *SMB3_7_0_S17_memorydevicetype) GetPartNumber(strings []string) string {
+func (s *SMB3_9_0_S17_memorydevicetype) GetPartNumber(strings []string) string {
 	idx := int(s.PartNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -602,7 +605,7 @@ func (s *SMB3_7_0_S17_memorydevicetype) GetPartNumber(strings []string) string {
 
 // -- PortableBattery interface methods --
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetLocation(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetLocation(strings []string) string {
 	idx := int(s.Location)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -610,7 +613,7 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetLocation(strings []string) st
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetManufacturer(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetManufacturer(strings []string) string {
 	idx := int(s.Manufacturer)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -618,7 +621,7 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetManufacturer(strings []string
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetManufactureDate(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetManufactureDate(strings []string) string {
 	idx := int(s.ManufactureDate)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -626,7 +629,7 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetManufactureDate(strings []str
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetSerialNumber(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetSerialNumber(strings []string) string {
 	idx := int(s.SerialNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -634,7 +637,7 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetSerialNumber(strings []string
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetDeviceName(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetDeviceName(strings []string) string {
 	idx := int(s.DeviceName)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -642,7 +645,7 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetDeviceName(strings []string) 
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetDeviceChemistry(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetDeviceChemistry(strings []string) string {
 	idx := int(s.DeviceChemistry)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -650,15 +653,15 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetDeviceChemistry(strings []str
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetDesignCapacity() uint16 {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetDesignCapacity() uint16 {
 	return s.DesignCapacity
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetDesignVoltage() uint16 {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetDesignVoltage() uint16 {
 	return s.DesignVoltage
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetSBDSVersionNumber(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetSBDSVersionNumber(strings []string) string {
 	idx := int(s.SBDSVersionNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -666,19 +669,19 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetSBDSVersionNumber(strings []s
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetMaximumErrorinBatteryData() byte {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetMaximumErrorinBatteryData() byte {
 	return s.MaximumErrorinBatteryData
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetSBDSSerialNumber() uint16 {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetSBDSSerialNumber() uint16 {
 	return s.SBDSSerialNumber
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetSBDSManufactureDate() uint16 {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetSBDSManufactureDate() uint16 {
 	return s.SBDSManufactureDate
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetSBDSDeviceChemistry(strings []string) string {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetSBDSDeviceChemistry(strings []string) string {
 	idx := int(s.SBDSDeviceChemistry)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -686,29 +689,29 @@ func (s *SMB3_7_0_S22_portablebatteryindicator) GetSBDSDeviceChemistry(strings [
 	return ""
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetDesignCapacityMultiplier() byte {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetDesignCapacityMultiplier() byte {
 	return s.DesignCapacityMultiplier
 }
 
-func (s *SMB3_7_0_S22_portablebatteryindicator) GetOEMspecific() uint32 {
+func (s *SMB3_9_0_S22_portablebatteryindicator) GetOEMspecific() uint32 {
 	return s.OEMspecific
 }
 
 
 // -- HardwareSecurity interface methods --
 
-func (s *SMB3_7_0_S24_hardwaresecurityindicator) GetHardwareSecuritySettings() byte {
+func (s *SMB3_9_0_S24_hardwaresecurityindicator) GetHardwareSecuritySettings() byte {
 	return s.HardwareSecuritySettings
 }
 
 
 // -- PowerSupply interface methods --
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetPowerUnitGroup() byte {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetPowerUnitGroup() byte {
 	return s.PowerUnitGroup
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetLocation(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetLocation(strings []string) string {
 	idx := int(s.Location)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -716,7 +719,7 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetLocation(strings []strin
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetDeviceName(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetDeviceName(strings []string) string {
 	idx := int(s.DeviceName)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -724,7 +727,7 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetDeviceName(strings []str
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetManufacturer(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetManufacturer(strings []string) string {
 	idx := int(s.Manufacturer)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -732,7 +735,7 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetManufacturer(strings []s
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetSerialNumber(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetSerialNumber(strings []string) string {
 	idx := int(s.SerialNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -740,7 +743,7 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetSerialNumber(strings []s
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetAssetTagNumber(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetAssetTagNumber(strings []string) string {
 	idx := int(s.AssetTagNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -748,7 +751,7 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetAssetTagNumber(strings [
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetModelPartNumber(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetModelPartNumber(strings []string) string {
 	idx := int(s.ModelPartNumber)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -756,7 +759,7 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetModelPartNumber(strings 
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetRevisionLevel(strings []string) string {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetRevisionLevel(strings []string) string {
 	idx := int(s.RevisionLevel)
 	if idx > 0 && idx <= len(strings) {
 		return strings[idx-1]
@@ -764,23 +767,23 @@ func (s *SMB3_7_0_S39_powersupplystructureindicator) GetRevisionLevel(strings []
 	return ""
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetMaxPowerCapacity() uint16 {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetMaxPowerCapacity() uint16 {
 	return s.MaxPowerCapacity
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetPowerSupplyCharacteristics() uint16 {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetPowerSupplyCharacteristics() uint16 {
 	return s.PowerSupplyCharacteristics
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetInputVoltageProbeHandle() uint16 {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetInputVoltageProbeHandle() uint16 {
 	return s.InputVoltageProbeHandle
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetCoolingDeviceHandle() uint16 {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetCoolingDeviceHandle() uint16 {
 	return s.CoolingDeviceHandle
 }
 
-func (s *SMB3_7_0_S39_powersupplystructureindicator) GetInputCurrentProbeHandle() uint16 {
+func (s *SMB3_9_0_S39_powersupplystructureindicator) GetInputCurrentProbeHandle() uint16 {
 	return s.InputCurrentProbeHandle
 }
 
