@@ -18,6 +18,7 @@ type StructureChunk struct {
 }
 
 type DMITable struct {
+	Structs     map[int][]interface{}
 	Processors  []*processor.Processor
 	chunks      []StructureChunk
 	rawDMITable []byte
@@ -25,7 +26,8 @@ type DMITable struct {
 
 func NewDMITable() *DMITable {
 	table := &DMITable{
-		chunks: make([]StructureChunk, 0),
+		chunks:  make([]StructureChunk, 0),
+		Structs: make(map[int][]interface{}),
 	}
 	return table
 }
