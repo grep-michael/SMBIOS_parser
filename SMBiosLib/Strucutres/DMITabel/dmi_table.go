@@ -29,7 +29,7 @@ func NewDMITable() *DMITable {
 	return table
 }
 
-func (table *DMITable) BuildStructs(data []byte) error {
+func (table *DMITable) PraseByteSlice(data []byte) error {
 	err := table.buildChunkList(data)
 	if err != nil {
 		return err

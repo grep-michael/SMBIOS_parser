@@ -17,7 +17,6 @@ func main() {
 	}
 	defer file.Close()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
-	//log.SetOutput(file)
 
 	//flag handling
 	desired_struct := flag.Int("struct", 4, "Structureto print")
@@ -28,5 +27,5 @@ func main() {
 	test_data := smbiosdata.GetTestData(*test_index)
 	err = test_data.LoadDMITable()
 	table := test_data.DMITable
-	utility.PrintObj(table.Structs[4])
+	utility.PrintObj(table.Structs[*desired_struct])
 }

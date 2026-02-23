@@ -2,6 +2,7 @@ package smbiosdata
 
 import (
 	"encoding/base64"
+	"fmt"
 	"log"
 
 	dmitabel "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Strucutres/DMITabel"
@@ -17,6 +18,18 @@ type SMBiosData struct {
 	DMITable        *dmitabel.DMITable
 }
 
+func NewSMBiosData(eps_bytes []byte, dmiTable_bytes []byte) *SMBiosData {
+	return &SMBiosData{
+		EPS_Bytes:       eps_bytes,
+		DMI_TABLE_Bytes: dmiTable_bytes,
+	}
+}
+func NewSMBiosDataB64(eps_b64string string, dmiTable_b64string string) *SMBiosData {
+	return &SMBiosData{
+		EPS_b64S:       eps_b64string,
+		DMI_TABLE_b64S: dmiTable_b64string,
+	}
+}
 func (data *SMBiosData) DecodeBase64Fields() (err error) {
 	data.DMI_TABLE_Bytes, err = base64.StdEncoding.DecodeString(data.DMI_TABLE_b64S)
 	if err != nil {
@@ -31,22 +44,29 @@ func (data *SMBiosData) DecodeBase64Fields() (err error) {
 	return nil
 }
 func (data *SMBiosData) LoadDMITable() error {
-	if len(data.DMI_TABLE_Bytes) <= 1 {
+
+	if len(data.DMI_TABLE_Bytes) <= 1 || data.DMI_TABLE_b64S != "" {
 		err := data.DecodeBase64Fields()
 		if err != nil {
 			return err
 		}
 	}
+	if len(data.DMI_TABLE_Bytes) <= 1 {
+		return fmt.Errorf("Populate .DMI_TABLE_Bytes First")
+	}
 	data.DMITable = dmitabel.NewDMITable()
-	return data.DMITable.BuildStructs(data.DMI_TABLE_Bytes)
+	return data.DMITable.PraseByteSlice(data.DMI_TABLE_Bytes)
 }
 func (data *SMBiosData) LoadEPSStruct() error {
-	if len(data.EPS_Bytes) <= 1 {
+	if len(data.EPS_Bytes) <= 1 || data.EPS_b64S != "" {
 		err := data.DecodeBase64Fields()
 		if err != nil {
 			log.Println("Error decoding base64 fields")
 			return err
 		}
+	}
+	if data.EPS_Bytes == nil {
+		return fmt.Errorf("Populate .EPS_Bytes First")
 	}
 	data.EPS = eps.NewEPS(data.EPS_Bytes)
 	log.Printf("Built New EPS: Version %d\n", data.EPS.Version)
