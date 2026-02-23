@@ -29,40 +29,6 @@ func NewDMITable() *DMITable {
 	return table
 }
 
-type processorTest struct {
-	Type                     byte   //
-	Length                   byte   //
-	Handle                   uint16 //
-	SocketDesignation        byte   //STRING
-	ProcessorType            byte   //ENUM
-	ProcessorFamily          byte   //ENUM
-	ProcessorManufacturer    byte   //STRING
-	ProcessorID              uint64 //
-	ProcessorVersion         byte   //STRING
-	Voltage                  byte   //
-	ExternalClock            uint16 //
-	MaxSpeed                 uint16 //
-	CurrentSpeed             uint16 //
-	Status                   byte   //
-	ProcessorUpgrade         byte   //ENUM
-	L1CacheHandle            uint16 //
-	L2CacheHandle            uint16 //
-	L3CacheHandle            uint16 //
-	SerialNumber             byte   //STRING
-	AssetTag                 byte   //STRING
-	PartNumber               byte   //STRING
-	CoreCount                byte   //
-	CoreEnabled              byte   //
-	ThreadCount              byte   //
-	ProcessorCharacteristics uint16 //Bit Field
-	ProcessorFamily2         uint16 //
-	CoreCount2               uint16 //
-	CoreEnabled2             uint16 //
-	ThreadCount2             uint16 //
-	ThreadEnabled            uint16 //
-	SocketType               byte   //STRING
-}
-
 func (table *DMITable) BuildStructs(data []byte) error {
 	err := table.buildChunkList(data)
 	if err != nil {

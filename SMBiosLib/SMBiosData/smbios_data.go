@@ -52,7 +52,6 @@ func (data *SMBiosData) LoadEPSStruct() error {
 	log.Printf("Built New EPS: Version %d\n", data.EPS.Version)
 	return nil
 }
-
 func (data *SMBiosData) VerifyDMITable() error {
 	if data.EPS == nil {
 		if err := data.LoadEPSStruct(); err != nil {
