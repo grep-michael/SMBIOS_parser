@@ -1,7 +1,9 @@
-package smbios
+package dmitabel
 
 import (
 	"fmt"
+
+	utility "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Utility"
 )
 
 // Platform Firmware Information (Type 0) structure (Type 0)
@@ -3141,289 +3143,289 @@ func ParseChunk(structType byte, length byte, data []byte) (*ParsedChunk, error)
 	switch structType {
 	case 0:
 		s := Type0PlatformFirmwareInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 0: %w", err)
 		}
 		obj = &s
 	case 1:
 		s := Type1SystemInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 1: %w", err)
 		}
 		obj = &s
 	case 2:
 		s := Type2BaseboardInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 2: %w", err)
 		}
 		obj = &s
 	case 3:
 		s := Type3SystemEnclosure{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 3: %w", err)
 		}
 		obj = &s
 	case 4:
 		s := Type4ProcessorInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 4: %w", err)
 		}
 		obj = &s
 	case 5:
 		s := Type5MemoryController{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 5: %w", err)
 		}
 		obj = &s
 	case 6:
 		s := Type6MemoryModuleConfiguration{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 6: %w", err)
 		}
 		obj = &s
 	case 7:
 		s := Type7CacheInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 7: %w", err)
 		}
 		obj = &s
 	case 8:
 		s := Type8ConnectorInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 8: %w", err)
 		}
 		obj = &s
 	case 9:
 		s := Type9SystemSlot{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 9: %w", err)
 		}
 		obj = &s
 	case 10:
 		s := Type10OnBoardDevicesInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 10: %w", err)
 		}
 		obj = &s
 	case 11:
 		s := Type11OEMStrings{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 11: %w", err)
 		}
 		obj = &s
 	case 12:
 		s := Type12ConfigurationInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 12: %w", err)
 		}
 		obj = &s
 	case 13:
 		s := Type13LanguageInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 13: %w", err)
 		}
 		obj = &s
 	case 14:
 		s := Type14GroupAssociations{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 14: %w", err)
 		}
 		obj = &s
 	case 15:
 		s := Type15EventLog{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 15: %w", err)
 		}
 		obj = &s
 	case 16:
 		s := Type16PhysicalMemoryArray{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 16: %w", err)
 		}
 		obj = &s
 	case 17:
 		s := Type17MemoryDevice{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 17: %w", err)
 		}
 		obj = &s
 	case 18:
 		s := Type1832bitMemoryErrorInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 18: %w", err)
 		}
 		obj = &s
 	case 19:
 		s := Type19MemoryArrayMappedAddress{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 19: %w", err)
 		}
 		obj = &s
 	case 20:
 		s := Type20MemoryDeviceMappedAddress{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 20: %w", err)
 		}
 		obj = &s
 	case 21:
 		s := Type21BuiltinPointingDevice{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 21: %w", err)
 		}
 		obj = &s
 	case 22:
 		s := Type22PortableBattery{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 22: %w", err)
 		}
 		obj = &s
 	case 23:
 		s := Type23SystemReset{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 23: %w", err)
 		}
 		obj = &s
 	case 24:
 		s := Type24HardwareSecurity{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 24: %w", err)
 		}
 		obj = &s
 	case 25:
 		s := Type25SystemPowerControls{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 25: %w", err)
 		}
 		obj = &s
 	case 26:
 		s := Type26VoltageProbe{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 26: %w", err)
 		}
 		obj = &s
 	case 27:
 		s := Type27CoolingDevice{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 27: %w", err)
 		}
 		obj = &s
 	case 28:
 		s := Type28TemperatureProbe{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 28: %w", err)
 		}
 		obj = &s
 	case 29:
 		s := Type29ElectricalCurrentProbe{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 29: %w", err)
 		}
 		obj = &s
 	case 30:
 		s := Type30OutofBandRemoteAccess{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 30: %w", err)
 		}
 		obj = &s
 	case 32:
 		s := Type32SystemBootInformationidentifier{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 32: %w", err)
 		}
 		obj = &s
 	case 33:
 		s := Type3364bitMemoryErrorInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 33: %w", err)
 		}
 		obj = &s
 	case 34:
 		s := Type34ManagementDevice{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 34: %w", err)
 		}
 		obj = &s
 	case 35:
 		s := Type35ManagementDeviceComponent{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 35: %w", err)
 		}
 		obj = &s
 	case 36:
 		s := Type36ManagementDeviceThresholdData{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 36: %w", err)
 		}
 		obj = &s
 	case 37:
 		s := Type37ManagementDeviceThresholdData{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 37: %w", err)
 		}
 		obj = &s
 	case 38:
 		s := Type38IPMIDeviceInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 38: %w", err)
 		}
 		obj = &s
 	case 39:
 		s := Type39PowerSupply{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 39: %w", err)
 		}
 		obj = &s
 	case 40:
 		s := Type40AdditionalInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 40: %w", err)
 		}
 		obj = &s
 	case 41:
 		s := Type41OnboardDevicesExtendedInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 41: %w", err)
 		}
 		obj = &s
 	case 42:
 		s := Type42ManagementControllerHostInterface{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 42: %w", err)
 		}
 		obj = &s
 	case 43:
 		s := Type43TPMDevice{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 43: %w", err)
 		}
 		obj = &s
 	case 44:
 		s := Type44ProcessorAdditionalInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 44: %w", err)
 		}
 		obj = &s
 	case 45:
 		s := Type45FirmwareInventoryInformation{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 45: %w", err)
 		}
 		obj = &s
 	case 46:
 		s := Type46StringProperty{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 46: %w", err)
 		}
 		obj = &s
 	case 126:
 		s := Type126Inactive{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 126: %w", err)
 		}
 		obj = &s
 	case 127:
 		s := Type127Endoftable{}
-		if err := ReadIntoStruct(data[:length], &s); err != nil {
+		if err := utility.ReadIntoStruct(data[:length], &s); err != nil {
 			return nil, fmt.Errorf("type 127: %w", err)
 		}
 		obj = &s
@@ -3431,6 +3433,6 @@ func ParseChunk(structType byte, length byte, data []byte) (*ParsedChunk, error)
 		return nil, nil
 	}
 
-	strings := ParseNullTerminatedStrings(data[int(length):])
+	strings := utility.ParseNullTerminatedStrings(data[int(length):])
 	return &ParsedChunk{StructType: structType, Data: obj, Strings: strings}, nil
 }

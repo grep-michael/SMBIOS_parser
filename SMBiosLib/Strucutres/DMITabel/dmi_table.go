@@ -1,11 +1,7 @@
 package dmitabel
 
 import (
-	"fmt"
 	"log"
-
-	processor "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Strucutres/Processor"
-	utility "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Utility"
 )
 
 type StructureChunk struct {
@@ -21,7 +17,6 @@ type StructureChunk struct {
 
 type DMITable struct {
 	Structs     map[int][]interface{}
-	Processors  []*processor.Processor
 	chunks      []StructureChunk
 	rawDMITable []byte
 }
@@ -106,19 +101,11 @@ func (table *DMITable) buildChunkList(data []byte) error {
 }
 func (table *DMITable) parseChunkList() {
 	for _, chunk := range table.chunks {
-		switch chunk.StructType {
-		case 4:
-			st := processorTest{}
-			fmt.Println(chunk.Length)
-			err := utility.ReadIntoStruct(chunk.Data[:chunk.Length], &st)
-			if err != nil {
-				log.Println(err)
-			}
-			strings := utility.ParseNullTerminatedStrings(chunk.Data[int(chunk.Data[1]):])
-			utility.PrintObj(strings)
-			utility.PrintObj(st)
-		default:
-			//log.Printf("No parsing for chunk of type %d %s\n", chunk.StructType, chunk.FriendlyName)
+		prased_chunk, err := ParseChunk(byte(chunk.StructType), byte(chunk.Length), chunk.Data)
+		if err != nil {
+			log.Printf("Failed to parse chunk %d\n", chunk.StructType)
+			continue
 		}
+		table.Structs[chunk.StructType] = append(table.Structs[chunk.StructType], prased_chunk)
 	}
 }

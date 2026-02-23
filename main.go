@@ -7,6 +7,7 @@ import (
 	"os"
 
 	smbiosdata "github.com/grep-michael/SMBIOS_parser/SMBiosLib/SMBiosData"
+	utility "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Utility"
 )
 
 func main() {
@@ -26,4 +27,6 @@ func main() {
 	fmt.Printf("Loading %d test, looking for %d structs\n", *test_index, *desired_struct)
 	test_data := smbiosdata.GetTestData(*test_index)
 	err = test_data.LoadDMITable()
+	table := test_data.DMITable
+	utility.PrintObj(table.Structs[4])
 }
