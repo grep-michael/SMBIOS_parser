@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	dmitabel "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Strucutres/DMITabel"
-	eps "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Strucutres/EPS"
+	dmitabel "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures/DMITabel"
+	eps "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures/EPS"
 )
 
 type SMBiosData struct {
