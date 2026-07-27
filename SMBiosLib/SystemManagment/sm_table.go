@@ -6,15 +6,15 @@ import (
 	"fmt"
 	"log"
 
-	eps "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures/EPS"
-	"github.com/grep-michael/SMBIOS_parser/SMBiosLib/Structures/StructureParsing"
+	"github.com/grep-michael/SMBIOS_parser/SMBiosLib/structs"
+	eps "github.com/grep-michael/SMBIOS_parser/SMBiosLib/structs/EPS"
 )
 
 type SMTable struct {
 	DMI_TABLE_Bytes []byte
 	EPS_Bytes       []byte
 	EPS             *eps.EntryPointStruct
-	Structures      map[int][]*parsing.ParsedChunk
+	Structures      map[int][]*structs.ParsedChunk
 }
 
 func NewSMBiosData(eps_bytes []byte, dmiTable_bytes []byte) *SMTable {
@@ -49,7 +49,7 @@ func (table *SMTable) UnmarshalJSON(data []byte) error {
 		DMI_TABLE_Bytes []byte
 		EPS_Bytes       []byte
 		EPS             *eps.EntryPointStruct
-		Structures      map[int][]*parsing.ParsedChunk `json:"-"`
+		Structures      map[int][]*structs.ParsedChunk `json:"-"`
 	}{}
 	if err := json.Unmarshal(data, &anon); err != nil {
 		return err
@@ -64,7 +64,7 @@ func (data *SMTable) LoadStructures() error {
 	if len(data.DMI_TABLE_Bytes) <= 1 {
 		return fmt.Errorf("DMI_TABLE_Bytes Empty, failed to load")
 	}
-	chunks, err := parsing.ParseSMBiosBytes(data.DMI_TABLE_Bytes)
+	chunks, err := structs.ParseSMBiosBytes(data.DMI_TABLE_Bytes)
 	if err != nil {
 		return err
 	}

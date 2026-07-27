@@ -1,4 +1,4 @@
-package parsing
+package structs
 
 var TypeNumToFriendlyNameMap = map[int]string{
 	0:   "BIOS Information",
