@@ -3128,13 +3128,6 @@ type Type127Endoftable struct {
 	Handle uint16 //
 }
 
-// ParsedChunk holds a parsed SMBIOS structure and its string table.
-type ParsedChunk struct {
-	StructType byte
-	Data       interface{}
-	Strings    []string
-}
-
 // ParseChunk reads an SMBIOS chunk into the appropriate typed struct.
 // data is the full chunk bytes (header + fields + string table).
 // structType is the SMBIOS structure type, length is the formatted area size.

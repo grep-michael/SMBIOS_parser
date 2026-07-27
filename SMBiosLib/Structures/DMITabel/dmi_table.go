@@ -1,6 +1,7 @@
 package dmitabel
 
 import (
+	"encoding/json"
 	"log"
 )
 
@@ -13,6 +14,25 @@ type StructureChunk struct {
 	StructureSegmentEnd int //position of structures section end, i.e headers length value
 	End                 int //position from start to the double null terminators
 
+}
+
+type ParsedChunk struct {
+	StructType byte
+	Strings    []string
+	Data       interface{}
+}
+
+func (c ParsedChunk) UnmarshalJSON(data []byte) error {
+	var filter struct {
+		StructType byte
+		Strings    []string
+		Data       interface{} `json:"-"`
+	}
+	if err := json.Unmarshal(data, &filter); err != nil {
+		return err
+	}
+	c = ParsedChunk(filter)
+	return nil
 }
 
 type DMITable struct {
