@@ -1,11 +1,10 @@
-package dmitabel
+package parsing
 
 import (
-	"encoding/json"
 	"log"
 )
 
-type StructureChunk struct {
+type RawChunk struct {
 	StructType          int
 	Length              int
 	FriendlyName        string
@@ -13,7 +12,6 @@ type StructureChunk struct {
 	Start               int //position inside the smbios array
 	StructureSegmentEnd int //position of structures section end, i.e headers length value
 	End                 int //position from start to the double null terminators
-
 }
 
 type ParsedChunk struct {
@@ -22,46 +20,19 @@ type ParsedChunk struct {
 	Data       interface{}
 }
 
-func (c ParsedChunk) UnmarshalJSON(data []byte) error {
-	var filter struct {
-		StructType byte
-		Strings    []string
-		Data       interface{} `json:"-"`
-	}
-	if err := json.Unmarshal(data, &filter); err != nil {
-		return err
-	}
-	c = ParsedChunk(filter)
-	return nil
-}
-
-type DMITable struct {
-	Structs     map[int][]*ParsedChunk
-	chunks      []StructureChunk
-	rawDMITable []byte
-}
-
-func NewDMITable() *DMITable {
-	table := &DMITable{
-		chunks:  make([]StructureChunk, 0),
-		Structs: make(map[int][]*ParsedChunk),
-	}
-	return table
-}
-
-func (table *DMITable) PraseByteSlice(data []byte) error {
-	err := table.buildChunkList(data)
+func ParseSMBiosBytes(data []byte) (map[int][]*ParsedChunk, error) {
+	rawChunks, err := buildRawChunkList(data)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	table.parseChunkList()
-	return nil
+	parsedChunks, err := buildParsedChunkMap(rawChunks)
+	return parsedChunks, err
 }
-func (table *DMITable) buildChunkList(data []byte) error {
-	table.rawDMITable = data
+func buildRawChunkList(data []byte) ([]RawChunk, error) {
+	var rawChunkList []RawChunk
 	index := 0
 	for index < len(data) {
-		chunk := StructureChunk{}
+		chunk := RawChunk{}
 
 		chunk.Start = index
 		chunk.StructType = int(data[index])
@@ -79,19 +50,22 @@ func (table *DMITable) buildChunkList(data []byte) error {
 		}
 		chunk.End = segment_end
 		chunk.Data = data[chunk.Start:chunk.End]
-		table.chunks = append(table.chunks, chunk)
+		rawChunkList = append(rawChunkList, chunk)
 		index = segment_end
 	}
-	return nil
+	return rawChunkList, nil
 
 }
-func (table *DMITable) parseChunkList() {
-	for _, chunk := range table.chunks {
+func buildParsedChunkMap(chunks []RawChunk) (map[int][]*ParsedChunk, error) {
+	parsedChunks := make(map[int][]*ParsedChunk)
+	for _, chunk := range chunks {
 		prased_chunk, err := ParseChunk(byte(chunk.StructType), byte(chunk.Length), chunk.Data)
 		if err != nil {
 			log.Printf("Failed to parse chunk %d\n", chunk.StructType)
 			continue
 		}
-		table.Structs[chunk.StructType] = append(table.Structs[chunk.StructType], prased_chunk)
+		parsedChunks[chunk.StructType] = append(parsedChunks[chunk.StructType], prased_chunk)
+		//log.Printf("Found struct %d\n", chunk.StructType)
 	}
+	return parsedChunks, nil
 }

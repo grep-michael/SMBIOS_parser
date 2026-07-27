@@ -1,8 +1,7 @@
-package dmitabel
+package parsing
 
 import (
 	"fmt"
-
 	utility "github.com/grep-michael/SMBIOS_parser/SMBiosLib/Utility"
 )
 

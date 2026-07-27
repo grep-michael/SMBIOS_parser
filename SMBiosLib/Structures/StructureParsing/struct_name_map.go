@@ -1,4 +1,4 @@
-package dmitabel
+package parsing
 
 var TypeNumToFriendlyNameMap = map[int]string{
 	0:   "BIOS Information",
